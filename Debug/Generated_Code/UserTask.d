@@ -1,5 +1,5 @@
-Sources/rtos_main_task.o: ../Sources/rtos_main_task.c \
- C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h \
+Generated_Code/UserTask.o: ../Generated_Code/UserTask.c \
+ C:/Users/devinc/ceng455part3/Sources/os_tasks.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/fsl_device_registers.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12.h \
  C:/Users/devinc/ceng455part3/SDK/platform/CMSIS/Include/core_cm4.h \
@@ -11,6 +11,10 @@ Sources/rtos_main_task.o: ../Sources/rtos_main_task.c \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/fsl_bitaccess.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12_features.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/clockMan1.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/osa1.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/mqx_ksdk.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h \
  C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_clock_manager.h \
  C:/Users/devinc/ceng455part3/SDK/platform/hal/inc/fsl_sim_hal.h \
  c:\users\devinc\ceng455part3\sdk\platform\hal\src\sim\mk64f12\fsl_sim_hal_mk64f12.h \
@@ -58,10 +62,6 @@ Sources/rtos_main_task.o: ../Sources/rtos_main_task.c \
  C:/Users/devinc/ceng455part3/SDK/platform/drivers/inc/fsl_mpu_driver.h \
  C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_hwtimer.h \
  C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_clock_manager.h \
- C:/Users/devinc/ceng455part3/Generated_Code/osa1.h \
- C:/Users/devinc/ceng455part3/Generated_Code/mqx_ksdk.h \
- C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h ../Sources/Events.h \
- C:/Users/devinc/ceng455part3/Generated_Code/clockMan1.h \
  C:/Users/devinc/ceng455part3/Generated_Code/pin_init.h \
  C:/Users/devinc/ceng455part3/Generated_Code/osa1.h \
  C:/Users/devinc/ceng455part3/Generated_Code/mqx_ksdk.h \
@@ -77,9 +77,9 @@ Sources/rtos_main_task.o: ../Sources/rtos_main_task.c \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
- ../Sources/rtos_main_task.h ../Sources/os_tasks.h
+ ../Generated_Code/UserTask.h
 
-C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h:
+C:/Users/devinc/ceng455part3/Sources/os_tasks.h:
 
 C:/Users/devinc/ceng455part3/SDK/platform/devices/fsl_device_registers.h:
 
@@ -102,6 +102,14 @@ C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12.h:
 C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/fsl_bitaccess.h:
 
 C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12_features.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/clockMan1.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/osa1.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/mqx_ksdk.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h:
 
 C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_clock_manager.h:
 
@@ -197,16 +205,6 @@ C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_hwtimer.h:
 
 C:/Users/devinc/ceng455part3/SDK/platform/system/inc/fsl_clock_manager.h:
 
-C:/Users/devinc/ceng455part3/Generated_Code/osa1.h:
-
-C:/Users/devinc/ceng455part3/Generated_Code/mqx_ksdk.h:
-
-C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h:
-
-../Sources/Events.h:
-
-C:/Users/devinc/ceng455part3/Generated_Code/clockMan1.h:
-
 C:/Users/devinc/ceng455part3/Generated_Code/pin_init.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/osa1.h:
@@ -237,6 +235,4 @@ C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
 
-../Sources/rtos_main_task.h:
-
-../Sources/os_tasks.h:
+../Generated_Code/UserTask.h:

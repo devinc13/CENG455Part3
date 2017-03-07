@@ -117,6 +117,7 @@
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MainTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MasterTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\TaskGenerator.c</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Generated_Code\UserTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\clockMan1.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\fsl_hwtimer1.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\fsl_mpu1.c</PathName>
@@ -255,6 +256,7 @@
       <PathName>C:\Users\devinc\ceng455part3\SDK\rtos\mqx\mqx_stdlib\source\stdio\stdio.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\SDK\rtos\mqx\mqx_stdlib\source\strings\strings.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\Events.c</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Sources\api.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\main.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\os_tasks.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\rtos_main_task.c</PathName>
@@ -270,6 +272,7 @@
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\SDK\rtos\mqx\config\board\user_config.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\SDK\rtos\mqx\config\mcu\mqx_sdk_config.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\TaskGenerator.h</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Generated_Code\UserTask.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\board.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\clockMan1.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\fsl_hwtimer1.h</PathName>
@@ -406,6 +409,8 @@
       <PathName>C:\Users\devinc\ceng455part3\SDK\rtos\mqx\mqx_stdlib\source\stdio\print_prv.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\SDK\rtos\mqx\mqx_stdlib\source\stdio\scan_prv.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\Events.h</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Sources\api.h</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Sources\constants.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\os_tasks.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Sources\rtos_main_task.h</PathName>
     </GeneratedHs>

@@ -45,6 +45,7 @@
 #include "myUART.h"
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
+#include "UserTask.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -83,6 +84,18 @@ void dd_scheduler(os_task_param_t task_init_data);
 */
 void master_task(os_task_param_t task_init_data);
 
+
+
+/*
+** ===================================================================
+**     Callback    : user_task
+**     Description : Task function entry.
+**     Parameters  :
+**       task_init_data - OS task parameter
+**     Returns : Nothing
+** ===================================================================
+*/
+void user_task(os_task_param_t task_init_data);
 
 /* END os_tasks */
 

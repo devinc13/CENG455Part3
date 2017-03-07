@@ -43,6 +43,7 @@
 #include "myUART.h"
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
+#include "UserTask.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -51,7 +52,7 @@ extern "C" {
 
 /*
 ** ===================================================================
-**     Callback    : myUART_RxCallback
+**     Callback    : uartCom1_RxCallback
 **     Description : This callback occurs when data are received.
 **     Parameters  :
 **       instance - The UART instance number.
@@ -60,7 +61,7 @@ extern "C" {
 **     Returns : Nothing
 ** ===================================================================
 */
-void myUART_RxCallback(uint32_t instance, void * uartState);
+void uartCom1_RxCallback(uint32_t instance, void * uartState);
 
 /* END Events */
 

@@ -7,7 +7,7 @@
 **     Version     : Component 1.3.0, Driver 01.00, CPU db: 3.00.000
 **     Repository  : KSDK 1.3.0
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-03-06, 16:10, # CodeGen: 1
+**     Date/Time   : 2017-03-06, 17:52, # CodeGen: 6
 **     Contents    :
 **         UART_DRV_Init                - uart_status_t UART_DRV_Init(uint32_t instance,uart_state_t *...
 **         UART_DRV_Deinit              - uart_status_t UART_DRV_Deinit(uint32_t instance);
@@ -75,13 +75,13 @@
 #define FSL_MYUART myUART_IDX
   
 /*! Driver state structure without DMA */
-extern uart_state_t myUART_State;
+extern uart_state_t uartCom1_State;
     
 /*! Interrupt service routine (ISR) prototype */    
-void myUART_IRQHandler(void);    
+void uartCom1_IRQHandler(void);    
   
 /*! @brief UART configuration declaration */
-extern const uart_user_config_t myUART_InitConfig0;
+extern const uart_user_config_t uartCom1_InitConfig0;
     
 #endif
 /* ifndef __myUART_H */

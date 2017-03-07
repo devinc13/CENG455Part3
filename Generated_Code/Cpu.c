@@ -8,7 +8,7 @@
 **     Repository  : KSDK 1.3.0
 **     Datasheet   : K64P144M120SF5RM, Rev.2, January 2014
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-03-06, 16:10, # CodeGen: 1
+**     Date/Time   : 2017-03-06, 17:52, # CodeGen: 6
 **     Abstract    :
 **
 **     Settings    :
@@ -113,9 +113,9 @@ void Components_Init(void)
   (void)MasterTask_Init();
   /*! MasterTask Auto initialization end */                       
   /*! myUART Auto initialization start */
-  OSA_InstallIntHandler(UART3_RX_TX_IRQn, myUART_IRQHandler);
-  UART_DRV_Init(myUART_IDX,&myUART_State,&myUART_InitConfig0);
-  UART_DRV_InstallRxCallback(myUART_IDX, myUART_RxCallback, NULL, NULL, true);
+  OSA_InstallIntHandler(UART3_RX_TX_IRQn, uartCom1_IRQHandler);
+  UART_DRV_Init(myUART_IDX,&uartCom1_State,&uartCom1_InitConfig0);
+  UART_DRV_InstallRxCallback(myUART_IDX, uartCom1_RxCallback, NULL, NULL, true);
   /*! myUART Auto initialization end */
     
 }

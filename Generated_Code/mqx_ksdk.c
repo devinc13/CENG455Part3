@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 01.00, CPU db: 3.00.000
 **     Repository  : KSDK 1.3.0
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-03-06, 16:10, # CodeGen: 1
+**     Date/Time   : 2017-03-06, 17:52, # CodeGen: 6
 **
 **     Copyright : 1997 - 2015 Freescale Semiconductor, Inc. 
 **     All Rights Reserved.
@@ -61,6 +61,7 @@
 #include "MasterTask.h"
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
+#include "UserTask.h"
 extern void * kernel_data_prv;
 #if MQXCFG_PREALLOCATED_SYSTEM_STACKS
 extern uint8_t mqx_interrupt_stack[];
@@ -113,6 +114,17 @@ const TASK_TEMPLATE_STRUCT MQX_template_list[] =
     /* Stack size                     */  TASKGENERATOR_TASK_STACK_SIZE,
     /* Task priority                  */  (PRIORITY_OSA_TO_RTOS(TASKGENERATOR_TASK_PRIORITY)),
     /* Task name                      */  TASKGENERATOR_TASK_NAME,
+    /* Task attributes                */  (0),
+    /* Task parameter                 */  (uint32_t)(NULL),
+    /* Task time slice                */  (uint32_t)(0U)
+  },       
+  /* Task: UserTask */
+  {
+    /* Task number                    */  USERTASK_TASK,
+    /* Entry point                    */  (TASK_FPTR)user_task,
+    /* Stack size                     */  USERTASK_TASK_STACK_SIZE,
+    /* Task priority                  */  (PRIORITY_OSA_TO_RTOS(USERTASK_TASK_PRIORITY)),
+    /* Task name                      */  USERTASK_TASK_NAME,
     /* Task attributes                */  (0),
     /* Task parameter                 */  (uint32_t)(NULL),
     /* Task time slice                */  (uint32_t)(0U)

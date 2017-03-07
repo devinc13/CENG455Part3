@@ -43,6 +43,7 @@
 #include "myUART.h"
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
+#include "UserTask.h"
 
 #ifdef __cplusplus
 extern "C" {

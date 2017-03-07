@@ -76,6 +76,7 @@ Sources/main.o: ../Sources/main.c \
  C:/Users/devinc/ceng455part3/Generated_Code/myUART.h \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
  ../Sources/rtos_main_task.h ../Sources/os_tasks.h
 
 C:/Users/devinc/ceng455part3/Generated_Code/Cpu.h:
@@ -233,6 +234,8 @@ C:/Users/devinc/ceng455part3/Generated_Code/myUART.h:
 C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
 
 ../Sources/rtos_main_task.h:
 
