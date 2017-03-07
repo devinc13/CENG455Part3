@@ -79,6 +79,7 @@ Static_Code/System/PE_low_level_init.o: \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h \
  C:/Users/devinc/ceng455part3/Generated_Code/board.h \
  C:/Users/devinc/ceng455part3/Generated_Code/pin_init.h
 
@@ -239,6 +240,8 @@ C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h:
 C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/board.h:
 

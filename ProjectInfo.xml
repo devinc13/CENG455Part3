@@ -114,6 +114,7 @@
     <GeneratedCs>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\Cpu.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\DDScheduler.c</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Generated_Code\IdleTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MainTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MasterTask.c</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\TaskGenerator.c</PathName>
@@ -265,6 +266,7 @@
     <GeneratedHs>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\Cpu.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\DDScheduler.h</PathName>
+      <PathName>C:\Users\devinc\ceng455part3\Generated_Code\IdleTask.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MainTask.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\MasterTask.h</PathName>
       <PathName>C:\Users\devinc\ceng455part3\Generated_Code\PE_low_level_init.h</PathName>

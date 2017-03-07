@@ -46,6 +46,7 @@
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
 #include "UserTask.h"
+#include "IdleTask.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -96,6 +97,17 @@ void master_task(os_task_param_t task_init_data);
 ** ===================================================================
 */
 void user_task(os_task_param_t task_init_data);
+
+/*
+** ===================================================================
+**     Callback    : idle_task
+**     Description : Task function entry.
+**     Parameters  :
+**       task_init_data - OS task parameter
+**     Returns : Nothing
+** ===================================================================
+*/
+void idle_task(os_task_param_t task_init_data);
 
 /* END os_tasks */
 

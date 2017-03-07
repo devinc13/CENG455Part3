@@ -77,6 +77,7 @@ Generated_Code/MasterTask.o: ../Generated_Code/MasterTask.c \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h \
  ../Generated_Code/MasterTask.h
 
 C:/Users/devinc/ceng455part3/Sources/os_tasks.h:
@@ -234,5 +235,7 @@ C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h:
 C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h:
 
 ../Generated_Code/MasterTask.h:

@@ -6,6 +6,7 @@
 C_SRCS += \
 ../Generated_Code/Cpu.c \
 ../Generated_Code/DDScheduler.c \
+../Generated_Code/IdleTask.c \
 ../Generated_Code/MainTask.c \
 ../Generated_Code/MasterTask.c \
 ../Generated_Code/TaskGenerator.c \
@@ -23,6 +24,7 @@ C_SRCS += \
 OBJS += \
 ./Generated_Code/Cpu.o \
 ./Generated_Code/DDScheduler.o \
+./Generated_Code/IdleTask.o \
 ./Generated_Code/MainTask.o \
 ./Generated_Code/MasterTask.o \
 ./Generated_Code/TaskGenerator.o \
@@ -40,6 +42,7 @@ OBJS += \
 C_DEPS += \
 ./Generated_Code/Cpu.d \
 ./Generated_Code/DDScheduler.d \
+./Generated_Code/IdleTask.d \
 ./Generated_Code/MainTask.d \
 ./Generated_Code/MasterTask.d \
 ./Generated_Code/TaskGenerator.d \

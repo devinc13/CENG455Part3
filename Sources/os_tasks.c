@@ -37,6 +37,7 @@
 #include "TaskGenerator.h"
 #include "constants.h"
 #include "api.h"
+#include "IdleTask.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -61,9 +62,13 @@ struct overdue_tasks overdueTasks;
 */
 void task_generator(os_task_param_t task_init_data)
 {
-  /* Write your local variable definition here */
-	// TODO: ADD IDLE TASK HERE
+	// Create Idle task
+	_task_id task_id = _task_create(0, IDLETASK_TASK, 0);
 
+	if (task_id == 0) {
+	  printf("\nCould not create idle task\n");
+	  _task_block();
+	}
 
 
 	// Create simple task
@@ -123,8 +128,7 @@ void dd_scheduler(os_task_param_t task_init_data)
   while (1) {
 #endif
 	  	SCHEDULER_MESSAGE_PTR msg_ptr = _msgq_receive(scheuler_qid, timeout);
-	  	printf("%d\n", _task_get_error());
-	  	printf("%d\n", MSGQ_MESSAGE_NOT_AVAILABLE);
+
 		if (msg_ptr == NULL) {
 			printf("\nTIMEOUT\n");
 			// TODO: Handle timeout
@@ -132,8 +136,9 @@ void dd_scheduler(os_task_param_t task_init_data)
 		}
 
 		printf("Message received:\n");
-		printf(" %d \n", msg_ptr->TYPE);
+		printf("%d \n", msg_ptr->TYPE);
 
+		// TODO: Add to task list, sort it, update priorities
    
     
     
@@ -184,6 +189,44 @@ void user_task(os_task_param_t runtime)
 {
   /* Write your local variable definition here */
   printf("Runtime: %d\n", runtime);
+  // TODO: Add busy loop
+
+
+#ifdef PEX_USE_RTOS
+  while (1) {
+#endif
+    /* Write your code here ... */
+    
+    
+    OSA_TimeDelay(10);                 /* Example code (for task release) */
+   
+    
+    
+    
+#ifdef PEX_USE_RTOS   
+  }
+#endif    
+}
+
+/*
+** ===================================================================
+**     Callback    : idle_task
+**     Description : Task function entry.
+**     Parameters  :
+**       task_init_data - OS task parameter
+**     Returns : Nothing
+** ===================================================================
+*/
+void idle_task(os_task_param_t task_init_data)
+{
+  /* Write your local variable definition here */
+
+	// TODO: Run busy loop that records its runtime
+	printf("ILDE TASK!");
+
+
+
+  
 #ifdef PEX_USE_RTOS
   while (1) {
 #endif

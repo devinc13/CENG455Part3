@@ -1,4 +1,4 @@
-Generated_Code/DDScheduler.o: ../Generated_Code/DDScheduler.c \
+Generated_Code/IdleTask.o: ../Generated_Code/IdleTask.c \
  C:/Users/devinc/ceng455part3/Sources/os_tasks.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/fsl_device_registers.h \
  C:/Users/devinc/ceng455part3/SDK/platform/devices/MK64F12/include/MK64F12.h \
@@ -78,7 +78,7 @@ Generated_Code/DDScheduler.o: ../Generated_Code/DDScheduler.c \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
  C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h \
- ../Generated_Code/DDScheduler.h
+ ../Generated_Code/IdleTask.h
 
 C:/Users/devinc/ceng455part3/Sources/os_tasks.h:
 
@@ -238,4 +238,4 @@ C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h:
 
-../Generated_Code/DDScheduler.h:
+../Generated_Code/IdleTask.h:

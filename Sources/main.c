@@ -45,6 +45,7 @@
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
 #include "UserTask.h"
+#include "IdleTask.h"
 #if CPU_INIT_CONFIG
   #include "Init_Config.h"
 #endif

@@ -38,8 +38,7 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 	 _task_block();
 	}
 
-
-	return 0;
+	return task_id;
 }
 
 int dd_delete(int task_id) {

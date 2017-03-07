@@ -77,6 +77,7 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c ../Generated_Code/Cpu.h \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h \
  C:/Users/devinc/ceng455part3/Sources/rtos_main_task.h \
  C:/Users/devinc/ceng455part3/Sources/os_tasks.h
 
@@ -239,6 +240,8 @@ C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h:
 C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
+
+C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h:
 
 C:/Users/devinc/ceng455part3/Sources/rtos_main_task.h:
 

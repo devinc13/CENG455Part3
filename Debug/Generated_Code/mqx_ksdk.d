@@ -82,10 +82,11 @@ Generated_Code/mqx_ksdk.o: ../Generated_Code/mqx_ksdk.c \
  C:/Users/devinc/ceng455part3/Generated_Code/DDScheduler.h \
  C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h \
  C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h \
+ C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h \
  C:/Users/devinc/ceng455part3/Sources/os_tasks.h \
  ../Generated_Code/MainTask.h ../Generated_Code/MasterTask.h \
  ../Generated_Code/DDScheduler.h ../Generated_Code/TaskGenerator.h \
- ../Generated_Code/UserTask.h
+ ../Generated_Code/UserTask.h ../Generated_Code/IdleTask.h
 
 ../Generated_Code/mqx_ksdk.h:
 
@@ -255,6 +256,8 @@ C:/Users/devinc/ceng455part3/Generated_Code/TaskGenerator.h:
 
 C:/Users/devinc/ceng455part3/Generated_Code/UserTask.h:
 
+C:/Users/devinc/ceng455part3/Generated_Code/IdleTask.h:
+
 C:/Users/devinc/ceng455part3/Sources/os_tasks.h:
 
 ../Generated_Code/MainTask.h:
@@ -266,3 +269,5 @@ C:/Users/devinc/ceng455part3/Sources/os_tasks.h:
 ../Generated_Code/TaskGenerator.h:
 
 ../Generated_Code/UserTask.h:
+
+../Generated_Code/IdleTask.h:

@@ -44,6 +44,7 @@
 #include "DDScheduler.h"
 #include "TaskGenerator.h"
 #include "UserTask.h"
+#include "IdleTask.h"
 
 #ifdef __cplusplus
 extern "C" {
