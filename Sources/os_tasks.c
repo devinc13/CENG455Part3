@@ -38,6 +38,7 @@
 #include "constants.h"
 #include "api.h"
 #include "IdleTask.h"
+#include <timer.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -159,6 +160,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 */
 void master_task(os_task_param_t task_init_data)
 {
+	printf("\x1B[H\x1B[J");
 	printf("Creating Scheduler and Task Generator\n");
 
 	_task_id task_id = _task_create(0, DDSCHEDULER_TASK, 0);
@@ -176,6 +178,10 @@ void master_task(os_task_param_t task_init_data)
 	}
 }
 
+void turn_off_flag(_timer_id t, void* dataptr, unsigned int seconds, unsigned int miliseconds){
+    (*(bool*)dataptr) = false;
+}
+
 /*
 ** ===================================================================
 **     Callback    : user_task
@@ -185,27 +191,17 @@ void master_task(os_task_param_t task_init_data)
 **     Returns : Nothing
 ** ===================================================================
 */
-void user_task(os_task_param_t runtime)
+void user_task(os_task_param_t task_init_data)
 {
-  /* Write your local variable definition here */
-  printf("Runtime: %d\n", runtime);
-  // TODO: Add busy loop
+  unsigned int runtime = task_init_data;
 
+  // Busy loop
+  bool flag = true;
+  _timer_start_oneshot_after(turn_off_flag, &flag, TIMER_ELAPSED_TIME_MODE, runtime);
+  while(flag);
+  dd_delete(_task_get_id());
+  _task_block();
 
-#ifdef PEX_USE_RTOS
-  while (1) {
-#endif
-    /* Write your code here ... */
-    
-    
-    OSA_TimeDelay(10);                 /* Example code (for task release) */
-   
-    
-    
-    
-#ifdef PEX_USE_RTOS   
-  }
-#endif    
 }
 
 /*
@@ -222,7 +218,7 @@ void idle_task(os_task_param_t task_init_data)
   /* Write your local variable definition here */
 
 	// TODO: Run busy loop that records its runtime
-	printf("ILDE TASK!");
+	printf("ILDE TASK!\n");
 
 
 
