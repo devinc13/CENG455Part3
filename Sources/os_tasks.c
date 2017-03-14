@@ -48,8 +48,8 @@ extern "C" {
 /* User includes (#include below this line is not maintained by Processor Expert) */
 _pool_id message_pool;
 _queue_id scheuler_qid;
-struct task_list taskList;
-struct overdue_tasks overdueTasks;
+struct task_list *taskList = NULL;
+struct overdue_tasks *overdueTasks = NULL;
 
 
 /*
@@ -98,6 +98,7 @@ void task_generator(os_task_param_t task_init_data)
 		return 1;
 	}
 
+
 	int n_completed_tasks = 0;
 	int n_failed_tasks = 0;
 	int n_running_tasks = 0;
@@ -107,6 +108,8 @@ void task_generator(os_task_param_t task_init_data)
 		n_running_tasks++;
 		temp_at_ptr = temp_at_ptr->next_cell;
 	}
+
+
 
 	struct task_list *temp_ot_ptr = overdue_tasks_head_ptr;
 	while(temp_at_ptr){
@@ -165,8 +168,64 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		printf("Message received:\n");
 		printf("%d \n", msg_ptr->TYPE);
+		switch(msg_ptr->TYPE) {
+			case 0:
+			{
+				if (taskList == NULL) {
+					TIME_STRUCT start_time;
+					_time_get(&start_time);
 
-		// TODO: Add to task list, sort it, update priorities
+					struct task_list newTask;
+					newTask.tid = msg_ptr->TASKID;
+					newTask.deadline = msg_ptr->DEADLINE;
+					newTask.creation_time = start_time.MILLISECONDS;
+					newTask.next_cell = NULL;
+					newTask.previous_cell = NULL;
+					taskList = &newTask;
+					printf("Actual address of new task = %d\n", taskList);
+
+					// TODO: Set priority of task
+
+				} else {
+					//TODO: Put into list sorted
+				}
+				break;
+			}
+			case 1:
+			{
+				printf("Delete");
+				break;
+			}
+			case 2:
+			{
+				/*allocate a message*/
+				TASK_LIST_MESSAGE_PTR new_msg_ptr = (TASK_LIST_MESSAGE_PTR)_msg_alloc(message_pool);
+
+				if (new_msg_ptr == NULL) {
+					printf("\nCould not allocate a message\n");
+					_task_block();
+				}
+
+				new_msg_ptr->HEADER.TARGET_QID = msg_ptr->HEADER.SOURCE_QID;
+				new_msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
+				// TODO: COPY LIST
+				new_msg_ptr->task_list_head_ptr = taskList;
+
+
+				int result = _msgq_send(new_msg_ptr);
+
+				if (result != TRUE) {
+				 printf("\nCreate could not send a message\n");
+				 _task_block();
+				}
+
+				break;
+			}
+			case 3:
+			{
+				break;
+			}
+		}
    
     
     
@@ -246,24 +305,7 @@ void idle_task(os_task_param_t task_init_data)
 
 	// TODO: Run busy loop that records its runtime
 	printf("ILDE TASK!\n");
-
-
-
-  
-#ifdef PEX_USE_RTOS
-  while (1) {
-#endif
-    /* Write your code here ... */
-    
-    
-    OSA_TimeDelay(10);                 /* Example code (for task release) */
-   
-    
-    
-    
-#ifdef PEX_USE_RTOS   
-  }
-#endif    
+	while(1);
 }
 
 /* END os_tasks */

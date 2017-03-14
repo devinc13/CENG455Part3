@@ -13,6 +13,12 @@
 #include <message.h>
 
 
+typedef struct task_list_message
+{
+   MESSAGE_HEADER_STRUCT HEADER;
+   struct task_list  * task_list_head_ptr;
+   struct overdue_tasks * overdue_tasks_head_ptr;
+} TASK_LIST_MESSAGE, * TASK_LIST_MESSAGE_PTR;
 
 typedef struct scheduler_message
 {
