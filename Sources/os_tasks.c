@@ -223,6 +223,27 @@ void dd_scheduler(os_task_param_t task_init_data)
 			}
 			case 3:
 			{
+				/*allocate a message*/
+				TASK_LIST_MESSAGE_PTR new_msg_ptr = (TASK_LIST_MESSAGE_PTR)_msg_alloc(message_pool);
+
+				if (new_msg_ptr == NULL) {
+					printf("\nCould not allocate a message\n");
+					_task_block();
+				}
+
+				new_msg_ptr->HEADER.TARGET_QID = msg_ptr->HEADER.SOURCE_QID;
+				new_msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
+				// TODO: COPY LIST
+				new_msg_ptr->overdue_tasks_head_ptr = overdueTasks;
+
+
+				int result = _msgq_send(new_msg_ptr);
+
+				if (result != TRUE) {
+				 printf("\nCreate could not send a message\n");
+				 _task_block();
+				}
+
 				break;
 			}
 		}

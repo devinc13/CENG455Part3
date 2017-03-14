@@ -71,7 +71,7 @@ int dd_return_active_list(struct task_list **list) {
 	_queue_id qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
 
 	if (scheuler_qid == 0) {
-	  printf("\nCould not open the scheduler message queue\n");
+	  printf("\nCould not open the return active message queue\n");
 	  _task_block();
 	}
 
@@ -97,13 +97,41 @@ int dd_return_active_list(struct task_list **list) {
 
 	TASK_LIST_MESSAGE_PTR new_msg_ptr = _msgq_receive(qid, 0);
 	(*list) = new_msg_ptr->task_list_head_ptr;
-	return;
+	_msgq_close(qid);
 }
 
 int dd_return_overdue_list(struct overdue_tasks **list) {
+	/* open a message queue */
+	_queue_id qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
 
+	if (scheuler_qid == 0) {
+	  printf("\nCould not open the return overdue message queue\n");
+	  _task_block();
+	}
 
-	return;
+	/*allocate a message*/
+	SCHEDULER_MESSAGE_PTR msg_ptr = (SCHEDULER_MESSAGE_PTR)_msg_alloc(message_pool);
+
+	if (msg_ptr == NULL) {
+		printf("\nCould not allocate a message\n");
+		_task_block();
+	}
+
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.SOURCE_QID = qid;
+	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
+	msg_ptr->TYPE = 3;
+
+	int result = _msgq_send(msg_ptr);
+
+	if (result != TRUE) {
+	 printf("\nCreate could not send a message\n");
+	 _task_block();
+	}
+
+	TASK_LIST_MESSAGE_PTR new_msg_ptr = _msgq_receive(qid, 0);
+	(*list) = new_msg_ptr->overdue_tasks_head_ptr;
+	_msgq_close(qid);
 }
 
 
