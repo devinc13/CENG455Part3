@@ -63,6 +63,9 @@ struct overdue_tasks overdueTasks;
 */
 void task_generator(os_task_param_t task_init_data)
 {
+	struct task_list * active_tasks_head_ptr = NULL;
+	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
+
 	// Create Idle task
 	_task_id task_id = _task_create(0, IDLETASK_TASK, 0);
 
@@ -71,26 +74,50 @@ void task_generator(os_task_param_t task_init_data)
 	  _task_block();
 	}
 
+	int n_total_tasks = 2;
 
-	// Create simple task
-	dd_tcreate(USERTASK_TASK, 50, 20);
+	// TODO: ADD PERIODIC TASKS/TESTS
+
+	// Create simple task 1
+	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
+
+	// Create simple task 2
+	_task_id t2 = dd_tcreate(USERTASK_TASK, 40, 30);
+
+	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
 
-  
-#ifdef PEX_USE_RTOS
-  while (1) {
-#endif
-    /* Write your code here ... */
-    
-    
-    OSA_TimeDelay(10);                 /* Example code (for task release) */
-   
-    
-    
-    
-#ifdef PEX_USE_RTOS   
-  }
-#endif    
+	// WAIT A BIT
+	_time_delay(3000);
+
+
+	// OBTAIN STATUS FROM SCHEDULER
+	printf("TASK GENERATOR: collecting statistics\n\r");
+	if(!dd_return_active_list(&active_tasks_head_ptr) || !dd_return_overdue_list(&overdue_tasks_head_ptr)){
+		printf("error: failed to obtain the tasks list!\n\r");
+		return 1;
+	}
+
+	int n_completed_tasks = 0;
+	int n_failed_tasks = 0;
+	int n_running_tasks = 0;
+
+	struct task_list *temp_at_ptr = active_tasks_head_ptr;
+	while(temp_at_ptr){
+		n_running_tasks++;
+		temp_at_ptr = temp_at_ptr->next_cell;
+	}
+
+	struct task_list *temp_ot_ptr = overdue_tasks_head_ptr;
+	while(temp_at_ptr){
+		n_failed_tasks++;
+		temp_ot_ptr = temp_ot_ptr->next_cell;
+	}
+
+	n_completed_tasks = n_total_tasks-(n_failed_tasks+n_running_tasks);
+	printf("TASK GENERATOR: %d failed, %d completed, %d still running.\n\r", n_failed_tasks, n_completed_tasks, n_running_tasks);
+
+	return 0;
 }
 
 /*

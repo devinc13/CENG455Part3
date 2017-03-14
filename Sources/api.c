@@ -24,7 +24,6 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 		_task_block();
 	}
 
-	//msg_ptr->HEADER.SOURCE_QID = client_qid;
 	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 0;
@@ -35,14 +34,36 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 
 	if (result != TRUE) {
 	 printf("\nCreate could not send a message\n");
-	 _task_block();
+	 // 0 is an error
+	 return 0;
 	}
 
 	return task_id;
 }
 
 int dd_delete(int task_id) {
-	return;
+	/*allocate a message*/
+	SCHEDULER_MESSAGE_PTR msg_ptr = (SCHEDULER_MESSAGE_PTR)_msg_alloc(message_pool);
+
+	if (msg_ptr == NULL) {
+		printf("\nCould not allocate a message\n");
+		_task_block();
+	}
+
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
+	msg_ptr->TYPE = 1;
+	msg_ptr->TASKID = task_id;
+
+	int result = _msgq_send(msg_ptr);
+
+	if (result != TRUE) {
+	 printf("\nCreate could not send a message\n");
+	 // 0 is an error
+	 return 0;
+	}
+
+	return task_id;
 }
 
 int dd_return_active_list(struct task_list **list) {

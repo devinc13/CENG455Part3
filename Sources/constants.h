@@ -17,29 +17,29 @@
 typedef struct scheduler_message
 {
    MESSAGE_HEADER_STRUCT HEADER;
-   int TYPE;
+   int TYPE; // 0 - create, 1 - delete, 2 - return active, 3 - return overdue
    int TASKID;
    int DEADLINE;
 } SCHEDULER_MESSAGE, * SCHEDULER_MESSAGE_PTR;
 
 
 struct task_list {
-	int tid;
-	int deadline;
-	int task_type;
-	int creation_time;
-	struct task_list *next_cell;
-	struct task_list *previous_cell;
+    unsigned int tid;
+    unsigned int deadline;
+    unsigned int task_type;
+    unsigned int creation_time;
+    struct task_list *next_cell;
+    struct task_list *previous_cell;
 };
 
 
 struct overdue_tasks {
-	int tid;
-	int deadline;
-	int task_type;
-	int creation_time;
-	struct overdue_tasks *next_cell;
-	struct overdue_tasks *previous_cell;
+    unsigned int tid;
+    unsigned int deadline;
+    unsigned int task_type;
+    unsigned int creation_time;
+    struct overdue_tasks *next_cell;
+    struct overdue_tasks *previous_cell;
 };
 
 extern _pool_id message_pool;
