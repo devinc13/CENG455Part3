@@ -87,7 +87,7 @@ all: ceng455part3.elf secondary-outputs
 ceng455part3.elf: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross ARM C++ Linker'
-	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "C:/Users/devinc/ceng455part3/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/devinc/ceng455part3/Project_Settings/Linker_Files" -Wl,-Map,"ceng455part3.map" -lgcc -lc -lsupc++ -lm -specs=nosys.specs -nostartfiles -Xlinker -z -Xlinker muldefs -Xlinker -static -o "ceng455part3.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-g++ -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -Wall  -g3 -T "C:/Users/devinc/CENG455Part3/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/devinc/CENG455Part3/Project_Settings/Linker_Files" -Wl,-Map,"ceng455part3.map" -lgcc -lc -lsupc++ -lm -specs=nosys.specs -nostartfiles -Xlinker -z -Xlinker muldefs -Xlinker -static -o "ceng455part3.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 

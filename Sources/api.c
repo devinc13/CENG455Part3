@@ -69,6 +69,7 @@ int dd_delete(int task_id) {
 int dd_return_active_list(struct task_list **list) {
 	/* open a message queue */
 	_queue_id qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
+	printf("TEST1\n");
 
 	if (scheuler_qid == 0) {
 	  printf("\nCould not open the return active message queue\n");
@@ -98,6 +99,7 @@ int dd_return_active_list(struct task_list **list) {
 	TASK_LIST_MESSAGE_PTR new_msg_ptr = _msgq_receive(qid, 0);
 	(*list) = new_msg_ptr->task_list_head_ptr;
 	_msgq_close(qid);
+	printf("TEST2\n");
 }
 
 int dd_return_overdue_list(struct overdue_tasks **list) {

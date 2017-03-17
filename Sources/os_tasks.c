@@ -82,7 +82,7 @@ void task_generator(os_task_param_t task_init_data)
 	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
 
 	// Create simple task 2
-	_task_id t2 = dd_tcreate(USERTASK_TASK, 40, 30);
+	_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
 
 	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
@@ -150,7 +150,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 	  10, 0, 0);
 
 	if (message_pool == MSGPOOL_NULL_POOL_ID) {
-	  printf("\nCount not create scheduler message pool\n");
+	  printf("\nCould not create scheduler message pool\n");
 	  _task_block();
 	}
 
@@ -171,10 +171,10 @@ void dd_scheduler(os_task_param_t task_init_data)
 		switch(msg_ptr->TYPE) {
 			case 0:
 			{
-				if (taskList == NULL) {
-					TIME_STRUCT start_time;
-					_time_get(&start_time);
+				TIME_STRUCT start_time;
+				_time_get(&start_time);
 
+				if (taskList == NULL) {
 					struct task_list newTask;
 					newTask.tid = msg_ptr->TASKID;
 					newTask.deadline = msg_ptr->DEADLINE;
@@ -182,12 +182,74 @@ void dd_scheduler(os_task_param_t task_init_data)
 					newTask.next_cell = NULL;
 					newTask.previous_cell = NULL;
 					taskList = &newTask;
-					printf("Actual address of new task = %d\n", taskList);
-
-					// TODO: Set priority of task
-
+					unsigned int priority;
+					_task_get_priority(newTask.tid, &priority);
+					_task_set_priority(newTask.tid, 15, &priority);
+					//printf("Done setting priority\n");
 				} else {
-					//TODO: Put into list sorted
+					// Put into list sorted
+					struct task_list * temp_task_list_ptr = taskList;
+					// If this is the highest priority, put at front and make this task active
+					//printf("TEST1\n");
+					if (msg_ptr->DEADLINE < taskList->deadline) {
+						//printf("TEST2\n");
+						// Create new higher priority task
+						struct task_list newTask;
+						newTask.tid = msg_ptr->TASKID;
+						newTask.deadline = msg_ptr->DEADLINE;
+						newTask.creation_time = start_time.MILLISECONDS;
+						newTask.next_cell = &taskList;
+						newTask.previous_cell = NULL;
+						// set previous of old highest priority
+						taskList->previous_cell = &newTask;
+						// point to new higher priority task
+						taskList = &newTask;
+
+						// Set old task to 25
+						unsigned int priority;
+						_task_get_priority(taskList->tid, &priority);
+						_task_set_priority(taskList->tid, 25, &priority);
+
+						// Make new task active
+						_task_get_priority(newTask.tid, &priority);
+						_task_set_priority(newTask.tid, 15, &priority);
+						//printf("TEST3\n");
+					} else {
+						//printf("TEST4\n");
+						// Find where it goes in the list
+						while (msg_ptr->DEADLINE > taskList->deadline) {
+							//printf("TEST5\n");
+							// Check if this is the end of the list
+							if (temp_task_list_ptr->next_cell == NULL) {
+								//printf("TEST6\n");
+								struct task_list newTask;
+								newTask.tid = msg_ptr->TASKID;
+								newTask.deadline = msg_ptr->DEADLINE;
+								newTask.creation_time = start_time.MILLISECONDS;
+								newTask.next_cell = NULL;
+								newTask.previous_cell = &temp_task_list_ptr;
+								temp_task_list_ptr->next_cell = &newTask;
+								//printf("Item added to back of list\n");
+								return;
+							}
+
+							temp_task_list_ptr = taskList->next_cell;
+						}
+
+						//printf("TEST6\n");
+						// Put it in between cells
+						struct task_list newTask;
+						newTask.tid = msg_ptr->TASKID;
+						newTask.deadline = msg_ptr->DEADLINE;
+						newTask.creation_time = start_time.MILLISECONDS;
+						newTask.next_cell = &(temp_task_list_ptr);
+						newTask.previous_cell = &(temp_task_list_ptr->previous_cell);
+
+						temp_task_list_ptr->previous_cell->next_cell = &newTask;
+						temp_task_list_ptr->previous_cell = &newTask;
+						//printf("TEST7\n");
+					}
+
 				}
 				break;
 			}
@@ -247,6 +309,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 				break;
 			}
 		}
+
    
     
     
@@ -325,7 +388,7 @@ void idle_task(os_task_param_t task_init_data)
   /* Write your local variable definition here */
 
 	// TODO: Run busy loop that records its runtime
-	printf("ILDE TASK!\n");
+	printf("IDLE TASK!\n");
 	while(1);
 }
 
