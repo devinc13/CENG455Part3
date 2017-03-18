@@ -184,6 +184,9 @@ void dd_scheduler(os_task_param_t task_init_data)
 					taskList = newTask_ptr;
 					_mqx_uint priority;
 					_task_set_priority(newTask_ptr->tid, 15, &priority);
+
+					// TODO: Set timeout
+
 				} else {
 					// Put into list sorted
 					struct task_list * temp_task_list_ptr = taskList;
@@ -207,6 +210,10 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 						// Make new task active
 						_task_set_priority(newTask_ptr->tid, 15, &priority);
+
+						// TODO: Set timeout
+
+
 					} else {
 						// Find where it goes in the list
 						while (temp_task_list_ptr->next_cell != NULL && msg_ptr->DEADLINE > temp_task_list_ptr->deadline) {
@@ -243,6 +250,26 @@ void dd_scheduler(os_task_param_t task_init_data)
 			case 1:
 			{
 				printf("Delete\n");
+				struct task_list * complete_task_ptr = taskList;
+				struct task_list * next_task_ptr = taskList->next_cell;
+
+				// Set complete task to 25 so it doesn't run anymore
+				_mqx_uint priority;
+				_task_set_priority(complete_task_ptr->tid, 25, &priority);
+
+				if (next_task_ptr == NULL) {
+					taskList = NULL;
+				} else {
+					next_task_ptr->previous_cell = NULL;
+
+					taskList = next_task_ptr;
+
+					// Make next task active
+					_task_set_priority(next_task_ptr->tid, 15, &priority);
+				}
+
+				_mem_free(complete_task_ptr);
+
 				break;
 			}
 			case 2:
