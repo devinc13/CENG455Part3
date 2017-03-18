@@ -28,7 +28,7 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 0;
 	msg_ptr->DEADLINE = deadline;
-	msg_ptr->TASKID = _task_get_id();
+	msg_ptr->TASKID = task_id;
 
 	int result = _msgq_send(msg_ptr);
 

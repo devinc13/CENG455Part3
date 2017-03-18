@@ -82,7 +82,7 @@ void task_generator(os_task_param_t task_init_data)
 	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
 
 	// Create simple task 2
-	//_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
+	_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
 
 	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
@@ -184,10 +184,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 					taskList = newTask_ptr;
 					_mqx_uint priority;
 					_task_set_priority(newTask_ptr->tid, 15, &priority);
-					printf("previous = %d\n", priority);
-					_task_get_priority(newTask_ptr->tid, &priority);
-					printf("new priotiry = %d\n", priority);
-					printf("Done setting priority\n");
 				} else {
 					// Put into list sorted
 					struct task_list * temp_task_list_ptr = taskList;
