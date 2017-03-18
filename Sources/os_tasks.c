@@ -75,6 +75,7 @@ void report_statistics(_timer_id t, void* dataptr, unsigned int seconds, unsigne
 	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
 
 	printf("\x1B[H\x1B[J");
+
 	if(!dd_return_active_list(&active_tasks_head_ptr) || !dd_return_overdue_list(&overdue_tasks_head_ptr)){
 		printf("error: failed to obtain the tasks list!\n\r");
 		return;
@@ -150,8 +151,14 @@ void task_generator(os_task_param_t task_init_data)
 	// Aperiodic tasks
 	// First parameter is deadline, second is runtime
 
-//	dd_tcreate(USERTASK_TASK, 400, 500);
-//	total_tasks++;
+	dd_tcreate(USERTASK_TASK, 500, 200);
+	total_tasks++;
+
+	dd_tcreate(USERTASK_TASK, 560, 200);
+	total_tasks++;
+
+	dd_tcreate(USERTASK_TASK, 400, 200);
+	total_tasks++;
 
 //	dd_tcreate(USERTASK_TASK, 690, 300);
 //	total_tasks++;
@@ -161,11 +168,11 @@ void task_generator(os_task_param_t task_init_data)
 
 	// Periodic tasks - comma separated string - first is deadline, second is runtime
 
-	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
-	task_data->deadline = 5000;
-	task_data->runtime = 2500;
-	int period_ms = 5000;
-	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
+//	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
+//	task_data->deadline = 5000;
+//	task_data->runtime = 2500;
+//	int period_ms = 5000;
+//	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
 
 
 
@@ -180,7 +187,6 @@ void remove_already_overdue_tasks() {
 
 	TIME_STRUCT curr_time;
 	_time_get(&curr_time);
-	curr_time.MILLISECONDS;
 
 	int timeout = (next_task_to_run_ptr->creation_time + next_task_to_run_ptr->deadline) - curr_time.MILLISECONDS;
 
@@ -210,7 +216,6 @@ void remove_already_overdue_tasks() {
 
 		TIME_STRUCT curr_time;
 		_time_get(&curr_time);
-		curr_time.MILLISECONDS;
 
 		next_task_to_run_ptr = next_task_to_run_ptr->next_cell;
 		if (next_task_to_run_ptr == NULL) {
@@ -238,7 +243,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 	_mqx_uint priority;
 	_task_set_priority(_task_get_id(), 9, &priority);
 	_task_get_priority(_task_get_id(), &priority);
-	printf("Scheduler priority = %d\n", priority);
 
 
   /* Write your local variable definition here */
@@ -289,7 +293,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				TIME_STRUCT curr_time;
 				_time_get(&curr_time);
-				curr_time.MILLISECONDS;
 
 				timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
 			}
@@ -316,16 +319,16 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		bool timeoutCreated = false;
 
+		//printf("MSG RECIEVED OF TYPE: %d\n", msg_ptr->TYPE);
 		switch(msg_ptr->TYPE) {
 			case 0:
 			{
-				TIME_STRUCT start_time;
-				_time_get(&start_time);
-
 				if (taskList == NULL) {
 					struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 					newTask_ptr->tid = msg_ptr->TASKID;
 					newTask_ptr->deadline = msg_ptr->DEADLINE;
+					TIME_STRUCT start_time;
+					_time_get(&start_time);
 					newTask_ptr->creation_time = start_time.MILLISECONDS;
 					newTask_ptr->next_cell = NULL;
 					newTask_ptr->previous_cell = NULL;
@@ -345,6 +348,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 						struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 						newTask_ptr->tid = msg_ptr->TASKID;
 						newTask_ptr->deadline = msg_ptr->DEADLINE;
+						TIME_STRUCT start_time;
+						_time_get(&start_time);
 						newTask_ptr->creation_time = start_time.MILLISECONDS;
 						newTask_ptr->next_cell = taskList;
 						newTask_ptr->previous_cell = NULL;
@@ -374,6 +379,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
+							TIME_STRUCT start_time;
+							_time_get(&start_time);
 							newTask_ptr->creation_time = start_time.MILLISECONDS;
 							newTask_ptr->next_cell = NULL;
 							newTask_ptr->previous_cell = temp_task_list_ptr;
@@ -383,6 +390,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
+							TIME_STRUCT start_time;
+							_time_get(&start_time);
 							newTask_ptr->creation_time = start_time.MILLISECONDS;
 							newTask_ptr->next_cell = temp_task_list_ptr;
 							newTask_ptr->previous_cell = temp_task_list_ptr->previous_cell;
@@ -419,7 +428,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 					TIME_STRUCT curr_time;
 					_time_get(&curr_time);
-					curr_time.MILLISECONDS;
 
 					timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
 				}
@@ -489,7 +497,10 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 			TIME_STRUCT curr_time;
 			_time_get(&curr_time);
-			curr_time.MILLISECONDS;
+
+//			printf("%d\n", taskList->creation_time);
+//			printf("%d\n", taskList->deadline);
+//			printf("%d\n", curr_time.MILLISECONDS);
 
 			timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
 			if (timeout < 0) {
