@@ -168,11 +168,18 @@ void task_generator(os_task_param_t task_init_data)
 
 	// Periodic tasks - comma separated string - first is deadline, second is runtime
 
-//	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
-//	task_data->deadline = 5000;
-//	task_data->runtime = 2500;
-//	int period_ms = 5000;
-//	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
+	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
+	task_data->deadline = 2000;
+	task_data->runtime = 700;
+	int period_ms = 2000;
+	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
+
+
+	periodic_data * task_data2 = _mem_alloc(sizeof(unsigned int) * 2);
+	task_data2->deadline = 5000;
+	task_data2->runtime = 900;
+	int period2_ms = 5000;
+	_timer_start_periodic_every(create_periodic_task, task_data2, TIMER_KERNEL_TIME_MODE, period2_ms);
 
 
 

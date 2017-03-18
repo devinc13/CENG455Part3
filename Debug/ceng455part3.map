@@ -747,8 +747,6 @@ Discarded input sections
  .text          0x00000000        0x0 ./Sources/os_tasks.o
  .data          0x00000000        0x0 ./Sources/os_tasks.o
  .bss           0x00000000        0x0 ./Sources/os_tasks.o
- .text.create_periodic_task
-                0x00000000       0x3c ./Sources/os_tasks.o
  .debug_macro   0x00000000      0x862 ./Sources/os_tasks.o
  .debug_macro   0x00000000       0x11 ./Sources/os_tasks.o
  .debug_macro   0x00000000       0x16 ./Sources/os_tasks.o
@@ -20931,7 +20929,7 @@ END GROUP
  .FlashConfig   0x00000400       0x10 ./SDK/platform/devices/MK64F12/startup/gcc/startup_MK64F12.o
                 0x00000410                . = ALIGN (0x4)
 
-.text           0x00000410    0x10128
+.text           0x00000410    0x101c0
                 0x00000410                . = ALIGN (0x4)
  *(.text)
  .text          0x00000410       0x54 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/boot.o
@@ -21087,1170 +21085,1174 @@ END GROUP
                 0x00000fec                dd_return_overdue_list
  .text.main     0x000010ac       0x14 ./Sources/main.o
                 0x000010ac                main
+ .text.create_periodic_task
+                0x000010c0       0x3c ./Sources/os_tasks.o
+                0x000010c0                create_periodic_task
  .text.report_statistics
-                0x000010c0      0x134 ./Sources/os_tasks.o
-                0x000010c0                report_statistics
+                0x000010fc      0x134 ./Sources/os_tasks.o
+                0x000010fc                report_statistics
  .text.task_generator
-                0x000011f4       0xfc ./Sources/os_tasks.o
-                0x000011f4                task_generator
+                0x00001230      0x154 ./Sources/os_tasks.o
+                0x00001230                task_generator
  .text.remove_already_overdue_tasks
-                0x000012f0       0xcc ./Sources/os_tasks.o
-                0x000012f0                remove_already_overdue_tasks
+                0x00001384       0xcc ./Sources/os_tasks.o
+                0x00001384                remove_already_overdue_tasks
  .text.dd_scheduler
-                0x000013bc      0x534 ./Sources/os_tasks.o
-                0x000013bc                dd_scheduler
+                0x00001450      0x534 ./Sources/os_tasks.o
+                0x00001450                dd_scheduler
  .text.master_task
-                0x000018f0       0x64 ./Sources/os_tasks.o
-                0x000018f0                master_task
+                0x00001984       0x64 ./Sources/os_tasks.o
+                0x00001984                master_task
  .text.turn_off_flag
-                0x00001954       0x20 ./Sources/os_tasks.o
-                0x00001954                turn_off_flag
+                0x000019e8       0x20 ./Sources/os_tasks.o
+                0x000019e8                turn_off_flag
  .text.user_task
-                0x00001974       0x3c ./Sources/os_tasks.o
-                0x00001974                user_task
+                0x00001a08       0x3c ./Sources/os_tasks.o
+                0x00001a08                user_task
  .text.idle_task
-                0x000019b0       0x30 ./Sources/os_tasks.o
-                0x000019b0                idle_task
+                0x00001a44       0x30 ./Sources/os_tasks.o
+                0x00001a44                idle_task
  .text.main_task
-                0x000019e0       0x14 ./Sources/rtos_main_task.o
-                0x000019e0                main_task
+                0x00001a74       0x14 ./Sources/rtos_main_task.o
+                0x00001a74                main_task
  .text._buf_write
-                0x000019f4       0x28 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
-                0x000019f4                _buf_write
+                0x00001a88       0x28 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
+                0x00001a88                _buf_write
  .text._buf_flush
-                0x00001a1c       0x20 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
-                0x00001a1c                _buf_flush
- .text.fclose   0x00001a3c       0x9c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
-                0x00001a3c                fclose
- .text.fflush   0x00001ad8       0x68 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
-                0x00001ad8                fflush
- .text.printf   0x00001b40       0x40 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
-                0x00001b40                printf
- .text._mputc   0x00001b80       0x5c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
- .text._putstr  0x00001bdc       0x7c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+                0x00001ab0       0x20 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
+                0x00001ab0                _buf_flush
+ .text.fclose   0x00001ad0       0x9c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
+                0x00001ad0                fclose
+ .text.fflush   0x00001b6c       0x68 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
+                0x00001b6c                fflush
+ .text.printf   0x00001bd4       0x40 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
+                0x00001bd4                printf
+ .text._mputc   0x00001c14       0x5c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .text._putstr  0x00001c70       0x7c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ *fill*         0x00001cec        0x4 
  .text._io_doprint
-                0x00001c58      0xf28 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
-                0x00001c58                _io_doprint
+                0x00001cf0      0xf28 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+                0x00001cf0                _io_doprint
  .text._doprint_prt
-                0x00002b80      0x150 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+                0x00002c18      0x150 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
  .text._doprint_prt64
-                0x00002cd0      0x190 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
- .text.fputc    0x00002e60       0x50 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
-                0x00002e60                fputc
- .text.putchar  0x00002eb0       0x24 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
-                0x00002eb0                putchar
- .text.fputs    0x00002ed4       0x64 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
-                0x00002ed4                fputs
- .text.puts     0x00002f38       0x70 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
-                0x00002f38                puts
- .text._init    0x00002fa8        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002fa8                _init
- .text._fini    0x00002fb4        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002fb4                _fini
- .text.malloc   0x00002fc0       0x18 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002fc0                malloc
- .text.free     0x00002fd8       0x14 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002fd8                free
- .text._start   0x00002fec       0x10 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002fec                _start
+                0x00002d68      0x190 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .text.fputc    0x00002ef8       0x50 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+                0x00002ef8                fputc
+ .text.putchar  0x00002f48       0x24 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+                0x00002f48                putchar
+ .text.fputs    0x00002f6c       0x64 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+                0x00002f6c                fputs
+ .text.puts     0x00002fd0       0x70 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+                0x00002fd0                puts
+ .text._init    0x00003040        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x00003040                _init
+ .text._fini    0x0000304c        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x0000304c                _fini
+ .text.malloc   0x00003058       0x18 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x00003058                malloc
+ .text.free     0x00003070       0x14 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x00003070                free
+ .text._start   0x00003084       0x10 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x00003084                _start
  .text.toolchain_startup
-                0x00002ffc       0x20 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00002ffc                toolchain_startup
- .text._exit    0x0000301c        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x0000301c                _exit
- .text._sbrk    0x00003028       0x1c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
-                0x00003028                _sbrk
+                0x00003094       0x20 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x00003094                toolchain_startup
+ .text._exit    0x000030b4        0xc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x000030b4                _exit
+ .text._sbrk    0x000030c0       0x1c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+                0x000030c0                _sbrk
  .text._int_get_vector_table
-                0x00003044       0x18 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
-                0x00003044                _int_get_vector_table
+                0x000030dc       0x18 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
+                0x000030dc                _int_get_vector_table
  .text._psp_int_init
-                0x0000305c       0x20 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
-                0x0000305c                _psp_int_init
+                0x000030f4       0x20 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
+                0x000030f4                _psp_int_init
  .text._psp_msecs_to_ticks_quick
-                0x0000307c       0xc8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
-                0x0000307c                _psp_msecs_to_ticks_quick
+                0x00003114       0xc8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
+                0x00003114                _psp_msecs_to_ticks_quick
  .text._psp_add_ticks
-                0x00003144       0x68 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
-                0x00003144                _psp_add_ticks
+                0x000031dc       0x68 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
+                0x000031dc                _psp_add_ticks
  .text._psp_normalize_ticks
-                0x000031ac       0x58 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
-                0x000031ac                _psp_normalize_ticks
+                0x00003244       0x58 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
+                0x00003244                _psp_normalize_ticks
  .text._psp_ticks_to_time
-                0x00003204      0x10c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
-                0x00003204                _psp_ticks_to_time
+                0x0000329c      0x10c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
+                0x0000329c                _psp_ticks_to_time
  .text._psp_set_kernel_disable_level
-                0x00003310       0xa8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
-                0x00003310                _psp_set_kernel_disable_level
+                0x000033a8       0xa8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
+                0x000033a8                _psp_set_kernel_disable_level
  .text._psp_init_readyqs
-                0x000033b8       0xbc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
-                0x000033b8                _psp_init_readyqs
+                0x00003450       0xbc ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
+                0x00003450                _psp_init_readyqs
  .text._psp_build_stack_frame
-                0x00003474       0x94 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
-                0x00003474                _psp_build_stack_frame
+                0x0000350c       0x94 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
+                0x0000350c                _psp_build_stack_frame
  .text._psp_destroy_stack_frame
-                0x00003508       0x14 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
-                0x00003508                _psp_destroy_stack_frame
+                0x000035a0       0x14 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
+                0x000035a0                _psp_destroy_stack_frame
  .text.lock_fd_table
-                0x0000351c       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000035b4       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.unlock_fd_table
-                0x00003570       0x50 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003608       0x50 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.lock_dev_list
-                0x000035c0       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003658       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.unlock_dev_list
-                0x000035f0       0x2c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003688       0x2c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.lock_dev
-                0x0000361c       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000036b4       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.unlock_dev
-                0x0000364c       0x2c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .text.lock_fp  0x00003678       0x50 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000036e4       0x2c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .text.lock_fp  0x00003710       0x50 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.unlock_fp
-                0x000036c8       0x4c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003760       0x4c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.fd_get_fp
-                0x00003714       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .text.fd_new   0x00003754       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .text.fd_free  0x000037a8       0x28 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000037ac       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .text.fd_new   0x000037ec       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .text.fd_free  0x00003840       0x28 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.dev_check_name
-                0x000037d0       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003868       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.dev_list_find
-                0x00003824       0xb4 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000038bc       0xb4 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.dev_find
-                0x000038d8       0x28 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .text.dev_add  0x00003900       0xac ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .text.dev_rm   0x000039ac       0x6c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003970       0x28 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .text.dev_add  0x00003998       0xac ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .text.dev_rm   0x00003a44       0x6c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.dev_add_fp
-                0x00003a18       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003ab0       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text.dev_rm_fp
-                0x00003a58       0x3c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003af0       0x3c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text._nio_init
-                0x00003a94      0x10c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00003a94                _nio_init
+                0x00003b2c      0x10c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003b2c                _nio_init
  .text._nio_dev_install
-                0x00003ba0      0x14c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00003ba0                _nio_dev_install
+                0x00003c38      0x14c ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003c38                _nio_dev_install
  .text._nio_dev_uninstall
-                0x00003cec       0xa4 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00003cec                _nio_dev_uninstall
+                0x00003d84       0xa4 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003d84                _nio_dev_uninstall
  .text._nio_open_intern
-                0x00003d90      0x174 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003e28      0x174 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .text._nio_open
-                0x00003f04       0x80 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00003f04                _nio_open
+                0x00003f9c       0x80 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00003f9c                _nio_open
  .text._nio_close
-                0x00003f84       0xe8 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00003f84                _nio_close
+                0x0000401c       0xe8 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000401c                _nio_close
  .text._nio_read
-                0x0000406c       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x0000406c                _nio_read
+                0x00004104       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x00004104                _nio_read
  .text._nio_write
-                0x00004138       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00004138                _nio_write
+                0x000041d0       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x000041d0                _nio_write
  .text._nio_vioctl
-                0x00004204       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
-                0x00004204                _nio_vioctl
- .text.open     0x000042d0       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
-                0x000042d0                open
- .text.close    0x00004310       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
-                0x00004310                close
- .text.write    0x00004340       0x38 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
-                0x00004340                write
+                0x0000429c       0xcc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000429c                _nio_vioctl
+ .text.open     0x00004368       0x40 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+                0x00004368                open
+ .text.close    0x000043a8       0x30 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+                0x000043a8                close
+ .text.write    0x000043d8       0x38 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+                0x000043d8                write
  .text.nio_tty_open
-                0x00004378       0xac ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x00004410       0xac ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_read
-                0x00004424      0x158 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x000044bc      0x158 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_write
-                0x0000457c      0x10c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x00004614      0x10c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_ioctl
-                0x00004688       0xbc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x00004720       0xbc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_close
-                0x00004744       0x80 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x000047dc       0x80 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_init
-                0x000047c4       0xb4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000485c       0xb4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.nio_tty_deinit
-                0x00004878       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x00004910       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .text.NVIC_SetPriority
-                0x00004894       0x54 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0000492c       0x54 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.get_uart_config
-                0x000048e8       0x98 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00004980       0x98 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_open
-                0x00004980       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00004a18       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_read
-                0x0000499c      0x2dc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00004a34      0x2dc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_write
-                0x00004c78      0x304 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00004d10      0x304 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_ioctl
-                0x00004f7c      0x2bc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00005014      0x2bc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_flushBuff
-                0x00005238       0xf0 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x000052d0       0xf0 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_close
-                0x00005328       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x000053c0       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_init
-                0x00005344      0x2f4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x000053dc      0x2f4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_deinit
-                0x00005638      0x17c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x000056d0      0x17c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_rxcallback
-                0x000057b4       0xfc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0000584c       0xfc ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_uart_rxcallback
-                0x000058b0       0x28 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
-                0x000058b0                nio_serial_uart_rxcallback
+                0x00005948       0x28 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00005948                nio_serial_uart_rxcallback
  .text.nio_serial_txcallback
-                0x000058d8       0xe4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00005970       0xe4 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .text.nio_serial_uart_txcallback
-                0x000059bc       0x34 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
-                0x000059bc                nio_serial_uart_txcallback
+                0x00005a54       0x34 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00005a54                nio_serial_uart_txcallback
  .text.nio_dummy_open
-                0x000059f0       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005a88       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_read
-                0x00005a14       0x64 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005aac       0x64 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_write
-                0x00005a78       0x64 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005b10       0x64 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_lseek
-                0x00005adc       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005b74       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_ioctl
-                0x00005b00       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005b98       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_close
-                0x00005b1c       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005bb4       0x1c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_init
-                0x00005b38       0x30 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005bd0       0x30 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text.nio_dummy_deinit
-                0x00005b68       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x00005c00       0x24 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
  .text._mqx_idle_task
-                0x00005b8c       0x60 ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
-                0x00005b8c                _mqx_idle_task
+                0x00005c24       0x60 ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
+                0x00005c24                _mqx_idle_task
  .text._bsp_post_init
-                0x00005bec       0x10 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
-                0x00005bec                _bsp_post_init
+                0x00005c84       0x10 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+                0x00005c84                _bsp_post_init
  .text._mqx_init_task
-                0x00005bfc       0xbc ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
-                0x00005bfc                _mqx_init_task
+                0x00005c94       0xbc ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+                0x00005c94                _mqx_init_task
  .text._int_default_isr
-                0x00005cb8       0x5c ./SDK/rtos/mqx/mqx/source/kernel/int.o
-                0x00005cb8                _int_default_isr
+                0x00005d50       0x5c ./SDK/rtos/mqx/mqx/source/kernel/int.o
+                0x00005d50                _int_default_isr
  .text._int_disable
-                0x00005d14       0x3c ./SDK/rtos/mqx/mqx/source/kernel/int.o
-                0x00005d14                _int_disable
+                0x00005dac       0x3c ./SDK/rtos/mqx/mqx/source/kernel/int.o
+                0x00005dac                _int_disable
  .text._int_enable
-                0x00005d50       0x58 ./SDK/rtos/mqx/mqx/source/kernel/int.o
-                0x00005d50                _int_enable
+                0x00005de8       0x58 ./SDK/rtos/mqx/mqx/source/kernel/int.o
+                0x00005de8                _int_enable
  .text._int_install_isr
-                0x00005da8      0x108 ./SDK/rtos/mqx/mqx/source/kernel/int.o
-                0x00005da8                _int_install_isr
+                0x00005e40      0x108 ./SDK/rtos/mqx/mqx/source/kernel/int.o
+                0x00005e40                _int_install_isr
  .text._int_init
-                0x00005eb0       0xa8 ./SDK/rtos/mqx/mqx/source/kernel/int.o
-                0x00005eb0                _int_init
+                0x00005f48       0xa8 ./SDK/rtos/mqx/mqx/source/kernel/int.o
+                0x00005f48                _int_init
  .text._lwmem_alloc_internal
-                0x00005f58      0x194 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00005f58                _lwmem_alloc_internal
+                0x00005ff0      0x194 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00005ff0                _lwmem_alloc_internal
  .text._lwmem_alloc_at_internal
-                0x000060ec      0x1b0 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000060ec                _lwmem_alloc_at_internal
+                0x00006184      0x1b0 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006184                _lwmem_alloc_at_internal
  .text._lwmem_alloc
-                0x0000629c       0x34 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x0000629c                _lwmem_alloc
+                0x00006334       0x34 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006334                _lwmem_alloc
  .text._lwmem_alloc_zero
-                0x000062d0       0x34 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000062d0                _lwmem_alloc_zero
+                0x00006368       0x34 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006368                _lwmem_alloc_zero
  .text._lwmem_create_pool
-                0x00006304       0xe4 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00006304                _lwmem_create_pool
+                0x0000639c       0xe4 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x0000639c                _lwmem_create_pool
  .text._lwmem_free
-                0x000063e8      0x1c8 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000063e8                _lwmem_free
+                0x00006480      0x1c8 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006480                _lwmem_free
  .text._lwmem_alloc_system
-                0x000065b0       0x38 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000065b0                _lwmem_alloc_system
+                0x00006648       0x38 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006648                _lwmem_alloc_system
  .text._lwmem_init_internal
-                0x000065e8       0x4c ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000065e8                _lwmem_init_internal
+                0x00006680       0x4c ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x00006680                _lwmem_init_internal
  .text._lwmem_get_next_block_internal
-                0x00006634       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00006634                _lwmem_get_next_block_internal
+                0x000066cc       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x000066cc                _lwmem_get_next_block_internal
  .text._lwmem_set_type
-                0x000066f4       0x30 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x000066f4                _lwmem_set_type
+                0x0000678c       0x30 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x0000678c                _lwmem_set_type
  .text._lwmem_transfer_internal
-                0x00006724       0x24 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00006724                _lwmem_transfer_internal
+                0x000067bc       0x24 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x000067bc                _lwmem_transfer_internal
  .text._lwmem_transfer_td_internal
-                0x00006748       0x2c ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00006748                _lwmem_transfer_td_internal
+                0x000067e0       0x2c ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x000067e0                _lwmem_transfer_td_internal
  .text._lwmem_alloc_system_zero
-                0x00006774       0x38 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
-                0x00006774                _lwmem_alloc_system_zero
+                0x0000680c       0x38 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+                0x0000680c                _lwmem_alloc_system_zero
  .text._lwsem_create_internal
-                0x000067ac       0x90 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x000067ac                _lwsem_create_internal
+                0x00006844       0x90 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006844                _lwsem_create_internal
  .text._lwsem_create
-                0x0000683c       0x20 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x0000683c                _lwsem_create
+                0x000068d4       0x20 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x000068d4                _lwsem_create
  .text._lwsem_destroy_internal
-                0x0000685c      0x104 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x0000685c                _lwsem_destroy_internal
+                0x000068f4      0x104 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x000068f4                _lwsem_destroy_internal
  .text._lwsem_destroy
-                0x00006960       0x1c ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x00006960                _lwsem_destroy
+                0x000069f8       0x1c ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x000069f8                _lwsem_destroy
  .text._lwsem_poll
-                0x0000697c       0x48 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x0000697c                _lwsem_poll
+                0x00006a14       0x48 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006a14                _lwsem_poll
  .text._lwsem_post
-                0x000069c4       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x000069c4                _lwsem_post
+                0x00006a5c       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006a5c                _lwsem_post
  .text._lwsem_wait
-                0x00006a84       0xb0 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x00006a84                _lwsem_wait
+                0x00006b1c       0xb0 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006b1c                _lwsem_wait
  .text._lwsem_wait_timed_internal
-                0x00006b34       0x64 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x00006b34                _lwsem_wait_timed_internal
+                0x00006bcc       0x64 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006bcc                _lwsem_wait_timed_internal
  .text._lwsem_wait_ticks
-                0x00006b98       0xec ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
-                0x00006b98                _lwsem_wait_ticks
+                0x00006c30       0xec ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+                0x00006c30                _lwsem_wait_ticks
  .text._mqx_init_interrupt_stack
-                0x00006c84       0x50 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00006c84                _mqx_init_interrupt_stack
- .text._mqx     0x00006cd4      0x158 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00006cd4                _mqx
+                0x00006d1c       0x50 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x00006d1c                _mqx_init_interrupt_stack
+ .text._mqx     0x00006d6c      0x158 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x00006d6c                _mqx
  .text._mqx_init_kernel_data_internal
-                0x00006e2c      0x17c ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00006e2c                _mqx_init_kernel_data_internal
+                0x00006ec4      0x17c ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x00006ec4                _mqx_init_kernel_data_internal
  .text._mqx_exit
-                0x00006fa8       0x1c ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00006fa8                _mqx_exit
+                0x00007040       0x1c ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x00007040                _mqx_exit
  .text._msg_alloc
-                0x00006fc4       0xec ./SDK/rtos/mqx/mqx/source/kernel/msg.o
-                0x00006fc4                _msg_alloc
+                0x0000705c       0xec ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+                0x0000705c                _msg_alloc
  .text._msg_create_component
-                0x000070b0      0x18c ./SDK/rtos/mqx/mqx/source/kernel/msg.o
-                0x000070b0                _msg_create_component
+                0x00007148      0x18c ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+                0x00007148                _msg_create_component
  .text._msg_free
-                0x0000723c       0x64 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
-                0x0000723c                _msg_free
+                0x000072d4       0x64 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+                0x000072d4                _msg_free
  .text._msg_cleanup
-                0x000072a0      0x148 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
-                0x000072a0                _msg_cleanup
+                0x00007338      0x148 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+                0x00007338                _msg_cleanup
  .text._msgpool_create
-                0x000073e8       0x2c ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
-                0x000073e8                _msgpool_create
+                0x00007480       0x2c ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+                0x00007480                _msgpool_create
  .text._msgpool_create_internal
-                0x00007414      0x188 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
-                0x00007414                _msgpool_create_internal
+                0x000074ac      0x188 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+                0x000074ac                _msgpool_create_internal
  .text._msgpool_add_internal
-                0x0000759c      0x104 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
-                0x0000759c                _msgpool_add_internal
+                0x00007634      0x104 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+                0x00007634                _msgpool_add_internal
  .text._msgq_close
-                0x000076a0      0x12c ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x000076a0                _msgq_close
+                0x00007738      0x12c ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007738                _msgq_close
  .text._msgq_get_id
-                0x000077cc       0x50 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x000077cc                _msgq_get_id
+                0x00007864       0x50 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007864                _msgq_get_id
  .text._msgq_open
-                0x0000781c       0x30 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x0000781c                _msgq_open
+                0x000078b4       0x30 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x000078b4                _msgq_open
  .text._msgq_open_internal
-                0x0000784c      0x15c ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x0000784c                _msgq_open_internal
+                0x000078e4      0x15c ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x000078e4                _msgq_open_internal
  .text._msgq_receive
-                0x000079a8       0x74 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x000079a8                _msgq_receive
+                0x00007a40       0x74 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007a40                _msgq_receive
  .text._msgq_receive_internal
-                0x00007a1c      0x304 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x00007a1c                _msgq_receive_internal
+                0x00007ab4      0x304 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007ab4                _msgq_receive_internal
  .text._msgq_send
-                0x00007d20       0x28 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x00007d20                _msgq_send
+                0x00007db8       0x28 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007db8                _msgq_send
  .text._msgq_send_internal
-                0x00007d48      0x2fc ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x00007d48                _msgq_send_internal
+                0x00007de0      0x2fc ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x00007de0                _msgq_send_internal
  .text._msgq_insert_message_internal
-                0x00008044       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
-                0x00008044                _msgq_insert_message_internal
+                0x000080dc       0xc0 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+                0x000080dc                _msgq_insert_message_internal
  .text._queue_init
-                0x00008104       0x30 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
-                0x00008104                _queue_init
+                0x0000819c       0x30 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+                0x0000819c                _queue_init
  .text._queue_enqueue
-                0x00008134       0x68 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
-                0x00008134                _queue_enqueue
+                0x000081cc       0x68 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+                0x000081cc                _queue_enqueue
  .text._queue_dequeue
-                0x0000819c       0x54 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
-                0x0000819c                _queue_dequeue
+                0x00008234       0x54 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+                0x00008234                _queue_dequeue
  .text._queue_insert
-                0x000081f0       0x70 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
-                0x000081f0                _queue_insert
+                0x00008288       0x70 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+                0x00008288                _queue_insert
  .text._sched_yield
-                0x00008260       0x48 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
-                0x00008260                _sched_yield
+                0x000082f8       0x48 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+                0x000082f8                _sched_yield
  .text._sched_insert_priorityq_internal
-                0x000082a8       0x3c ./SDK/rtos/mqx/mqx/source/kernel/sched.o
-                0x000082a8                _sched_insert_priorityq_internal
+                0x00008340       0x3c ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+                0x00008340                _sched_insert_priorityq_internal
  .text._sched_set_priority_internal
-                0x000082e4       0x80 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
-                0x000082e4                _sched_set_priority_internal
+                0x0000837c       0x80 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+                0x0000837c                _sched_set_priority_internal
  .text._task_create_internal
-                0x00008364      0x110 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008364                _task_create_internal
+                0x000083fc      0x110 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000083fc                _task_create_internal
  .text._task_create
-                0x00008474       0x28 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008474                _task_create
+                0x0000850c       0x28 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x0000850c                _task_create
  .text._task_destroy_internal
-                0x0000849c      0x338 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x0000849c                _task_destroy_internal
+                0x00008534      0x338 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008534                _task_destroy_internal
  .text._task_destroy
-                0x000087d4       0x1c ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x000087d4                _task_destroy
+                0x0000886c       0x1c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x0000886c                _task_destroy
  .text._task_get_priority
-                0x000087f0       0x34 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x000087f0                _task_get_priority
+                0x00008888       0x34 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008888                _task_get_priority
  .text._task_set_priority
-                0x00008824       0xe8 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008824                _task_set_priority
+                0x000088bc       0xe8 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000088bc                _task_set_priority
  .text._task_stop_preemption
-                0x0000890c       0x2c ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x0000890c                _task_stop_preemption
+                0x000089a4       0x2c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000089a4                _task_stop_preemption
  .text._task_start_preemption
-                0x00008938       0x30 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008938                _task_start_preemption
+                0x000089d0       0x30 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000089d0                _task_start_preemption
  .text._task_get_error
-                0x00008968       0x24 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008968                _task_get_error
+                0x00008a00       0x24 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008a00                _task_get_error
  .text._task_get_id
-                0x0000898c       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x0000898c                _task_get_id
+                0x00008a24       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008a24                _task_get_id
  .text._task_get_td
-                0x000089a4       0x7c ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x000089a4                _task_get_td
+                0x00008a3c       0x7c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008a3c                _task_get_td
  .text._task_set_error
-                0x00008a20       0x4c ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008a20                _task_set_error
+                0x00008ab8       0x4c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008ab8                _task_set_error
  .text._task_build_internal
-                0x00008a6c       0xb8 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008a6c                _task_build_internal
+                0x00008b04       0xb8 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008b04                _task_build_internal
  .text._task_exit_function_internal
-                0x00008b24       0x34 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008b24                _task_exit_function_internal
+                0x00008bbc       0x34 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008bbc                _task_exit_function_internal
  .text._task_init_internal
-                0x00008b58      0x220 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008b58                _task_init_internal
+                0x00008bf0      0x220 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008bf0                _task_init_internal
  .text._task_fill_stack_internal
-                0x00008d78       0x38 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008d78                _task_fill_stack_internal
+                0x00008e10       0x38 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008e10                _task_fill_stack_internal
  .text._task_ready_internal
-                0x00008db0       0x44 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008db0                _task_ready_internal
+                0x00008e48       0x44 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008e48                _task_ready_internal
  .text._task_sync_priority_internal
-                0x00008df4       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008df4                _task_sync_priority_internal
+                0x00008e8c       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008e8c                _task_sync_priority_internal
  .text._task_alloc_td_internal
-                0x00008e0c      0x13c ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008e0c                _task_alloc_td_internal
+                0x00008ea4      0x13c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008ea4                _task_alloc_td_internal
  .text._task_set_error_td_internal
-                0x00008f48       0x30 ./SDK/rtos/mqx/mqx/source/kernel/task.o
-                0x00008f48                _task_set_error_td_internal
+                0x00008fe0       0x30 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x00008fe0                _task_set_error_td_internal
  .text._time_delay
-                0x00008f78       0x64 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x00008f78                _time_delay
+                0x00009010       0x64 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009010                _time_delay
  .text._time_delay_for
-                0x00008fdc       0x40 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x00008fdc                _time_delay_for
+                0x00009074       0x40 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009074                _time_delay_for
  .text._time_delay_internal
-                0x0000901c       0xbc ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x0000901c                _time_delay_internal
+                0x000090b4       0xbc ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x000090b4                _time_delay_internal
  .text._time_delay_until
-                0x000090d8       0x38 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x000090d8                _time_delay_until
+                0x00009170       0x38 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009170                _time_delay_until
  .text._time_get_elapsed_ticks
-                0x00009110       0x5c ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x00009110                _time_get_elapsed_ticks
+                0x000091a8       0x5c ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x000091a8                _time_get_elapsed_ticks
  .text._time_get
-                0x0000916c       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x0000916c                _time_get
+                0x00009204       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009204                _time_get
  .text._time_get_ticks_per_sec
-                0x0000918c       0x18 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x0000918c                _time_get_ticks_per_sec
+                0x00009224       0x18 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009224                _time_get_ticks_per_sec
  .text._time_get_ticks
-                0x000091a4       0x58 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x000091a4                _time_get_ticks
+                0x0000923c       0x58 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x0000923c                _time_get_ticks
  .text._time_notify_kernel
-                0x000091fc      0x130 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x000091fc                _time_notify_kernel
+                0x00009294      0x130 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x00009294                _time_notify_kernel
  .text._time_set_ticks_per_sec
-                0x0000932c       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x0000932c                _time_set_ticks_per_sec
+                0x000093c4       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x000093c4                _time_set_ticks_per_sec
  .text._time_set_hwtick_function
-                0x0000934c       0x28 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x0000934c                _time_set_hwtick_function
+                0x000093e4       0x28 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x000093e4                _time_set_hwtick_function
  .text._time_set_hwticks_per_tick
-                0x00009374       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
-                0x00009374                _time_set_hwticks_per_tick
+                0x0000940c       0x20 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+                0x0000940c                _time_set_hwticks_per_tick
  .text._timer_create_component
-                0x00009394      0x13c ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009394                _timer_create_component
+                0x0000942c      0x13c ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x0000942c                _timer_create_component
  .text._timer_start_oneshot_after_internal
-                0x000094d0      0x1bc ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x000094d0                _timer_start_oneshot_after_internal
+                0x00009568      0x1bc ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009568                _timer_start_oneshot_after_internal
  .text._timer_start_periodic_every_internal
-                0x0000968c      0x1c0 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x0000968c                _timer_start_periodic_every_internal
+                0x00009724      0x1c0 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009724                _timer_start_periodic_every_internal
  .text._timer_start_oneshot_after
-                0x0000984c       0x48 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x0000984c                _timer_start_oneshot_after
+                0x000098e4       0x48 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x000098e4                _timer_start_oneshot_after
  .text._timer_start_periodic_every
-                0x00009894       0x38 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009894                _timer_start_periodic_every
+                0x0000992c       0x38 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x0000992c                _timer_start_periodic_every
  .text._timer_task
-                0x000098cc      0x1ec ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x000098cc                _timer_task
+                0x00009964      0x1ec ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009964                _timer_task
  .text._timer_isr
-                0x00009ab8      0x104 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009ab8                _timer_isr
+                0x00009b50      0x104 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009b50                _timer_isr
  .text._timer_insert_queue_internal
-                0x00009bbc       0x6c ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009bbc                _timer_insert_queue_internal
+                0x00009c54       0x6c ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009c54                _timer_insert_queue_internal
  .text._timer_alloc_id_internal
-                0x00009c28       0xac ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009c28                _timer_alloc_id_internal
+                0x00009cc0       0xac ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009cc0                _timer_alloc_id_internal
  .text._timer_cleanup
-                0x00009cd4       0xf0 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
-                0x00009cd4                _timer_cleanup
+                0x00009d6c       0xf0 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+                0x00009d6c                _timer_cleanup
  .text.NVIC_SetPriority
-                0x00009dc4       0x54 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x00009e5c       0x54 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
  .text.MPU_HAL_Disable
-                0x00009e18       0x20 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x00009eb0       0x20 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
  .text._bsp_nio_stdio_install
-                0x00009e38      0x16c ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
-                0x00009e38                _bsp_nio_stdio_install
+                0x00009ed0      0x16c ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x00009ed0                _bsp_nio_stdio_install
  .text._bsp_pre_init
-                0x00009fa4       0xe8 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
-                0x00009fa4                _bsp_pre_init
+                0x0000a03c       0xe8 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x0000a03c                _bsp_pre_init
  .text._bsp_init
-                0x0000a08c       0x3c ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
-                0x0000a08c                _bsp_init
+                0x0000a124       0x3c ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x0000a124                _bsp_init
  .text._bsp_get_hwticks
-                0x0000a0c8       0x24 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
- .text._write   0x0000a0ec       0x58 ./SDK/platform/utilities/src/fsl_debug_console.o
-                0x0000a0ec                _write
- .text._read    0x0000a144       0x44 ./SDK/platform/utilities/src/fsl_debug_console.o
-                0x0000a144                _read
+                0x0000a160       0x24 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+ .text._write   0x0000a184       0x58 ./SDK/platform/utilities/src/fsl_debug_console.o
+                0x0000a184                _write
+ .text._read    0x0000a1dc       0x44 ./SDK/platform/utilities/src/fsl_debug_console.o
+                0x0000a1dc                _read
  .text.HWTIMER_SYS_Init
-                0x0000a188       0x90 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a188                HWTIMER_SYS_Init
+                0x0000a220       0x90 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a220                HWTIMER_SYS_Init
  .text.HWTIMER_SYS_Deinit
-                0x0000a218       0xd4 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a218                HWTIMER_SYS_Deinit
+                0x0000a2b0       0xd4 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a2b0                HWTIMER_SYS_Deinit
  .text.HWTIMER_SYS_SetPeriod
-                0x0000a2ec       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a2ec                HWTIMER_SYS_SetPeriod
+                0x0000a384       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a384                HWTIMER_SYS_SetPeriod
  .text.HWTIMER_SYS_Start
-                0x0000a34c       0x54 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a34c                HWTIMER_SYS_Start
+                0x0000a3e4       0x54 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a3e4                HWTIMER_SYS_Start
  .text.HWTIMER_SYS_GetModulo
-                0x0000a3a0       0x24 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a3a0                HWTIMER_SYS_GetModulo
+                0x0000a438       0x24 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a438                HWTIMER_SYS_GetModulo
  .text.HWTIMER_SYS_GetTime
-                0x0000a3c4       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a3c4                HWTIMER_SYS_GetTime
+                0x0000a45c       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a45c                HWTIMER_SYS_GetTime
  .text.HWTIMER_SYS_RegisterCallback
-                0x0000a424       0x40 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
-                0x0000a424                HWTIMER_SYS_RegisterCallback
+                0x0000a4bc       0x40 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0000a4bc                HWTIMER_SYS_RegisterCallback
  .text.CLOCK_SYS_GetSystickFreq
-                0x0000a464       0x10 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a4fc       0x10 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickIsrAction
-                0x0000a474       0x64 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
-                0x0000a474                HWTIMER_SYS_SystickIsrAction
+                0x0000a50c       0x64 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a50c                HWTIMER_SYS_SystickIsrAction
  .text.HWTIMER_SYS_SystickInit
-                0x0000a4d8       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a570       0x60 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickDeinit
-                0x0000a538       0x54 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a5d0       0x54 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickSetDiv
-                0x0000a58c       0xd0 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a624       0xd0 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickStart
-                0x0000a65c       0x48 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a6f4       0x48 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickStop
-                0x0000a6a4       0x3c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a73c       0x3c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.HWTIMER_SYS_SystickGetTime
-                0x0000a6e0       0xc4 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0000a778       0xc4 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .text.SIM_HAL_EnableClock
-                0x0000a7a4       0x3c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a83c       0x3c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .text.SIM_HAL_DisableClock
-                0x0000a7e0       0x3c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a878       0x3c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .text.SIM_HAL_GetGateCmd
-                0x0000a81c       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a8b4       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .text.CLOCK_HAL_GetOutDiv1
-                0x0000a864       0x24 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a8fc       0x24 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .text.CLOCK_HAL_GetOutDiv2
-                0x0000a888       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a920       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .text.CLOCK_SYS_GetCoreClockFreq
-                0x0000a8b0       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a8b0                CLOCK_SYS_GetCoreClockFreq
+                0x0000a948       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a948                CLOCK_SYS_GetCoreClockFreq
  .text.CLOCK_SYS_GetSystemClockFreq
-                0x0000a8d8       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a8d8                CLOCK_SYS_GetSystemClockFreq
+                0x0000a970       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a970                CLOCK_SYS_GetSystemClockFreq
  .text.CLOCK_SYS_GetBusClockFreq
-                0x0000a900       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a900                CLOCK_SYS_GetBusClockFreq
+                0x0000a998       0x28 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a998                CLOCK_SYS_GetBusClockFreq
  .text.CLOCK_SYS_GetUartFreq
-                0x0000a928       0x4c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a928                CLOCK_SYS_GetUartFreq
+                0x0000a9c0       0x4c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000a9c0                CLOCK_SYS_GetUartFreq
  .text.CLOCK_SYS_EnableUartClock
-                0x0000a974       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a974                CLOCK_SYS_EnableUartClock
+                0x0000aa0c       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000aa0c                CLOCK_SYS_EnableUartClock
  .text.CLOCK_SYS_DisableUartClock
-                0x0000a9bc       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000a9bc                CLOCK_SYS_DisableUartClock
+                0x0000aa54       0x48 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000aa54                CLOCK_SYS_DisableUartClock
  .text.CLOCK_SYS_GetUartGateCmd
-                0x0000aa04       0x4c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
-                0x0000aa04                CLOCK_SYS_GetUartGateCmd
+                0x0000aa9c       0x4c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0000aa9c                CLOCK_SYS_GetUartGateCmd
  .text.OSA_TaskYield
-                0x0000aa50       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000aa50                OSA_TaskYield
+                0x0000aae8       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000aae8                OSA_TaskYield
  .text.wait_timeout_msec_to_tick
-                0x0000aa60       0x48 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000aaf8       0x48 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
  .text.OSA_SemaCreate
-                0x0000aaa8       0x2c ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000aaa8                OSA_SemaCreate
+                0x0000ab40       0x2c ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ab40                OSA_SemaCreate
  .text.OSA_SemaWait
-                0x0000aad4       0x54 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000aad4                OSA_SemaWait
+                0x0000ab6c       0x54 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ab6c                OSA_SemaWait
  .text.OSA_SemaPost
-                0x0000ab28       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ab28                OSA_SemaPost
+                0x0000abc0       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000abc0                OSA_SemaPost
  .text.OSA_SemaDestroy
-                0x0000ab4c       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ab4c                OSA_SemaDestroy
+                0x0000abe4       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000abe4                OSA_SemaDestroy
  .text.OSA_MutexCreate
-                0x0000ab70       0x38 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ab70                OSA_MutexCreate
+                0x0000ac08       0x38 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ac08                OSA_MutexCreate
  .text.OSA_MutexLock
-                0x0000aba8       0xdc ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000aba8                OSA_MutexLock
+                0x0000ac40       0xdc ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ac40                OSA_MutexLock
  .text.OSA_MutexUnlock
-                0x0000ac84       0x7c ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ac84                OSA_MutexUnlock
+                0x0000ad1c       0x7c ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ad1c                OSA_MutexUnlock
  .text.OSA_MutexDestroy
-                0x0000ad00       0x58 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ad00                OSA_MutexDestroy
+                0x0000ad98       0x58 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ad98                OSA_MutexDestroy
  .text.OSA_MemAlloc
-                0x0000ad58       0x18 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ad58                OSA_MemAlloc
+                0x0000adf0       0x18 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000adf0                OSA_MemAlloc
  .text.OSA_MemAllocZero
-                0x0000ad70       0x18 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ad70                OSA_MemAllocZero
+                0x0000ae08       0x18 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae08                OSA_MemAllocZero
  .text.OSA_MemFree
-                0x0000ad88       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ad88                OSA_MemFree
+                0x0000ae20       0x24 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae20                OSA_MemFree
  .text.OSA_EnterCritical
-                0x0000adac       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000adac                OSA_EnterCritical
+                0x0000ae44       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae44                OSA_EnterCritical
  .text.OSA_ExitCritical
-                0x0000adcc       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000adcc                OSA_ExitCritical
+                0x0000ae64       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae64                OSA_ExitCritical
  .text.OSA_TimeDelay
-                0x0000adec       0x14 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000adec                OSA_TimeDelay
+                0x0000ae84       0x14 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae84                OSA_TimeDelay
  .text.OSA_InstallIntHandler
-                0x0000ae00       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ae00                OSA_InstallIntHandler
+                0x0000ae98       0x20 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000ae98                OSA_InstallIntHandler
  .text.OSA_Init
-                0x0000ae20       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
-                0x0000ae20                OSA_Init
+                0x0000aeb8       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x0000aeb8                OSA_Init
  .text.UART_HAL_Init
-                0x0000ae30       0x74 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000ae30                UART_HAL_Init
+                0x0000aec8       0x74 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000aec8                UART_HAL_Init
  .text.UART_HAL_SetBaudRate
-                0x0000aea4       0xa0 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000aea4                UART_HAL_SetBaudRate
+                0x0000af3c       0xa0 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000af3c                UART_HAL_SetBaudRate
  .text.UART_HAL_SetParityMode
-                0x0000af44       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000af44                UART_HAL_SetParityMode
+                0x0000afdc       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000afdc                UART_HAL_SetParityMode
  .text.UART_HAL_Putchar
-                0x0000af84       0x28 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000af84                UART_HAL_Putchar
+                0x0000b01c       0x28 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b01c                UART_HAL_Putchar
  .text.UART_HAL_Getchar
-                0x0000afac       0x2c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000afac                UART_HAL_Getchar
+                0x0000b044       0x2c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b044                UART_HAL_Getchar
  .text.UART_HAL_SetIntMode
-                0x0000afd8      0x114 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000afd8                UART_HAL_SetIntMode
+                0x0000b070      0x114 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b070                UART_HAL_SetIntMode
  .text.UART_HAL_GetStatusFlag
-                0x0000b0ec       0xb8 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b0ec                UART_HAL_GetStatusFlag
+                0x0000b184       0xb8 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b184                UART_HAL_GetStatusFlag
  .text.UART_HAL_ClearStatusFlag
-                0x0000b1a4       0xb0 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b1a4                UART_HAL_ClearStatusFlag
+                0x0000b23c       0xb0 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b23c                UART_HAL_ClearStatusFlag
  .text.UART_HAL_SetTxFifoCmd
-                0x0000b254       0x5c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b254                UART_HAL_SetTxFifoCmd
+                0x0000b2ec       0x5c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b2ec                UART_HAL_SetTxFifoCmd
  .text.UART_HAL_SetRxFifoCmd
-                0x0000b2b0       0x5c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b2b0                UART_HAL_SetRxFifoCmd
+                0x0000b348       0x5c ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b348                UART_HAL_SetRxFifoCmd
  .text.UART_HAL_FlushTxFifo
-                0x0000b30c       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b30c                UART_HAL_FlushTxFifo
+                0x0000b3a4       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b3a4                UART_HAL_FlushTxFifo
  .text.UART_HAL_FlushRxFifo
-                0x0000b34c       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b34c                UART_HAL_FlushRxFifo
+                0x0000b3e4       0x40 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b3e4                UART_HAL_FlushRxFifo
  .text.UART_HAL_SetTxFifoWatermark
-                0x0000b38c       0x38 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b38c                UART_HAL_SetTxFifoWatermark
+                0x0000b424       0x38 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b424                UART_HAL_SetTxFifoWatermark
  .text.UART_HAL_SetRxFifoWatermark
-                0x0000b3c4       0x38 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
-                0x0000b3c4                UART_HAL_SetRxFifoWatermark
+                0x0000b45c       0x38 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+                0x0000b45c                UART_HAL_SetRxFifoWatermark
  .text.CLOCK_HAL_GetClkOutStat
-                0x0000b3fc       0x24 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b494       0x24 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
  .text.CLOCK_HAL_IsPllSelected
-                0x0000b420       0x30 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b4b8       0x30 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
  .text.CLOCK_HAL_TestOscFreq
-                0x0000b450       0x50 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b450                CLOCK_HAL_TestOscFreq
+                0x0000b4e8       0x50 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b4e8                CLOCK_HAL_TestOscFreq
  .text.CLOCK_HAL_GetMcgExternalClkFreq
-                0x0000b4a0       0x28 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b538       0x28 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
  .text.CLOCK_HAL_TestFllExternalRefFreq
-                0x0000b4c8       0x90 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b4c8                CLOCK_HAL_TestFllExternalRefFreq
+                0x0000b560       0x90 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b560                CLOCK_HAL_TestFllExternalRefFreq
  .text.CLOCK_HAL_GetFllRefClk
-                0x0000b558       0x74 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b558                CLOCK_HAL_GetFllRefClk
+                0x0000b5f0       0x74 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b5f0                CLOCK_HAL_GetFllRefClk
  .text.CLOCK_HAL_TestFllFreq
-                0x0000b5cc       0x5c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b5cc                CLOCK_HAL_TestFllFreq
+                0x0000b664       0x5c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b664                CLOCK_HAL_TestFllFreq
  .text.CLOCK_HAL_GetFllClk
-                0x0000b628       0x60 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b628                CLOCK_HAL_GetFllClk
+                0x0000b6c0       0x60 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b6c0                CLOCK_HAL_GetFllClk
  .text.CLOCK_HAL_GetPll0RefFreq
-                0x0000b688       0x18 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b688                CLOCK_HAL_GetPll0RefFreq
+                0x0000b720       0x18 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b720                CLOCK_HAL_GetPll0RefFreq
  .text.CLOCK_HAL_GetPll0Clk
-                0x0000b6a0       0x7c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b6a0                CLOCK_HAL_GetPll0Clk
+                0x0000b738       0x7c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b738                CLOCK_HAL_GetPll0Clk
  .text.CLOCK_HAL_GetInternalRefClk
-                0x0000b71c       0x64 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b71c                CLOCK_HAL_GetInternalRefClk
+                0x0000b7b4       0x64 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b7b4                CLOCK_HAL_GetInternalRefClk
  .text.CLOCK_HAL_GetOutClk
-                0x0000b780       0x68 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
-                0x0000b780                CLOCK_HAL_GetOutClk
+                0x0000b818       0x68 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x0000b818                CLOCK_HAL_GetOutClk
  .text.NVIC_EnableIRQ
-                0x0000b7e8       0x30 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b880       0x30 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.NVIC_DisableIRQ
-                0x0000b818       0x34 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b8b0       0x34 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_EnableTransmitter
-                0x0000b84c       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b8e4       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_DisableTransmitter
-                0x0000b870       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b908       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_EnableReceiver
-                0x0000b894       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b92c       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_DisableReceiver
-                0x0000b8b8       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b950       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_SetBitCountPerChar
-                0x0000b8dc       0x28 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b974       0x28 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_SetStopBitCount
-                0x0000b904       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b99c       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_GetTxFifoSize
-                0x0000b928       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b9c0       0x24 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_GetTxDatawordCountInFifo
-                0x0000b94c       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000b9e4       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_HAL_GetRxDatawordCountInFifo
-                0x0000b968       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000ba00       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.INT_SYS_EnableIRQ
-                0x0000b984       0x54 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000ba1c       0x54 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.INT_SYS_DisableIRQ
-                0x0000b9d8       0x54 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000ba70       0x54 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_DRV_Init
-                0x0000ba2c      0x18c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000ba2c                UART_DRV_Init
+                0x0000bac4      0x18c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000bac4                UART_DRV_Init
  .text.UART_DRV_Deinit
-                0x0000bbb8      0x110 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000bbb8                UART_DRV_Deinit
+                0x0000bc50      0x110 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000bc50                UART_DRV_Deinit
  .text.UART_DRV_InstallRxCallback
-                0x0000bcc8       0x84 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000bcc8                UART_DRV_InstallRxCallback
+                0x0000bd60       0x84 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000bd60                UART_DRV_InstallRxCallback
  .text.UART_DRV_InstallTxCallback
-                0x0000bd4c       0x60 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000bd4c                UART_DRV_InstallTxCallback
+                0x0000bde4       0x60 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000bde4                UART_DRV_InstallTxCallback
  .text.UART_DRV_SendData
-                0x0000bdac       0x74 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000bdac                UART_DRV_SendData
+                0x0000be44       0x74 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000be44                UART_DRV_SendData
  .text.UART_DRV_IRQHandler
-                0x0000be20      0x170 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
-                0x0000be20                UART_DRV_IRQHandler
+                0x0000beb8      0x170 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000beb8                UART_DRV_IRQHandler
  .text.UART_DRV_CompleteSendData
-                0x0000bf90       0x74 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000c028       0x74 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_DRV_StartSendData
-                0x0000c004       0x8c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000c09c       0x8c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.UART_DRV_CompleteReceiveData
-                0x0000c090       0x80 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x0000c128       0x80 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .text.SystemInit
-                0x0000c110      0x1f4 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
-                0x0000c110                SystemInit
+                0x0000c1a8      0x1f4 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
+                0x0000c1a8                SystemInit
  .text.init_data_bss
-                0x0000c304       0xcc ./SDK/platform/devices/startup.o
-                0x0000c304                init_data_bss
+                0x0000c39c       0xcc ./SDK/platform/devices/startup.o
+                0x0000c39c                init_data_bss
  .text.Components_Init
-                0x0000c3d0       0x40 ./Generated_Code/Cpu.o
-                0x0000c3d0                Components_Init
+                0x0000c468       0x40 ./Generated_Code/Cpu.o
+                0x0000c468                Components_Init
  .text.MasterTask_Init
-                0x0000c410       0x28 ./Generated_Code/MasterTask.o
-                0x0000c410                MasterTask_Init
+                0x0000c4a8       0x28 ./Generated_Code/MasterTask.o
+                0x0000c4a8                MasterTask_Init
  .text.SIM_HAL_EnableClock
-                0x0000c438       0x3c ./Generated_Code/hardware_init.o
+                0x0000c4d0       0x3c ./Generated_Code/hardware_init.o
  .text.hardware_init
-                0x0000c474       0x60 ./Generated_Code/hardware_init.o
-                0x0000c474                hardware_init
+                0x0000c50c       0x60 ./Generated_Code/hardware_init.o
+                0x0000c50c                hardware_init
  .text.uartCom1_IRQHandler
-                0x0000c4d4        0xc ./Generated_Code/myUART.o
-                0x0000c4d4                uartCom1_IRQHandler
+                0x0000c56c        0xc ./Generated_Code/myUART.o
+                0x0000c56c                uartCom1_IRQHandler
  .text.PORT_HAL_SetMuxMode
-                0x0000c4e0       0x58 ./Generated_Code/pin_init.o
+                0x0000c578       0x58 ./Generated_Code/pin_init.o
  .text.init_enet_pins
-                0x0000c538       0x1c ./Generated_Code/pin_init.o
-                0x0000c538                init_enet_pins
+                0x0000c5d0       0x1c ./Generated_Code/pin_init.o
+                0x0000c5d0                init_enet_pins
  .text.init_jtag_pins
-                0x0000c554       0x3c ./Generated_Code/pin_init.o
-                0x0000c554                init_jtag_pins
+                0x0000c5ec       0x3c ./Generated_Code/pin_init.o
+                0x0000c5ec                init_jtag_pins
  .text.init_osc_pins
-                0x0000c590       0x1c ./Generated_Code/pin_init.o
-                0x0000c590                init_osc_pins
+                0x0000c628       0x1c ./Generated_Code/pin_init.o
+                0x0000c628                init_osc_pins
  .text.init_tpiu_pins
-                0x0000c5ac       0x1c ./Generated_Code/pin_init.o
-                0x0000c5ac                init_tpiu_pins
+                0x0000c644       0x1c ./Generated_Code/pin_init.o
+                0x0000c644                init_tpiu_pins
  .text.init_uart_pins
-                0x0000c5c8       0x50 ./Generated_Code/pin_init.o
-                0x0000c5c8                init_uart_pins
+                0x0000c660       0x50 ./Generated_Code/pin_init.o
+                0x0000c660                init_uart_pins
  .text.__assert_func
-                0x0000c618       0x3c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-assert.o)
-                0x0000c618                __assert_func
- .text.atexit   0x0000c654        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-atexit.o)
-                0x0000c654                atexit
- .text.__errno  0x0000c660        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-errno.o)
-                0x0000c660                __errno
- .text.exit     0x0000c66c       0x20 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-exit.o)
-                0x0000c66c                exit
+                0x0000c6b0       0x3c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-assert.o)
+                0x0000c6b0                __assert_func
+ .text.atexit   0x0000c6ec        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-atexit.o)
+                0x0000c6ec                atexit
+ .text.__errno  0x0000c6f8        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-errno.o)
+                0x0000c6f8                __errno
+ .text.exit     0x0000c704       0x20 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-exit.o)
+                0x0000c704                exit
  .text.__libc_fini_array
-                0x0000c68c       0x30 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fini.o)
-                0x0000c68c                __libc_fini_array
+                0x0000c724       0x30 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fini.o)
+                0x0000c724                __libc_fini_array
  .text.fiprintf
-                0x0000c6bc       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fiprintf.o)
-                0x0000c6bc                fiprintf
+                0x0000c754       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fiprintf.o)
+                0x0000c754                fiprintf
  .text.__libc_init_array
-                0x0000c6e4       0x50 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-init.o)
-                0x0000c6e4                __libc_init_array
- .text.memset   0x0000c734       0x94 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memset.o)
-                0x0000c734                memset
- .text.strlen   0x0000c7c8       0x60 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-strlen.o)
-                0x0000c7c8                strlen
- .text.strncpy  0x0000c828       0x64 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-strncpy.o)
-                0x0000c828                strncpy
+                0x0000c77c       0x50 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-init.o)
+                0x0000c77c                __libc_init_array
+ .text.memset   0x0000c7cc       0x94 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memset.o)
+                0x0000c7cc                memset
+ .text.strlen   0x0000c860       0x60 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-strlen.o)
+                0x0000c860                strlen
+ .text.strncpy  0x0000c8c0       0x64 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-strncpy.o)
+                0x0000c8c0                strncpy
  .text.__sprint_r.part.0
-                0x0000c88c       0x78 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x0000c924       0x78 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
  .text._vfiprintf_r
-                0x0000c904      0xc54 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
-                0x0000c904                _vfiprintf_r
+                0x0000c99c      0xc54 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x0000c99c                _vfiprintf_r
  .text.__sbprintf
-                0x0000d558       0x78 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x0000d5f0       0x78 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
  .text.__swsetup_r
-                0x0000d5d0       0xc4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wsetup.o)
-                0x0000d5d0                __swsetup_r
+                0x0000d668       0xc4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wsetup.o)
+                0x0000d668                __swsetup_r
  .text.__register_exitproc
-                0x0000d694       0xa8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__atexit.o)
-                0x0000d694                __register_exitproc
+                0x0000d72c       0xa8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__atexit.o)
+                0x0000d72c                __register_exitproc
  .text.startup.register_fini
-                0x0000d73c       0x14 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
+                0x0000d7d4       0x14 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
  .text.__call_exitprocs
-                0x0000d750       0xf0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
-                0x0000d750                __call_exitprocs
- .text.abort    0x0000d840       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-abort.o)
-                0x0000d840                abort
+                0x0000d7e8       0xf0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
+                0x0000d7e8                __call_exitprocs
+ .text.abort    0x0000d8d8       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-abort.o)
+                0x0000d8d8                abort
  .text.__sflush_r
-                0x0000d850      0x154 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fflush.o)
-                0x0000d850                __sflush_r
+                0x0000d8e8      0x154 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fflush.o)
+                0x0000d8e8                __sflush_r
  .text._fflush_r
-                0x0000d9a4       0x2c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fflush.o)
-                0x0000d9a4                _fflush_r
+                0x0000da3c       0x2c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fflush.o)
+                0x0000da3c                _fflush_r
  .text._cleanup_r
-                0x0000d9d0        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-findfp.o)
-                0x0000d9d0                _cleanup_r
- .text.__sinit  0x0000d9dc       0xf4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-findfp.o)
-                0x0000d9dc                __sinit
+                0x0000da68        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-findfp.o)
+                0x0000da68                _cleanup_r
+ .text.__sinit  0x0000da74       0xf4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-findfp.o)
+                0x0000da74                __sinit
  .text._fputwc_r
-                0x0000dad0       0xbc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fputwc.o)
-                0x0000dad0                _fputwc_r
+                0x0000db68       0xbc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fputwc.o)
+                0x0000db68                _fputwc_r
  .text._malloc_trim_r
-                0x0000db8c       0x9c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
-                0x0000db8c                _malloc_trim_r
- .text._free_r  0x0000dc28      0x19c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
-                0x0000dc28                _free_r
+                0x0000dc24       0x9c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                0x0000dc24                _malloc_trim_r
+ .text._free_r  0x0000dcc0      0x19c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-freer.o)
+                0x0000dcc0                _free_r
  .text.__sfvwrite_r
-                0x0000ddc4      0x318 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fvwrite.o)
-                0x0000ddc4                __sfvwrite_r
- .text._fwalk   0x0000e0dc       0x4c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fwalk.o)
-                0x0000e0dc                _fwalk
+                0x0000de5c      0x318 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fvwrite.o)
+                0x0000de5c                __sfvwrite_r
+ .text._fwalk   0x0000e174       0x4c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fwalk.o)
+                0x0000e174                _fwalk
  .text.__locale_charset
-                0x0000e128        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-locale.o)
-                0x0000e128                __locale_charset
+                0x0000e1c0        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-locale.o)
+                0x0000e1c0                __locale_charset
  .text.__locale_mb_cur_max
-                0x0000e130        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-locale.o)
-                0x0000e130                __locale_mb_cur_max
+                0x0000e1c8        0xc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-locale.o)
+                0x0000e1c8                __locale_mb_cur_max
  .text.__smakebuf_r
-                0x0000e13c       0xe0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-makebuf.o)
-                0x0000e13c                __smakebuf_r
+                0x0000e1d4       0xe0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-makebuf.o)
+                0x0000e1d4                __smakebuf_r
  .text._malloc_r
-                0x0000e21c      0x538 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
-                0x0000e21c                _malloc_r
- .text.memchr   0x0000e754       0x90 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memchr-stub.o)
-                0x0000e754                memchr
- .text.memmove  0x0000e7e4       0xc0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memmove.o)
-                0x0000e7e4                memmove
+                0x0000e2b4      0x538 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mallocr.o)
+                0x0000e2b4                _malloc_r
+ .text.memchr   0x0000e7ec       0x90 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memchr-stub.o)
+                0x0000e7ec                memchr
+ .text.memmove  0x0000e87c       0xc0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-memmove.o)
+                0x0000e87c                memmove
  .text.__malloc_lock
-                0x0000e8a4        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
-                0x0000e8a4                __malloc_lock
+                0x0000e93c        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+                0x0000e93c                __malloc_lock
  .text.__malloc_unlock
-                0x0000e8a8        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
-                0x0000e8a8                __malloc_unlock
+                0x0000e940        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-mlock.o)
+                0x0000e940                __malloc_unlock
  .text._realloc_r
-                0x0000e8ac      0x3cc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reallocr.o)
-                0x0000e8ac                _realloc_r
- .text._sbrk_r  0x0000ec78       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
-                0x0000ec78                _sbrk_r
+                0x0000e944      0x3cc c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-reallocr.o)
+                0x0000e944                _realloc_r
+ .text._sbrk_r  0x0000ed10       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-sbrkr.o)
+                0x0000ed10                _sbrk_r
  .text._raise_r
-                0x0000ec9c       0x58 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signal.o)
-                0x0000ec9c                _raise_r
- .text.raise    0x0000ecf4       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signal.o)
-                0x0000ecf4                raise
- .text._kill_r  0x0000ed04       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signalr.o)
-                0x0000ed04                _kill_r
+                0x0000ed34       0x58 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signal.o)
+                0x0000ed34                _raise_r
+ .text.raise    0x0000ed8c       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signal.o)
+                0x0000ed8c                raise
+ .text._kill_r  0x0000ed9c       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signalr.o)
+                0x0000ed9c                _kill_r
  .text._getpid_r
-                0x0000ed2c        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signalr.o)
-                0x0000ed2c                _getpid_r
- .text.__sread  0x0000ed30       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
-                0x0000ed30                __sread
+                0x0000edc4        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-signalr.o)
+                0x0000edc4                _getpid_r
+ .text.__sread  0x0000edc8       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
+                0x0000edc8                __sread
  .text.__swrite
-                0x0000ed54       0x38 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
-                0x0000ed54                __swrite
- .text.__sseek  0x0000ed8c       0x20 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
-                0x0000ed8c                __sseek
+                0x0000edec       0x38 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
+                0x0000edec                __swrite
+ .text.__sseek  0x0000ee24       0x20 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
+                0x0000ee24                __sseek
  .text.__sclose
-                0x0000edac        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
-                0x0000edac                __sclose
+                0x0000ee44        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-stdio.o)
+                0x0000ee44                __sclose
  .text.__swbuf_r
-                0x0000edb4       0xa8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wbuf.o)
-                0x0000edb4                __swbuf_r
+                0x0000ee4c       0xa8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wbuf.o)
+                0x0000ee4c                __swbuf_r
  .text._wcrtomb_r
-                0x0000ee5c       0x50 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wcrtomb.o)
-                0x0000ee5c                _wcrtomb_r
+                0x0000eef4       0x50 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wcrtomb.o)
+                0x0000eef4                _wcrtomb_r
  .text.__ascii_wctomb
-                0x0000eeac       0x1c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wctomb_r.o)
-                0x0000eeac                __ascii_wctomb
+                0x0000ef44       0x1c c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-wctomb_r.o)
+                0x0000ef44                __ascii_wctomb
  .text._write_r
-                0x0000eec8       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-writer.o)
-                0x0000eec8                _write_r
+                0x0000ef60       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-writer.o)
+                0x0000ef60                _write_r
  .text._close_r
-                0x0000eef0       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-closer.o)
-                0x0000eef0                _close_r
+                0x0000ef88       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-closer.o)
+                0x0000ef88                _close_r
  .text._fstat_r
-                0x0000ef14       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fstatr.o)
-                0x0000ef14                _fstat_r
+                0x0000efac       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-fstatr.o)
+                0x0000efac                _fstat_r
  .text._isatty_r
-                0x0000ef3c       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-isattyr.o)
-                0x0000ef3c                _isatty_r
+                0x0000efd4       0x24 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-isattyr.o)
+                0x0000efd4                _isatty_r
  .text._lseek_r
-                0x0000ef60       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-lseekr.o)
-                0x0000ef60                _lseek_r
- .text._read_r  0x0000ef88       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-readr.o)
-                0x0000ef88                _read_r
- .text._close   0x0000efb0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(close.o)
-                0x0000efb0                _close
- .text._fstat   0x0000efc0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(fstat.o)
-                0x0000efc0                _fstat
- .text._getpid  0x0000efd0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(getpid.o)
-                0x0000efd0                _getpid
- .text._isatty  0x0000efe0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(isatty.o)
-                0x0000efe0                _isatty
- .text._kill    0x0000eff0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(kill.o)
-                0x0000eff0                _kill
- .text._lseek   0x0000f000       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(lseek.o)
-                0x0000f000                _lseek
+                0x0000eff8       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-lseekr.o)
+                0x0000eff8                _lseek_r
+ .text._read_r  0x0000f020       0x28 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-readr.o)
+                0x0000f020                _read_r
+ .text._close   0x0000f048       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(close.o)
+                0x0000f048                _close
+ .text._fstat   0x0000f058       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(fstat.o)
+                0x0000f058                _fstat
+ .text._getpid  0x0000f068       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(getpid.o)
+                0x0000f068                _getpid
+ .text._isatty  0x0000f078       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(isatty.o)
+                0x0000f078                _isatty
+ .text._kill    0x0000f088       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(kill.o)
+                0x0000f088                _kill
+ .text._lseek   0x0000f098       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(lseek.o)
+                0x0000f098                _lseek
  *(.rodata)
- .rodata        0x0000f010       0xcc ./Sources/api.o
- .rodata        0x0000f0dc      0x264 ./Sources/os_tasks.o
- .rodata        0x0000f340        0x8 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
- .rodata        0x0000f348       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .rodata        0x0000f39c       0x6c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
- .rodata        0x0000f408      0x2c8 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
- .rodata        0x0000f6d0       0x40 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
- .rodata        0x0000f710       0x98 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
- .rodata        0x0000f7a8       0xb4 ./SDK/rtos/mqx/mqx/source/kernel/task.o
- .rodata        0x0000f85c        0xc ./SDK/rtos/mqx/mqx/source/kernel/timer.o
- .rodata        0x0000f868       0x70 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
- .rodata        0x0000f8d8      0x114 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
- .rodata        0x0000f9ec       0x5c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
- .rodata        0x0000fa48      0x1e0 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
- .rodata        0x0000fc28       0x58 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
- .rodata        0x0000fc80      0x128 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
- .rodata        0x0000fda8       0x5c ./Generated_Code/mqx_ksdk.o
- .rodata        0x0000fe04       0x50 ./Generated_Code/pin_init.o
+ .rodata        0x0000f0a8       0xcc ./Sources/api.o
+ .rodata        0x0000f174      0x264 ./Sources/os_tasks.o
+ .rodata        0x0000f3d8        0x8 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .rodata        0x0000f3e0       0x54 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .rodata        0x0000f434       0x6c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+ .rodata        0x0000f4a0      0x2c8 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+ .rodata        0x0000f768       0x40 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+ .rodata        0x0000f7a8       0x98 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+ .rodata        0x0000f840       0xb4 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+ .rodata        0x0000f8f4        0xc ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+ .rodata        0x0000f900       0x70 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+ .rodata        0x0000f970      0x114 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+ .rodata        0x0000fa84       0x5c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+ .rodata        0x0000fae0      0x1e0 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+ .rodata        0x0000fcc0       0x58 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+ .rodata        0x0000fd18      0x128 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+ .rodata        0x0000fe40       0x5c ./Generated_Code/mqx_ksdk.o
+ .rodata        0x0000fe9c       0x50 ./Generated_Code/pin_init.o
  *(.rodata*)
  .rodata.upper_hex_string
-                0x0000fe54       0x14 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+                0x0000feec       0x14 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
  .rodata.lower_hex_string
-                0x0000fe68       0x14 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+                0x0000ff00       0x14 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
  .rodata.__func__.8074
-                0x0000fe7c       0x10 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000ff14       0x10 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .rodata.__func__.8079
-                0x0000fe8c       0x10 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000ff24       0x10 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .rodata.__func__.8100
-                0x0000fe9c        0x8 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000ff34        0x8 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .rodata.__func__.8105
-                0x0000fea4        0xc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000ff3c        0xc ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .rodata.__func__.8184
-                0x0000feb0       0x14 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+                0x0000ff48       0x14 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
  .rodata.nio_tty_dev_fn
-                0x0000fec4       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
-                0x0000fec4                nio_tty_dev_fn
+                0x0000ff5c       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ff5c                nio_tty_dev_fn
  .rodata.__func__.7736
-                0x0000fee4       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ff7c       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.__func__.7751
-                0x0000fef4       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ff8c       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.__func__.7768
-                0x0000ff04       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ff9c       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.__func__.7782
-                0x0000ff14       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ffac       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.__func__.7794
-                0x0000ff24       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ffbc       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.__func__.7803
-                0x0000ff34       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+                0x0000ffcc       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
  .rodata.nio_serial_dev_fn
-                0x0000ff44       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
-                0x0000ff44                nio_serial_dev_fn
+                0x0000ffdc       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0000ffdc                nio_serial_dev_fn
  .rodata.__func__.8362
-                0x0000ff64       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0000fffc       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8384
-                0x0000ff74       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0001000c       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8409
-                0x0000ff88       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00010020       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8435
-                0x0000ff9c       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00010034       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8446
-                0x0000ffb4       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0001004c       0x10 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8474
-                0x0000ffc4       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x0001005c       0x14 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8479
-                0x0000ffd8       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00010070       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.__func__.8492
-                0x0000fff0       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+                0x00010088       0x18 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
  .rodata.nio_dummy_dev_fn
-                0x00010008       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
-                0x00010008                nio_dummy_dev_fn
+                0x000100a0       0x20 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+                0x000100a0                nio_dummy_dev_fn
  .rodata.__func__.8052
-                0x00010028       0x10 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+                0x000100c0       0x10 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
  .rodata._mqx_zero_tick_struct
-                0x00010038        0xc ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00010038                _mqx_zero_tick_struct
+                0x000100d0        0xc ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x000100d0                _mqx_zero_tick_struct
  .rodata._mqx_version_number
-                0x00010044        0x4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00010044                _mqx_version_number
+                0x000100dc        0x4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x000100dc                _mqx_version_number
  .rodata._mqx_vendor
-                0x00010048        0x4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
-                0x00010048                _mqx_vendor
+                0x000100e0        0x4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+                0x000100e0                _mqx_vendor
  .rodata.__func__.7770
-                0x0001004c       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000100e4       0x18 ./SDK/rtos/mqx/mqx/source/kernel/task.o
  .rodata.__func__.8058
-                0x00010064       0x14 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+                0x000100fc       0x14 ./SDK/rtos/mqx/mqx/source/kernel/task.o
  .rodata.nio_serial_default_init
-                0x00010078       0x20 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
-                0x00010078                nio_serial_default_init
+                0x00010110       0x20 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x00010110                nio_serial_default_init
  .rodata.__func__.9745
-                0x00010098       0x18 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+                0x00010130       0x18 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
  .rodata.__func__.7806
-                0x000100b0       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x00010148       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
  .rodata.__func__.7811
-                0x000100c4       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0001015c       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
  .rodata.__func__.7816
-                0x000100d8       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x00010170       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
  .rodata.__func__.7825
-                0x000100f0       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x00010188       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
  .rodata.__func__.7838
-                0x00010104       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+                0x0001019c       0x14 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
  .rodata.kSystickDevif
-                0x00010118       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
-                0x00010118                kSystickDevif
+                0x000101b0       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x000101b0                kSystickDevif
  .rodata.__func__.9285
-                0x00010130       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x000101c8       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.__func__.9290
-                0x00010148       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x000101e0       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.__func__.9295
-                0x00010164       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x000101fc       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.__func__.9300
-                0x00010180       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x00010218       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.__func__.9304
-                0x0001019c       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x00010234       0x18 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.__func__.9310
-                0x000101b4       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+                0x0001024c       0x1c ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
  .rodata.uartGateTable
-                0x000101d0        0x8 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x00010268        0x8 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .rodata.__func__.7955
-                0x000101d8       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x00010270       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .rodata.__func__.7959
-                0x000101f4       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x0001028c       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .rodata.__func__.7963
-                0x00010210       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+                0x000102a8       0x1c ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
  .rodata.__func__.7625
-                0x0001022c       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x000102c4       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
  .rodata.__func__.7631
-                0x0001023c       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x000102d4       0x10 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
  .rodata.__func__.7636
-                0x0001024c       0x14 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+                0x000102e4       0x14 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
  .rodata.fllFactorTable.6460
-                0x00010260       0x10 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+                0x000102f8       0x10 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
  .rodata.g_uartBase
-                0x00010270       0x18 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
-                0x00010270                g_uartBase
+                0x00010308       0x18 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
+                0x00010308                g_uartBase
  .rodata.__func__.9737
-                0x00010288       0x10 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010320       0x10 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9710
-                0x00010298       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010330       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9744
-                0x000102ac       0x10 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010344       0x10 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9714
-                0x000102bc       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010354       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9760
-                0x000102d0       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010368       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9770
-                0x000102ec       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x00010384       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9794
-                0x00010308       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x000103a0       0x14 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9860
-                0x0001031c       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x000103b4       0x1c ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9868
-                0x00010338       0x18 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x000103d0       0x18 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.__func__.9874
-                0x00010350       0x20 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+                0x000103e8       0x20 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
  .rodata.g_mpuBase
-                0x00010370        0x4 ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
-                0x00010370                g_mpuBase
+                0x00010408        0x4 ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
+                0x00010408                g_mpuBase
  .rodata.MQX_template_list
-                0x00010374       0xe0 ./Generated_Code/mqx_ksdk.o
-                0x00010374                MQX_template_list
+                0x0001040c       0xe0 ./Generated_Code/mqx_ksdk.o
+                0x0001040c                MQX_template_list
  .rodata.MQX_init_struct
-                0x00010454       0x30 ./Generated_Code/mqx_ksdk.o
-                0x00010454                MQX_init_struct
+                0x000104ec       0x30 ./Generated_Code/mqx_ksdk.o
+                0x000104ec                MQX_init_struct
  .rodata.uartCom1_InitConfig0
-                0x00010484        0x8 ./Generated_Code/myUART.o
-                0x00010484                uartCom1_InitConfig0
+                0x0001051c        0x8 ./Generated_Code/myUART.o
+                0x0001051c                uartCom1_InitConfig0
  .rodata.__func__.6220
-                0x0001048c       0x14 ./Generated_Code/pin_init.o
+                0x00010524       0x14 ./Generated_Code/pin_init.o
  .rodata.str1.4
-                0x000104a0       0x3f c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-assert.o)
+                0x00010538       0x3f c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-assert.o)
                                  0x44 (size before relaxing)
- *fill*         0x000104df        0x1 
+ *fill*         0x00010577        0x1 
  .rodata.str1.4
-                0x000104e0        0x2 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+                0x00010578        0x2 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
                                   0x4 (size before relaxing)
- *fill*         0x000104e2        0x2 
+ *fill*         0x0001057a        0x2 
  .rodata._global_impure_ptr
-                0x000104e4        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
-                0x000104e4                _global_impure_ptr
+                0x0001057c        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-impure.o)
+                0x0001057c                _global_impure_ptr
  .rodata.str1.4
-                0x000104e8       0x30 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x00010580       0x30 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
  .rodata.zeroes.6721
-                0x00010518       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x000105b0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
  .rodata.blanks.6720
-                0x00010528       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
+                0x000105c0       0x10 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-vfiprintf.o)
  *(.glue_7)
  .glue_7        0x00000000        0x0 linker stubs
  *(.glue_7t)
@@ -22258,71 +22260,71 @@ END GROUP
  *(.eh_frame)
  *(.init)
  *(.fini)
-                0x00010538                . = ALIGN (0x4)
+                0x000105d0                . = ALIGN (0x4)
 
-.vfp11_veneer   0x00010538        0x0
+.vfp11_veneer   0x000105d0        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00010538        0x0
+.v4_bx          0x000105d0        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00010538        0x0
+.iplt           0x000105d0        0x0
  .iplt          0x00000000        0x0 ./Static_Code/System/PE_low_level_init.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x00010538        0x8
-                0x00010538                __exidx_start = .
+.ARM            0x000105d0        0x8
+                0x000105d0                __exidx_start = .
  *(.ARM.exidx*)
- .ARM.exidx     0x00010538        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu\libgcc.a(_divdi3.o)
- .ARM.exidx     0x00010540        0x0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu\libgcc.a(_udivdi3.o)
+ .ARM.exidx     0x000105d0        0x8 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu\libgcc.a(_divdi3.o)
+ .ARM.exidx     0x000105d8        0x0 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7e-m/fpu\libgcc.a(_udivdi3.o)
                                   0x8 (size before relaxing)
-                0x00010540                __exidx_end = .
+                0x000105d8                __exidx_end = .
 
-.rel.dyn        0x00010540        0x0
+.rel.dyn        0x000105d8        0x0
  .rel.iplt      0x00000000        0x0 ./Static_Code/System/PE_low_level_init.o
 
-.ctors          0x00010540        0x0
-                0x00010540                __CTOR_LIST__ = .
+.ctors          0x000105d8        0x0
+                0x000105d8                __CTOR_LIST__ = .
  *crtbegin.o(.ctors)
  *crtbegin?.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
  *(SORT(.ctors.*))
  *(.ctors)
-                0x00010540                __CTOR_END__ = .
+                0x000105d8                __CTOR_END__ = .
 
-.dtors          0x00010540        0x0
-                0x00010540                __DTOR_LIST__ = .
+.dtors          0x000105d8        0x0
+                0x000105d8                __DTOR_LIST__ = .
  *crtbegin.o(.dtors)
  *crtbegin?.o(.dtors)
  *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
  *(SORT(.dtors.*))
  *(.dtors)
-                0x00010540                __DTOR_END__ = .
+                0x000105d8                __DTOR_END__ = .
 
-.preinit_array  0x00010540        0x0
-                0x00010540                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x000105d8        0x0
+                0x000105d8                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x00010540                PROVIDE (__preinit_array_end, .)
+                0x000105d8                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x00010540        0x4
-                0x00010540                PROVIDE (__init_array_start, .)
+.init_array     0x000105d8        0x4
+                0x000105d8                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  .init_array.00000
-                0x00010540        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
+                0x000105d8        0x4 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libc.a(lib_a-__call_atexit.o)
  *(.init_array*)
-                0x00010544                PROVIDE (__init_array_end, .)
+                0x000105dc                PROVIDE (__init_array_end, .)
 
-.fini_array     0x00010544        0x0
-                0x00010544                PROVIDE (__fini_array_start, .)
+.fini_array     0x000105dc        0x0
+                0x000105dc                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
-                0x00010544                PROVIDE (__fini_array_end, .)
-                0x00010544                __etext = .
-                0x00010544                __DATA_ROM = .
+                0x000105dc                PROVIDE (__fini_array_end, .)
+                0x000105dc                __etext = .
+                0x000105dc                __DATA_ROM = .
 
-.data           0x1fff0400      0x8f4 load address 0x00010544
+.data           0x1fff0400      0x8f4 load address 0x000105dc
                 0x1fff0400                . = ALIGN (0x4)
                 0x1fff0400                __DATA_RAM = .
                 0x1fff0400                __data_start__ = .
@@ -22377,9 +22379,9 @@ END GROUP
  *(.jcr*)
                 0x1fff0cf4                . = ALIGN (0x4)
                 0x1fff0cf4                __data_end__ = .
-                0x00010e38                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
+                0x00010ed0                __DATA_END = (__DATA_ROM + (__data_end__ - __data_start__))
 
-.igot.plt       0x1fff0cf4        0x0 load address 0x00010e38
+.igot.plt       0x1fff0cf4        0x0 load address 0x00010ed0
  .igot.plt      0x00000000        0x0 ./Static_Code/System/PE_low_level_init.o
 
 .m_interrupts_ram
@@ -22393,9 +22395,9 @@ END GROUP
                 0x1fff0400                . = ALIGN (0x4)
                 0x00000400                __m_interrupts_ram_ROMSize = (__m_interrupts_ram_RAMEnd - __m_interrupts_ram_RAMStart)
                 0x00000400                __RAM_VECTOR_TABLE_SIZE_BYTES = (__m_interrupts_ram_RAMEnd - __m_interrupts_ram_RAMStart)
-                0x00010e38                __m_data_2_ROMStart = (__DATA_ROM + SIZEOF (.data))
+                0x00010ed0                __m_data_2_ROMStart = (__DATA_ROM + SIZEOF (.data))
 
-.m_data_2       0x20000000        0x0 load address 0x00010e38
+.m_data_2       0x20000000        0x0 load address 0x00010ed0
                 0x20000000                . = ALIGN (0x4)
                 0x20000000                __m_data_2_RAMStart = .
  *(.m_data_2)
@@ -22403,10 +22405,10 @@ END GROUP
                 0x20000000                . = ALIGN (0x4)
                 0x00000000                __m_data_2_ROMSize = (__m_data_2_RAMEnd - __m_data_2_RAMStart)
                 0x00100000                text_end = (ORIGIN (m_text) + 0xffbf0)
-                0x00010e38                data_init_end = (__m_data_2_ROMStart + SIZEOF (.m_data_2))
+                0x00010ed0                data_init_end = (__m_data_2_ROMStart + SIZEOF (.m_data_2))
                 0x00000001                ASSERT ((data_init_end <= text_end), region m_text overflowed with text and data)
 
-.bss            0x1fff0cf8      0x614 load address 0x00010e40
+.bss            0x1fff0cf8      0x614 load address 0x00010ed8
                 0x1fff0cf8                . = ALIGN (0x4)
                 0x1fff0cf8                __START_BSS = .
                 0x1fff0cf8                __bss_start__ = .
@@ -22735,71 +22737,71 @@ END GROUP
                 0x000018e0       0x34 c:/freescale/kds_v3/toolchain/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7e-m/fpu\libnosys.a(lseek.o)
 OUTPUT(ceng455part3.elf elf32-littlearm)
 
-.debug_info     0x00000000    0x286d6
+.debug_info     0x00000000    0x2870f
  .debug_info    0x00000000      0x149 ./Static_Code/System/PE_low_level_init.o
  .debug_info    0x00000149      0x15b ./Sources/Events.o
  .debug_info    0x000002a4      0x5bc ./Sources/api.o
  .debug_info    0x00000860      0x2d8 ./Sources/main.o
- .debug_info    0x00000b38      0xaaa ./Sources/os_tasks.o
- .debug_info    0x000015e2      0x162 ./Sources/rtos_main_task.o
- .debug_info    0x00001744      0x2b9 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
- .debug_info    0x000019fd      0x16d ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
- .debug_info    0x00001b6a      0x154 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
- .debug_info    0x00001cbe      0x3fb ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
- .debug_info    0x000020b9      0x659 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
- .debug_info    0x00002712      0x25f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
- .debug_info    0x00002971      0x167 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
- .debug_info    0x00002ad8       0x82 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/boot.o
- .debug_info    0x00002b5a       0x86 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/dispatch.o
- .debug_info    0x00002be0      0x24c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
- .debug_info    0x00002e2c      0x2d0 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
- .debug_info    0x000030fc      0x11f ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
- .debug_info    0x0000321b      0xc57 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
- .debug_info    0x00003e72      0xc3a ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
- .debug_info    0x00004aac      0xc33 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
- .debug_info    0x000056df      0xc79 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
- .debug_info    0x00006358      0xd91 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
- .debug_info    0x000070e9      0x6e0 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
- .debug_info    0x000077c9      0x4c8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
- .debug_info    0x00007c91     0x1aad ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .debug_info    0x0000973e      0x34c ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
- .debug_info    0x00009a8a      0x850 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
- .debug_info    0x0000a2da     0x16eb ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
- .debug_info    0x0000b9c5      0x7b7 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
- .debug_info    0x0000c17c      0xbaa ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
- .debug_info    0x0000cd26      0xc13 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
- .debug_info    0x0000d939      0xf7b ./SDK/rtos/mqx/mqx/source/kernel/int.o
- .debug_info    0x0000e8b4     0x1c35 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
- .debug_info    0x000104e9     0x1154 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
- .debug_info    0x0001163d     0x1196 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
- .debug_info    0x000127d3     0x11fe ./SDK/rtos/mqx/mqx/source/kernel/msg.o
- .debug_info    0x000139d1     0x119a ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
- .debug_info    0x00014b6b     0x1b8b ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
- .debug_info    0x000166f6      0x446 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
- .debug_info    0x00016b3c      0xe9a ./SDK/rtos/mqx/mqx/source/kernel/sched.o
- .debug_info    0x000179d6     0x2375 ./SDK/rtos/mqx/mqx/source/kernel/task.o
- .debug_info    0x00019d4b     0x1e48 ./SDK/rtos/mqx/mqx/source/kernel/time.o
- .debug_info    0x0001bb93     0x1904 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
- .debug_info    0x0001d497      0xf98 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
- .debug_info    0x0001e42f      0x940 ./SDK/platform/utilities/src/fsl_debug_console.o
- .debug_info    0x0001ed6f      0x745 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
- .debug_info    0x0001f4b4      0x7f1 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
- .debug_info    0x0001fca5     0x19e8 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
- .debug_info    0x0002168d      0xd59 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
- .debug_info    0x000223e6      0xed5 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
- .debug_info    0x000232bb      0xc97 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
- .debug_info    0x00023f52      0x573 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
- .debug_info    0x000244c5     0x1677 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
- .debug_info    0x00025b3c      0x49f ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
- .debug_info    0x00025fdb       0x89 ./SDK/platform/devices/MK64F12/startup/gcc/startup_MK64F12.o
- .debug_info    0x00026064      0xb18 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
- .debug_info    0x00026b7c      0x3a7 ./SDK/platform/devices/startup.o
- .debug_info    0x00026f23      0x6ab ./Generated_Code/Cpu.o
- .debug_info    0x000275ce      0x18a ./Generated_Code/MasterTask.o
- .debug_info    0x00027758      0x45b ./Generated_Code/hardware_init.o
- .debug_info    0x00027bb3      0x30c ./Generated_Code/mqx_ksdk.o
- .debug_info    0x00027ebf      0x453 ./Generated_Code/myUART.o
- .debug_info    0x00028312      0x3c4 ./Generated_Code/pin_init.o
+ .debug_info    0x00000b38      0xae3 ./Sources/os_tasks.o
+ .debug_info    0x0000161b      0x162 ./Sources/rtos_main_task.o
+ .debug_info    0x0000177d      0x2b9 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
+ .debug_info    0x00001a36      0x16d ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
+ .debug_info    0x00001ba3      0x154 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
+ .debug_info    0x00001cf7      0x3fb ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
+ .debug_info    0x000020f2      0x659 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .debug_info    0x0000274b      0x25f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+ .debug_info    0x000029aa      0x167 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
+ .debug_info    0x00002b11       0x82 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/boot.o
+ .debug_info    0x00002b93       0x86 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/dispatch.o
+ .debug_info    0x00002c19      0x24c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+ .debug_info    0x00002e65      0x2d0 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
+ .debug_info    0x00003135      0x11f ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
+ .debug_info    0x00003254      0xc57 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
+ .debug_info    0x00003eab      0xc3a ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
+ .debug_info    0x00004ae5      0xc33 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
+ .debug_info    0x00005718      0xc79 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
+ .debug_info    0x00006391      0xd91 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
+ .debug_info    0x00007122      0x6e0 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
+ .debug_info    0x00007802      0x4c8 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
+ .debug_info    0x00007cca     0x1aad ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .debug_info    0x00009777      0x34c ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+ .debug_info    0x00009ac3      0x850 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+ .debug_info    0x0000a313     0x16eb ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+ .debug_info    0x0000b9fe      0x7b7 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+ .debug_info    0x0000c1b5      0xbaa ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
+ .debug_info    0x0000cd5f      0xc13 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+ .debug_info    0x0000d972      0xf7b ./SDK/rtos/mqx/mqx/source/kernel/int.o
+ .debug_info    0x0000e8ed     0x1c35 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+ .debug_info    0x00010522     0x1154 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+ .debug_info    0x00011676     0x1196 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+ .debug_info    0x0001280c     0x11fe ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+ .debug_info    0x00013a0a     0x119a ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+ .debug_info    0x00014ba4     0x1b8b ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+ .debug_info    0x0001672f      0x446 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+ .debug_info    0x00016b75      0xe9a ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+ .debug_info    0x00017a0f     0x2375 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+ .debug_info    0x00019d84     0x1e48 ./SDK/rtos/mqx/mqx/source/kernel/time.o
+ .debug_info    0x0001bbcc     0x1904 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+ .debug_info    0x0001d4d0      0xf98 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+ .debug_info    0x0001e468      0x940 ./SDK/platform/utilities/src/fsl_debug_console.o
+ .debug_info    0x0001eda8      0x745 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+ .debug_info    0x0001f4ed      0x7f1 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+ .debug_info    0x0001fcde     0x19e8 ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+ .debug_info    0x000216c6      0xd59 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+ .debug_info    0x0002241f      0xed5 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+ .debug_info    0x000232f4      0xc97 ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+ .debug_info    0x00023f8b      0x573 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
+ .debug_info    0x000244fe     0x1677 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+ .debug_info    0x00025b75      0x49f ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
+ .debug_info    0x00026014       0x89 ./SDK/platform/devices/MK64F12/startup/gcc/startup_MK64F12.o
+ .debug_info    0x0002609d      0xb18 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
+ .debug_info    0x00026bb5      0x3a7 ./SDK/platform/devices/startup.o
+ .debug_info    0x00026f5c      0x6ab ./Generated_Code/Cpu.o
+ .debug_info    0x00027607      0x18a ./Generated_Code/MasterTask.o
+ .debug_info    0x00027791      0x45b ./Generated_Code/hardware_init.o
+ .debug_info    0x00027bec      0x30c ./Generated_Code/mqx_ksdk.o
+ .debug_info    0x00027ef8      0x453 ./Generated_Code/myUART.o
+ .debug_info    0x0002834b      0x3c4 ./Generated_Code/pin_init.o
 
 .debug_abbrev   0x00000000     0x5b60
  .debug_abbrev  0x00000000       0x8d ./Static_Code/System/PE_low_level_init.o
@@ -23228,73 +23230,73 @@ OUTPUT(ceng455part3.elf elf32-littlearm)
  .debug_macro   0x0003fcb5      0x515 ./Generated_Code/myUART.o
  .debug_macro   0x000401ca      0x1af ./Generated_Code/pin_init.o
 
-.debug_line     0x00000000    0x234ed
+.debug_line     0x00000000    0x234f5
  .debug_line    0x00000000      0xb3c ./Static_Code/System/PE_low_level_init.o
  .debug_line    0x00000b3c      0xaea ./Sources/Events.o
  .debug_line    0x00001626      0x74b ./Sources/api.o
  .debug_line    0x00001d71      0xaf0 ./Sources/main.o
- .debug_line    0x00002861      0xcdd ./Sources/os_tasks.o
- .debug_line    0x0000353e      0xafe ./Sources/rtos_main_task.o
- .debug_line    0x0000403c      0x8e6 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
- .debug_line    0x00004922      0x868 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
- .debug_line    0x0000518a      0x841 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
- .debug_line    0x000059cb      0x8d1 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
- .debug_line    0x0000629c      0xbac ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
- .debug_line    0x00006e48      0x899 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
- .debug_line    0x000076e1      0x80f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
- .debug_line    0x00007ef0       0x82 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/boot.o
- .debug_line    0x00007f72      0x173 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/dispatch.o
- .debug_line    0x000080e5      0x8d6 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
- .debug_line    0x000089bb      0x757 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
- .debug_line    0x00009112      0x743 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
- .debug_line    0x00009855      0x751 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
- .debug_line    0x00009fa6      0x748 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
- .debug_line    0x0000a6ee      0x746 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
- .debug_line    0x0000ae34      0x74d ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
- .debug_line    0x0000b581      0x79c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
- .debug_line    0x0000bd1d      0x752 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
- .debug_line    0x0000c46f      0x740 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
- .debug_line    0x0000cbaf      0xdb0 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
- .debug_line    0x0000d95f      0x8b8 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
- .debug_line    0x0000e217      0x99a ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
- .debug_line    0x0000ebb1      0xc9b ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
- .debug_line    0x0000f84c      0x86c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
- .debug_line    0x000100b8      0x741 ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
- .debug_line    0x000107f9      0x844 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
- .debug_line    0x0001103d      0x97b ./SDK/rtos/mqx/mqx/source/kernel/int.o
- .debug_line    0x000119b8      0xd45 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
- .debug_line    0x000126fd      0x90b ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
- .debug_line    0x00013008      0x988 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
- .debug_line    0x00013990      0x902 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
- .debug_line    0x00014292      0x892 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
- .debug_line    0x00014b24      0xc9d ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
- .debug_line    0x000157c1      0x830 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
- .debug_line    0x00015ff1      0x827 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
- .debug_line    0x00016818      0xe6c ./SDK/rtos/mqx/mqx/source/kernel/task.o
- .debug_line    0x00017684      0xd9f ./SDK/rtos/mqx/mqx/source/kernel/time.o
- .debug_line    0x00018423      0xc2d ./SDK/rtos/mqx/mqx/source/kernel/timer.o
- .debug_line    0x00019050      0xc62 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
- .debug_line    0x00019cb2      0xb76 ./SDK/platform/utilities/src/fsl_debug_console.o
- .debug_line    0x0001a828      0x6e2 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
- .debug_line    0x0001af0a      0xa30 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
- .debug_line    0x0001b93a      0xbbd ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
- .debug_line    0x0001c4f7      0xae7 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
- .debug_line    0x0001cfde      0x8e1 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
- .debug_line    0x0001d8bf      0x75e ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
- .debug_line    0x0001e01d      0x3b1 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
- .debug_line    0x0001e3ce      0xdb1 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
- .debug_line    0x0001f17f      0x3af ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
- .debug_line    0x0001f52e       0x75 ./SDK/platform/devices/MK64F12/startup/gcc/startup_MK64F12.o
- .debug_line    0x0001f5a3      0x46b ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
- .debug_line    0x0001fa0e      0x3a2 ./SDK/platform/devices/startup.o
- .debug_line    0x0001fdb0      0xb39 ./Generated_Code/Cpu.o
- .debug_line    0x000208e9      0xb0f ./Generated_Code/MasterTask.o
- .debug_line    0x000213f8      0x4ae ./Generated_Code/hardware_init.o
- .debug_line    0x000218a6      0xbd8 ./Generated_Code/mqx_ksdk.o
- .debug_line    0x0002247e      0xb02 ./Generated_Code/myUART.o
- .debug_line    0x00022f80      0x56d ./Generated_Code/pin_init.o
+ .debug_line    0x00002861      0xce5 ./Sources/os_tasks.o
+ .debug_line    0x00003546      0xafe ./Sources/rtos_main_task.o
+ .debug_line    0x00004044      0x8e6 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
+ .debug_line    0x0000492a      0x868 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
+ .debug_line    0x00005192      0x841 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
+ .debug_line    0x000059d3      0x8d1 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
+ .debug_line    0x000062a4      0xbac ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .debug_line    0x00006e50      0x899 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+ .debug_line    0x000076e9      0x80f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
+ .debug_line    0x00007ef8       0x82 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/boot.o
+ .debug_line    0x00007f7a      0x173 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/core/M4/dispatch.o
+ .debug_line    0x000080ed      0x8d6 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+ .debug_line    0x000089c3      0x757 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
+ .debug_line    0x0000911a      0x743 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
+ .debug_line    0x0000985d      0x751 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
+ .debug_line    0x00009fae      0x748 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
+ .debug_line    0x0000a6f6      0x746 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
+ .debug_line    0x0000ae3c      0x74d ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
+ .debug_line    0x0000b589      0x79c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
+ .debug_line    0x0000bd25      0x752 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
+ .debug_line    0x0000c477      0x740 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
+ .debug_line    0x0000cbb7      0xdb0 ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .debug_line    0x0000d967      0x8b8 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+ .debug_line    0x0000e21f      0x99a ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+ .debug_line    0x0000ebb9      0xc9b ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+ .debug_line    0x0000f854      0x86c ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+ .debug_line    0x000100c0      0x741 ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
+ .debug_line    0x00010801      0x844 ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+ .debug_line    0x00011045      0x97b ./SDK/rtos/mqx/mqx/source/kernel/int.o
+ .debug_line    0x000119c0      0xd45 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+ .debug_line    0x00012705      0x90b ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+ .debug_line    0x00013010      0x988 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+ .debug_line    0x00013998      0x902 ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+ .debug_line    0x0001429a      0x892 ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+ .debug_line    0x00014b2c      0xc9d ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+ .debug_line    0x000157c9      0x830 ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+ .debug_line    0x00015ff9      0x827 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+ .debug_line    0x00016820      0xe6c ./SDK/rtos/mqx/mqx/source/kernel/task.o
+ .debug_line    0x0001768c      0xd9f ./SDK/rtos/mqx/mqx/source/kernel/time.o
+ .debug_line    0x0001842b      0xc2d ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+ .debug_line    0x00019058      0xc62 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+ .debug_line    0x00019cba      0xb76 ./SDK/platform/utilities/src/fsl_debug_console.o
+ .debug_line    0x0001a830      0x6e2 ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+ .debug_line    0x0001af12      0xa30 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+ .debug_line    0x0001b942      0xbbd ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+ .debug_line    0x0001c4ff      0xae7 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+ .debug_line    0x0001cfe6      0x8e1 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+ .debug_line    0x0001d8c7      0x75e ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+ .debug_line    0x0001e025      0x3b1 ./SDK/platform/drivers/src/uart/fsl_uart_common.o
+ .debug_line    0x0001e3d6      0xdb1 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+ .debug_line    0x0001f187      0x3af ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
+ .debug_line    0x0001f536       0x75 ./SDK/platform/devices/MK64F12/startup/gcc/startup_MK64F12.o
+ .debug_line    0x0001f5ab      0x46b ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
+ .debug_line    0x0001fa16      0x3a2 ./SDK/platform/devices/startup.o
+ .debug_line    0x0001fdb8      0xb39 ./Generated_Code/Cpu.o
+ .debug_line    0x000208f1      0xb0f ./Generated_Code/MasterTask.o
+ .debug_line    0x00021400      0x4ae ./Generated_Code/hardware_init.o
+ .debug_line    0x000218ae      0xbd8 ./Generated_Code/mqx_ksdk.o
+ .debug_line    0x00022486      0xb02 ./Generated_Code/myUART.o
+ .debug_line    0x00022f88      0x56d ./Generated_Code/pin_init.o
 
-.debug_str      0x00000000   0x1b5d2b
+.debug_str      0x00000000   0x1b5d4b
  .debug_str     0x00000000   0x1a68a9 ./Static_Code/System/PE_low_level_init.o
                              0x1a6aa3 (size before relaxing)
  .debug_str     0x001a68a9       0x5d ./Sources/Events.o
@@ -23303,119 +23305,119 @@ OUTPUT(ceng455part3.elf elf32-littlearm)
                              0x1a4d1b (size before relaxing)
  .debug_str     0x001a72ed      0x1fa ./Sources/main.o
                              0x1a6beb (size before relaxing)
- .debug_str     0x001a74e7      0x31c ./Sources/os_tasks.o
-                             0x1a771c (size before relaxing)
- .debug_str     0x001a7803       0x26 ./Sources/rtos_main_task.o
+ .debug_str     0x001a74e7      0x33c ./Sources/os_tasks.o
+                             0x1a7746 (size before relaxing)
+ .debug_str     0x001a7823       0x26 ./Sources/rtos_main_task.o
                              0x1a6a2b (size before relaxing)
- .debug_str     0x001a7829      0xd0f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
+ .debug_str     0x001a7849      0xd0f ./SDK/rtos/mqx/mqx_stdlib/source/stdio/buf_prv.o
                              0x1a67dd (size before relaxing)
- .debug_str     0x001a8538       0x55 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
+ .debug_str     0x001a8558       0x55 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fclose.o
                              0x1a676f (size before relaxing)
- .debug_str     0x001a858d       0x38 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
+ .debug_str     0x001a85ad       0x38 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/fflush.o
                              0x1a62f0 (size before relaxing)
- .debug_str     0x001a85c5      0x16c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
+ .debug_str     0x001a85e5      0x16c ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print.o
                              0x1a6455 (size before relaxing)
- .debug_str     0x001a8731      0x1bc ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
+ .debug_str     0x001a8751      0x1bc ./SDK/rtos/mqx/mqx_stdlib/source/stdio/print_prv.o
                              0x1a65f0 (size before relaxing)
- .debug_str     0x001a88ed       0x3a ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
+ .debug_str     0x001a890d       0x3a ./SDK/rtos/mqx/mqx_stdlib/source/stdio/put.o
                              0x1a630b (size before relaxing)
- .debug_str     0x001a8927       0x47 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
+ .debug_str     0x001a8947       0x47 ./SDK/rtos/mqx/mqx_stdlib/source/stdio/stdio.o
                              0x1a62f4 (size before relaxing)
- .debug_str     0x001a896e       0x9b ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
+ .debug_str     0x001a898e       0x9b ./SDK/rtos/mqx/mqx/source/psp/cortex_m/compiler/gcc_arm/comp.o
                              0x1a6355 (size before relaxing)
- .debug_str     0x001a8a09     0x3020 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
+ .debug_str     0x001a8a29     0x3020 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/int_vtab.o
                              0x1a84af (size before relaxing)
- .debug_str     0x001aba29       0x7b ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
+ .debug_str     0x001aba49       0x7b ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_iinit.o
                              0x1a8457 (size before relaxing)
- .debug_str     0x001abaa4      0x8ac ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
+ .debug_str     0x001abac4      0x8ac ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_mstiq.o
                              0x1a8f1e (size before relaxing)
- .debug_str     0x001ac350       0x64 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
+ .debug_str     0x001ac370       0x64 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tiad.o
                              0x1a8eee (size before relaxing)
- .debug_str     0x001ac3b4       0x48 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
+ .debug_str     0x001ac3d4       0x48 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tinm.o
                              0x1a8f01 (size before relaxing)
- .debug_str     0x001ac3fc       0x56 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
+ .debug_str     0x001ac41c       0x56 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/psp_tkti.o
                              0x1a8f2a (size before relaxing)
- .debug_str     0x001ac452       0xde ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
+ .debug_str     0x001ac472       0xde ./SDK/rtos/mqx/mqx/source/psp/cortex_m/sc_irdyq.o
                              0x1a8f8c (size before relaxing)
- .debug_str     0x001ac530      0x155 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
+ .debug_str     0x001ac550      0x155 ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_bu.o
                              0x1a88ff (size before relaxing)
- .debug_str     0x001ac685       0x4c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
+ .debug_str     0x001ac6a5       0x4c ./SDK/rtos/mqx/mqx/source/psp/cortex_m/stack_de.o
                              0x1a87a7 (size before relaxing)
- .debug_str     0x001ac6d1      0xc2e ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
+ .debug_str     0x001ac6f1      0xc2e ./SDK/rtos/mqx/mqx/source/nio/src/nio.o
                              0x1aa637 (size before relaxing)
- .debug_str     0x001ad2ff       0x34 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
+ .debug_str     0x001ad31f       0x34 ./SDK/rtos/mqx/mqx/source/nio/src/nio_posix.o
                              0x1a9c29 (size before relaxing)
- .debug_str     0x001ad333      0x1ba ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
+ .debug_str     0x001ad353      0x1ba ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_tty/src/nio_tty.o
                              0x1a6abf (size before relaxing)
- .debug_str     0x001ad4ed      0xe0d ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
+ .debug_str     0x001ad50d      0xe0d ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_serial/src/nio_serial.o
                              0x1a7a08 (size before relaxing)
- .debug_str     0x001ae2fa      0x121 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
+ .debug_str     0x001ae31a      0x121 ./SDK/rtos/mqx/mqx/source/nio/drivers/nio_dummy/src/nio_dummy.o
                              0x1a61f5 (size before relaxing)
- .debug_str     0x001ae41b       0x3c ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
+ .debug_str     0x001ae43b       0x3c ./SDK/rtos/mqx/mqx/source/kernel/idletask.o
                              0x1a8eaf (size before relaxing)
- .debug_str     0x001ae457       0x5c ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
+ .debug_str     0x001ae477       0x5c ./SDK/rtos/mqx/mqx/source/kernel/inittask.o
                              0x1a99a8 (size before relaxing)
- .debug_str     0x001ae4b3      0x1d7 ./SDK/rtos/mqx/mqx/source/kernel/int.o
+ .debug_str     0x001ae4d3      0x1d7 ./SDK/rtos/mqx/mqx/source/kernel/int.o
                              0x1a90df (size before relaxing)
- .debug_str     0x001ae68a      0x3d5 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
+ .debug_str     0x001ae6aa      0x3d5 ./SDK/rtos/mqx/mqx/source/kernel/lwmem.o
                              0x1a9549 (size before relaxing)
- .debug_str     0x001aea5f      0x191 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
+ .debug_str     0x001aea7f      0x191 ./SDK/rtos/mqx/mqx/source/kernel/lwsem.o
                              0x1a90a5 (size before relaxing)
- .debug_str     0x001aebf0      0x3c4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
+ .debug_str     0x001aec10      0x3c4 ./SDK/rtos/mqx/mqx/source/kernel/mqx.o
                              0x1a9304 (size before relaxing)
- .debug_str     0x001aefb4      0x80f ./SDK/rtos/mqx/mqx/source/kernel/msg.o
+ .debug_str     0x001aefd4      0x80f ./SDK/rtos/mqx/mqx/source/kernel/msg.o
                              0x1a9f66 (size before relaxing)
- .debug_str     0x001af7c3      0x10c ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
+ .debug_str     0x001af7e3      0x10c ./SDK/rtos/mqx/mqx/source/kernel/msgpool.o
                              0x1a9f3a (size before relaxing)
- .debug_str     0x001af8cf      0x470 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
+ .debug_str     0x001af8ef      0x470 ./SDK/rtos/mqx/mqx/source/kernel/msgq.o
                              0x1aa3c8 (size before relaxing)
- .debug_str     0x001afd3f      0x67e ./SDK/rtos/mqx/mqx/source/kernel/queue.o
+ .debug_str     0x001afd5f      0x67e ./SDK/rtos/mqx/mqx/source/kernel/queue.o
                              0x1a88c1 (size before relaxing)
- .debug_str     0x001b03bd      0x190 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
+ .debug_str     0x001b03dd      0x190 ./SDK/rtos/mqx/mqx/source/kernel/sched.o
                              0x1a9072 (size before relaxing)
- .debug_str     0x001b054d      0x713 ./SDK/rtos/mqx/mqx/source/kernel/task.o
+ .debug_str     0x001b056d      0x713 ./SDK/rtos/mqx/mqx/source/kernel/task.o
                              0x1a986f (size before relaxing)
- .debug_str     0x001b0c60      0x72a ./SDK/rtos/mqx/mqx/source/kernel/time.o
+ .debug_str     0x001b0c80      0x72a ./SDK/rtos/mqx/mqx/source/kernel/time.o
                              0x1a9813 (size before relaxing)
- .debug_str     0x001b138a      0x4a8 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
+ .debug_str     0x001b13aa      0x4a8 ./SDK/rtos/mqx/mqx/source/kernel/timer.o
                              0x1a960f (size before relaxing)
- .debug_str     0x001b1832      0xa94 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
+ .debug_str     0x001b1852      0xa94 ./SDK/rtos/mqx/mqx/source/bsp/init_bsp.o
                              0x1a820f (size before relaxing)
- .debug_str     0x001b22c6      0x419 ./SDK/platform/utilities/src/fsl_debug_console.o
+ .debug_str     0x001b22e6      0x419 ./SDK/platform/utilities/src/fsl_debug_console.o
                              0x1a6c96 (size before relaxing)
- .debug_str     0x001b26df      0x16b ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
+ .debug_str     0x001b26ff      0x16b ./SDK/platform/system/src/hwtimer/fsl_hwtimer.o
                              0x19d12e (size before relaxing)
- .debug_str     0x001b284a      0x187 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
+ .debug_str     0x001b286a      0x187 ./SDK/platform/system/src/hwtimer/fsl_hwtimer_systick.o
                              0x1a6086 (size before relaxing)
- .debug_str     0x001b29d1     0x160f ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
+ .debug_str     0x001b29f1     0x160f ./SDK/platform/system/src/clock/MK64F12/fsl_clock_MK64F12.o
                              0x19e441 (size before relaxing)
- .debug_str     0x001b3fe0      0x408 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
+ .debug_str     0x001b4000      0x408 ./SDK/platform/osa/src/fsl_os_abstraction_mqx.o
                              0x1a6129 (size before relaxing)
- .debug_str     0x001b43e8      0x967 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
+ .debug_str     0x001b4408      0x967 ./SDK/platform/hal/src/uart/fsl_uart_hal.o
                              0x19d857 (size before relaxing)
- .debug_str     0x001b4d4f      0x79c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
+ .debug_str     0x001b4d6f      0x79c ./SDK/platform/hal/src/mcg/fsl_mcg_hal.o
                              0x19d577 (size before relaxing)
- .debug_str     0x001b54eb       0x4d ./SDK/platform/drivers/src/uart/fsl_uart_common.o
+ .debug_str     0x001b550b       0x4d ./SDK/platform/drivers/src/uart/fsl_uart_common.o
                              0x19d090 (size before relaxing)
- .debug_str     0x001b5538      0x322 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
+ .debug_str     0x001b5558      0x322 ./SDK/platform/drivers/src/uart/fsl_uart_driver.o
                              0x1a6d7e (size before relaxing)
- .debug_str     0x001b585a       0x3c ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
+ .debug_str     0x001b587a       0x3c ./SDK/platform/drivers/src/mpu/fsl_mpu_common.o
                              0x19d032 (size before relaxing)
- .debug_str     0x001b5896      0x160 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
+ .debug_str     0x001b58b6      0x160 ./SDK/platform/devices/MK64F12/startup/system_MK64F12.o
                              0x19d264 (size before relaxing)
- .debug_str     0x001b59f6       0xf7 ./SDK/platform/devices/startup.o
+ .debug_str     0x001b5a16       0xf7 ./SDK/platform/devices/startup.o
                              0x19cc1e (size before relaxing)
- .debug_str     0x001b5aed       0x4c ./Generated_Code/Cpu.o
+ .debug_str     0x001b5b0d       0x4c ./Generated_Code/Cpu.o
                              0x1a71e9 (size before relaxing)
- .debug_str     0x001b5b39       0x2f ./Generated_Code/MasterTask.o
+ .debug_str     0x001b5b59       0x2f ./Generated_Code/MasterTask.o
                              0x1a6a5f (size before relaxing)
- .debug_str     0x001b5b68       0x30 ./Generated_Code/hardware_init.o
+ .debug_str     0x001b5b88       0x30 ./Generated_Code/hardware_init.o
                              0x19d16d (size before relaxing)
- .debug_str     0x001b5b98       0x5c ./Generated_Code/mqx_ksdk.o
+ .debug_str     0x001b5bb8       0x5c ./Generated_Code/mqx_ksdk.o
                              0x1a71d5 (size before relaxing)
- .debug_str     0x001b5bf4       0x2f ./Generated_Code/myUART.o
+ .debug_str     0x001b5c14       0x2f ./Generated_Code/myUART.o
                              0x1a6cf0 (size before relaxing)
- .debug_str     0x001b5c23      0x108 ./Generated_Code/pin_init.o
+ .debug_str     0x001b5c43      0x108 ./Generated_Code/pin_init.o
                              0x19cdad (size before relaxing)
 
 .comment        0x00000000       0x70
