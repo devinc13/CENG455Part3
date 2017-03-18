@@ -47,7 +47,7 @@ extern "C" {
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
 _pool_id message_pool;
-_queue_id scheuler_qid;
+_queue_id scheduler_qid;
 struct task_list *taskList = NULL;
 struct overdue_tasks *overdueTasks = NULL;
 
@@ -82,7 +82,7 @@ void task_generator(os_task_param_t task_init_data)
 	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
 
 	// Create simple task 2
-	_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
+	_task_id t2 = dd_tcreate(USERTASK_TASK, 40, 30);
 
 	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
@@ -112,7 +112,7 @@ void task_generator(os_task_param_t task_init_data)
 
 
 	struct task_list *temp_ot_ptr = overdue_tasks_head_ptr;
-	while(temp_at_ptr){
+	while(temp_ot_ptr){
 		n_failed_tasks++;
 		temp_ot_ptr = temp_ot_ptr->next_cell;
 	}
@@ -138,9 +138,9 @@ void dd_scheduler(os_task_param_t task_init_data)
 	int timeout = 0;
 
 	/* open a message queue */
-	scheuler_qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
+	scheduler_qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
 
-	if (scheuler_qid == 0) {
+	if (scheduler_qid == 0) {
 	  printf("\nCould not open the scheduler message queue\n");
 	  _task_block();
 	}
@@ -158,7 +158,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 #ifdef PEX_USE_RTOS
   while (1) {
 #endif
-	  	SCHEDULER_MESSAGE_PTR msg_ptr = _msgq_receive(scheuler_qid, timeout);
+	  	SCHEDULER_MESSAGE_PTR msg_ptr = _msgq_receive(scheduler_qid, timeout);
 
 		if (msg_ptr == NULL) {
 			printf("\nTIMEOUT\n");
@@ -175,16 +175,16 @@ void dd_scheduler(os_task_param_t task_init_data)
 				_time_get(&start_time);
 
 				if (taskList == NULL) {
-					struct task_list newTask;
-					newTask.tid = msg_ptr->TASKID;
-					newTask.deadline = msg_ptr->DEADLINE;
-					newTask.creation_time = start_time.MILLISECONDS;
-					newTask.next_cell = NULL;
-					newTask.previous_cell = NULL;
-					taskList = &newTask;
+					struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+					newTask_ptr->tid = msg_ptr->TASKID;
+					newTask_ptr->deadline = msg_ptr->DEADLINE;
+					newTask_ptr->creation_time = start_time.MILLISECONDS;
+					newTask_ptr->next_cell = NULL;
+					newTask_ptr->previous_cell = NULL;
+					taskList = newTask_ptr;
 					unsigned int priority;
-					_task_get_priority(newTask.tid, &priority);
-					_task_set_priority(newTask.tid, 15, &priority);
+					_task_get_priority(newTask_ptr->tid, &priority);
+					_task_set_priority(newTask_ptr->tid, 15, &priority);
 					//printf("Done setting priority\n");
 				} else {
 					// Put into list sorted
@@ -194,60 +194,59 @@ void dd_scheduler(os_task_param_t task_init_data)
 					if (msg_ptr->DEADLINE < taskList->deadline) {
 						//printf("TEST2\n");
 						// Create new higher priority task
-						struct task_list newTask;
-						newTask.tid = msg_ptr->TASKID;
-						newTask.deadline = msg_ptr->DEADLINE;
-						newTask.creation_time = start_time.MILLISECONDS;
-						newTask.next_cell = &taskList;
-						newTask.previous_cell = NULL;
+
+						struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+						newTask_ptr->tid = msg_ptr->TASKID;
+						newTask_ptr->deadline = msg_ptr->DEADLINE;
+						newTask_ptr->creation_time = start_time.MILLISECONDS;
+						newTask_ptr->next_cell = taskList;
+						newTask_ptr->previous_cell = NULL;
 						// set previous of old highest priority
-						taskList->previous_cell = &newTask;
+						taskList->previous_cell = newTask_ptr;
 						// point to new higher priority task
-						taskList = &newTask;
+						taskList = newTask_ptr;
 
 						// Set old task to 25
 						unsigned int priority;
-						_task_get_priority(taskList->tid, &priority);
-						_task_set_priority(taskList->tid, 25, &priority);
+						_task_get_priority(newTask_ptr->next_cell->tid, &priority);
+						_task_set_priority(newTask_ptr->next_cell->tid, 25, &priority);
 
 						// Make new task active
-						_task_get_priority(newTask.tid, &priority);
-						_task_set_priority(newTask.tid, 15, &priority);
+						_task_get_priority(newTask_ptr->tid, &priority);
+						_task_set_priority(newTask_ptr->tid, 15, &priority);
 						//printf("TEST3\n");
 					} else {
 						//printf("TEST4\n");
 						// Find where it goes in the list
-						while (msg_ptr->DEADLINE > taskList->deadline) {
-							//printf("TEST5\n");
-							// Check if this is the end of the list
-							if (temp_task_list_ptr->next_cell == NULL) {
-								//printf("TEST6\n");
-								struct task_list newTask;
-								newTask.tid = msg_ptr->TASKID;
-								newTask.deadline = msg_ptr->DEADLINE;
-								newTask.creation_time = start_time.MILLISECONDS;
-								newTask.next_cell = NULL;
-								newTask.previous_cell = &temp_task_list_ptr;
-								temp_task_list_ptr->next_cell = &newTask;
-								//printf("Item added to back of list\n");
-								return;
-							}
-
+						while (temp_task_list_ptr->next_cell != NULL && msg_ptr->DEADLINE > temp_task_list_ptr->deadline) {
 							temp_task_list_ptr = taskList->next_cell;
 						}
 
-						//printf("TEST6\n");
-						// Put it in between cells
-						struct task_list newTask;
-						newTask.tid = msg_ptr->TASKID;
-						newTask.deadline = msg_ptr->DEADLINE;
-						newTask.creation_time = start_time.MILLISECONDS;
-						newTask.next_cell = &(temp_task_list_ptr);
-						newTask.previous_cell = &(temp_task_list_ptr->previous_cell);
+						if (temp_task_list_ptr->next_cell == NULL) {
+							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+							newTask_ptr->tid = msg_ptr->TASKID;
+							newTask_ptr->deadline = msg_ptr->DEADLINE;
+							newTask_ptr->creation_time = start_time.MILLISECONDS;
+							newTask_ptr->next_cell = NULL;
+							newTask_ptr->previous_cell = temp_task_list_ptr;
+							temp_task_list_ptr->next_cell = newTask_ptr;
+							printf("Item added to back of list\n");
+						} else {
+							//printf("TEST6\n");
+							// Put it in between cells
 
-						temp_task_list_ptr->previous_cell->next_cell = &newTask;
-						temp_task_list_ptr->previous_cell = &newTask;
-						//printf("TEST7\n");
+							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+							newTask_ptr->tid = msg_ptr->TASKID;
+							newTask_ptr->deadline = msg_ptr->DEADLINE;
+							newTask_ptr->creation_time = start_time.MILLISECONDS;
+							newTask_ptr->next_cell = temp_task_list_ptr;
+							newTask_ptr->previous_cell = temp_task_list_ptr->previous_cell;
+
+							temp_task_list_ptr->previous_cell->next_cell = newTask_ptr;
+							temp_task_list_ptr->previous_cell = newTask_ptr;
+
+							//printf("TEST7\n");
+						}
 					}
 
 				}
@@ -272,7 +271,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 				new_msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 				// TODO: COPY LIST
 				new_msg_ptr->task_list_head_ptr = taskList;
-
 
 				int result = _msgq_send(new_msg_ptr);
 

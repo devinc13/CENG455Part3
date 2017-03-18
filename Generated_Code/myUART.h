@@ -7,7 +7,7 @@
 **     Version     : Component 1.3.0, Driver 01.00, CPU db: 3.00.000
 **     Repository  : KSDK 1.3.0
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-03-06, 17:52, # CodeGen: 6
+**     Date/Time   : 2017-03-17, 16:54, # CodeGen: 9
 **     Contents    :
 **         UART_DRV_Init                - uart_status_t UART_DRV_Init(uint32_t instance,uart_state_t *...
 **         UART_DRV_Deinit              - uart_status_t UART_DRV_Deinit(uint32_t instance);

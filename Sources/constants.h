@@ -49,6 +49,6 @@ struct overdue_tasks {
 };
 
 extern _pool_id message_pool;
-extern _queue_id scheuler_qid;
+extern _queue_id scheduler_qid;
 
 #endif /* SOURCES_CONSTANTS_H_ */

@@ -24,7 +24,7 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 		_task_block();
 	}
 
-	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheduler_qid);
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 0;
 	msg_ptr->DEADLINE = deadline;
@@ -50,7 +50,7 @@ int dd_delete(int task_id) {
 		_task_block();
 	}
 
-	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheduler_qid);
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 1;
 	msg_ptr->TASKID = task_id;
@@ -69,9 +69,8 @@ int dd_delete(int task_id) {
 int dd_return_active_list(struct task_list **list) {
 	/* open a message queue */
 	_queue_id qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
-	printf("TEST1\n");
 
-	if (scheuler_qid == 0) {
+	if (qid == 0) {
 	  printf("\nCould not open the return active message queue\n");
 	  _task_block();
 	}
@@ -84,7 +83,7 @@ int dd_return_active_list(struct task_list **list) {
 		_task_block();
 	}
 
-	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheduler_qid);
 	msg_ptr->HEADER.SOURCE_QID = qid;
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 2;
@@ -97,16 +96,17 @@ int dd_return_active_list(struct task_list **list) {
 	}
 
 	TASK_LIST_MESSAGE_PTR new_msg_ptr = _msgq_receive(qid, 0);
+
+
 	(*list) = new_msg_ptr->task_list_head_ptr;
 	_msgq_close(qid);
-	printf("TEST2\n");
 }
 
 int dd_return_overdue_list(struct overdue_tasks **list) {
 	/* open a message queue */
 	_queue_id qid = _msgq_open(MSGQ_FREE_QUEUE, 0);
 
-	if (scheuler_qid == 0) {
+	if (qid == 0) {
 	  printf("\nCould not open the return overdue message queue\n");
 	  _task_block();
 	}
@@ -119,7 +119,7 @@ int dd_return_overdue_list(struct overdue_tasks **list) {
 		_task_block();
 	}
 
-	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheuler_qid);
+	msg_ptr->HEADER.TARGET_QID = _msgq_get_id(0, scheduler_qid);
 	msg_ptr->HEADER.SOURCE_QID = qid;
 	msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
 	msg_ptr->TYPE = 3;
