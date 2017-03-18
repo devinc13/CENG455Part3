@@ -11,6 +11,12 @@ _pool_id message_pool;
 _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 	_task_id task_id = _task_create(0, template_index, runtime);
 
+	_mqx_uint priority;
+	_task_set_priority(task_id, 25, &priority);
+	_task_get_priority(task_id, &priority);
+	printf("User task priority = %d\n", priority);
+
+
 	if (task_id == 0) {
 	  printf("\nCould not create dd_scheduler task\n");
 	  _task_block();
@@ -99,6 +105,7 @@ int dd_return_active_list(struct task_list **list) {
 
 
 	(*list) = new_msg_ptr->task_list_head_ptr;
+	_msg_free(new_msg_ptr);
 	_msgq_close(qid);
 }
 
@@ -133,6 +140,7 @@ int dd_return_overdue_list(struct overdue_tasks **list) {
 
 	TASK_LIST_MESSAGE_PTR new_msg_ptr = _msgq_receive(qid, 0);
 	(*list) = new_msg_ptr->overdue_tasks_head_ptr;
+	_msg_free(new_msg_ptr);
 	_msgq_close(qid);
 }
 

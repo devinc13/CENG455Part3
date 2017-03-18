@@ -66,23 +66,39 @@ void task_generator(os_task_param_t task_init_data)
 	struct task_list * active_tasks_head_ptr = NULL;
 	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
 
-	// Create Idle task
-	_task_id task_id = _task_create(0, IDLETASK_TASK, 0);
 
-	if (task_id == 0) {
+	_mqx_uint priority;
+	_task_set_priority(_task_get_id(), 11, &priority);
+	_task_get_priority(_task_get_id(), &priority);
+	printf("Generator priority = %d\n", priority);
+
+	// Create Idle task
+	_task_id idle_task_id = _task_create(0, IDLETASK_TASK, 0);
+
+	if (idle_task_id == 0) {
 	  printf("\nCould not create idle task\n");
 	  _task_block();
 	}
+
+	_task_set_priority(idle_task_id, 20, &priority);
+	_task_get_priority(idle_task_id, &priority);
+	printf("Idle task priority = %d\n", priority);
 
 	int n_total_tasks = 2;
 
 	// TODO: ADD PERIODIC TASKS/TESTS
 
 	// Create simple task 1
-	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
+	_task_id t1 = dd_tcreate(USERTASK_TASK, 400, 500);
 
-	// Create simple task 2
-	_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
+//	// Create simple task 2
+//	_task_id t2 = dd_tcreate(USERTASK_TASK, 1000, 300);
+
+	// Create simple task 3
+	_task_id t3 = dd_tcreate(USERTASK_TASK, 690, 300);
+
+//	// Create simple task 4
+//	_task_id t4 = dd_tcreate(USERTASK_TASK, 600, 300);
 
 	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
@@ -134,6 +150,13 @@ void task_generator(os_task_param_t task_init_data)
 */
 void dd_scheduler(os_task_param_t task_init_data)
 {
+
+	_mqx_uint priority;
+	_task_set_priority(_task_get_id(), 9, &priority);
+	_task_get_priority(_task_get_id(), &priority);
+	printf("Scheduler priority = %d\n", priority);
+
+
   /* Write your local variable definition here */
 	int timeout = 0;
 
@@ -162,9 +185,54 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		if (msg_ptr == NULL) {
 			printf("\nTIMEOUT\n");
-			// TODO: Handle timeout
 
+			struct task_list * timeout_task_ptr = taskList;
+			struct task_list * next_task_ptr = taskList->next_cell;
+
+			// Set complete task to 25 so it doesn't run anymore
+			_mqx_uint priority;
+			_task_set_priority(timeout_task_ptr->tid, 25, &priority);
+
+			if (next_task_ptr == NULL) {
+				taskList = NULL;
+				timeout = 0;
+			} else {
+				next_task_ptr->previous_cell = NULL;
+
+				taskList = next_task_ptr;
+
+				// Make next task active
+				_task_set_priority(next_task_ptr->tid, 15, &priority);
+
+
+				TIME_STRUCT curr_time;
+				_time_get(&curr_time);
+				curr_time.MILLISECONDS;
+
+				timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
+			}
+
+			struct overdue_tasks * overdue_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+			overdue_ptr->tid = timeout_task_ptr->tid;
+			overdue_ptr->deadline = timeout_task_ptr->deadline;
+			overdue_ptr->creation_time = timeout_task_ptr->creation_time;
+			overdue_ptr->next_cell = NULL;
+			overdue_ptr->previous_cell = NULL;
+
+			if (overdueTasks == NULL) {
+				overdueTasks = overdue_ptr;
+			} else {
+				overdue_ptr->next_cell = overdueTasks;
+				overdueTasks->previous_cell = overdue_ptr;
+				overdueTasks = overdue_ptr;
+			}
+
+			_mem_free(timeout_task_ptr);
+
+			continue;
 		}
+
+		bool timeoutCreated = false;
 
 		printf("Message received:\n");
 		printf("%d \n", msg_ptr->TYPE);
@@ -185,7 +253,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 					_mqx_uint priority;
 					_task_set_priority(newTask_ptr->tid, 15, &priority);
 
-					// TODO: Set timeout
+					timeoutCreated = true;
+					timeout = newTask_ptr->deadline;
 
 				} else {
 					// Put into list sorted
@@ -211,8 +280,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 						// Make new task active
 						_task_set_priority(newTask_ptr->tid, 15, &priority);
 
-						// TODO: Set timeout
-
+						timeoutCreated = true;
+						timeout = newTask_ptr->deadline;
 
 					} else {
 						// Find where it goes in the list
@@ -249,7 +318,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 			}
 			case 1:
 			{
-				printf("Delete\n");
+				printf("Task completed\n");
 				struct task_list * complete_task_ptr = taskList;
 				struct task_list * next_task_ptr = taskList->next_cell;
 
@@ -266,6 +335,14 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 					// Make next task active
 					_task_set_priority(next_task_ptr->tid, 15, &priority);
+
+					timeoutCreated = true;
+
+					TIME_STRUCT curr_time;
+					_time_get(&curr_time);
+					curr_time.MILLISECONDS;
+
+					timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
 				}
 
 				_mem_free(complete_task_ptr);
@@ -322,6 +399,24 @@ void dd_scheduler(os_task_param_t task_init_data)
 				break;
 			}
 		}
+
+		_msg_free(msg_ptr);
+
+		if (timeoutCreated == false) {
+			if (taskList == NULL) {
+				timeout = 0;
+				continue;
+			}
+
+			TIME_STRUCT curr_time;
+			_time_get(&curr_time);
+			curr_time.MILLISECONDS;
+
+			timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
+			if (timeout < 0) {
+				printf("SOMETHING WENT VERY WRONG\n");
+			}
+		}
     
     
 #ifdef PEX_USE_RTOS   
@@ -373,7 +468,6 @@ void turn_off_flag(_timer_id t, void* dataptr, unsigned int seconds, unsigned in
 */
 void user_task(os_task_param_t task_init_data)
 {
-	printf("*");
   unsigned int runtime = task_init_data;
 
   // Busy loop
@@ -381,7 +475,6 @@ void user_task(os_task_param_t task_init_data)
   _timer_start_oneshot_after(turn_off_flag, &flag, TIMER_ELAPSED_TIME_MODE, runtime);
   while(flag);
   dd_delete(_task_get_id());
-  //_task_block();
 }
 
 /*

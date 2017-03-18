@@ -7,7 +7,7 @@
 **     Version     : Component 1.3.0, Driver 01.00, CPU db: 3.00.000
 **     Repository  : KSDK 1.3.0
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2017-03-17, 19:43, # CodeGen: 10
+**     Date/Time   : 2017-03-18, 10:20, # CodeGen: 0
 **     Contents    :
 **         OSA_DefaultIntHandler - static inline osa_int_handler_t OSA_DefaultIntHandler(void);
 **         OSA_SemaCreate        - osa_status_t OSA_SemaCreate(semaphore_t * pSem,uint8_t initValue);
