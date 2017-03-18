@@ -1,6 +1,6 @@
 /* ###################################################################
 **     Filename    : rtos_main_task.h
-**     Project     : ceng455part3
+**     Project     : CENG455Part3
 **     Processor   : MK64FN1M0VLL12
 **     Component   : Events
 **     Version     : Driver 01.00

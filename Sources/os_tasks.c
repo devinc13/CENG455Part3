@@ -1,6 +1,6 @@
 /* ###################################################################
 **     Filename    : os_tasks.c
-**     Project     : ceng455part3
+**     Project     : CENG455Part3
 **     Processor   : MK64FN1M0VLL12
 **     Component   : Events
 **     Version     : Driver 01.00
@@ -82,13 +82,13 @@ void task_generator(os_task_param_t task_init_data)
 	_task_id t1 = dd_tcreate(USERTASK_TASK, 50, 20);
 
 	// Create simple task 2
-	_task_id t2 = dd_tcreate(USERTASK_TASK, 40, 30);
+	//_task_id t2 = dd_tcreate(USERTASK_TASK, 60, 30);
 
 	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
 
 
 	// WAIT A BIT
-	_time_delay(3000);
+	_time_delay(5000);
 
 
 	// OBTAIN STATUS FROM SCHEDULER
@@ -182,19 +182,18 @@ void dd_scheduler(os_task_param_t task_init_data)
 					newTask_ptr->next_cell = NULL;
 					newTask_ptr->previous_cell = NULL;
 					taskList = newTask_ptr;
-					unsigned int priority;
-					_task_get_priority(newTask_ptr->tid, &priority);
+					_mqx_uint priority;
 					_task_set_priority(newTask_ptr->tid, 15, &priority);
-					//printf("Done setting priority\n");
+					printf("previous = %d\n", priority);
+					_task_get_priority(newTask_ptr->tid, &priority);
+					printf("new priotiry = %d\n", priority);
+					printf("Done setting priority\n");
 				} else {
 					// Put into list sorted
 					struct task_list * temp_task_list_ptr = taskList;
 					// If this is the highest priority, put at front and make this task active
-					//printf("TEST1\n");
 					if (msg_ptr->DEADLINE < taskList->deadline) {
-						//printf("TEST2\n");
 						// Create new higher priority task
-
 						struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 						newTask_ptr->tid = msg_ptr->TASKID;
 						newTask_ptr->deadline = msg_ptr->DEADLINE;
@@ -207,22 +206,19 @@ void dd_scheduler(os_task_param_t task_init_data)
 						taskList = newTask_ptr;
 
 						// Set old task to 25
-						unsigned int priority;
-						_task_get_priority(newTask_ptr->next_cell->tid, &priority);
+						_mqx_uint priority;
 						_task_set_priority(newTask_ptr->next_cell->tid, 25, &priority);
 
 						// Make new task active
-						_task_get_priority(newTask_ptr->tid, &priority);
 						_task_set_priority(newTask_ptr->tid, 15, &priority);
-						//printf("TEST3\n");
 					} else {
-						//printf("TEST4\n");
 						// Find where it goes in the list
 						while (temp_task_list_ptr->next_cell != NULL && msg_ptr->DEADLINE > temp_task_list_ptr->deadline) {
 							temp_task_list_ptr = taskList->next_cell;
 						}
 
 						if (temp_task_list_ptr->next_cell == NULL) {
+							// Put it at the end of the list
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
@@ -232,9 +228,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 							temp_task_list_ptr->next_cell = newTask_ptr;
 							printf("Item added to back of list\n");
 						} else {
-							//printf("TEST6\n");
 							// Put it in between cells
-
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
@@ -244,8 +238,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 							temp_task_list_ptr->previous_cell->next_cell = newTask_ptr;
 							temp_task_list_ptr->previous_cell = newTask_ptr;
-
-							//printf("TEST7\n");
 						}
 					}
 
@@ -254,7 +246,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 			}
 			case 1:
 			{
-				printf("Delete");
+				printf("Delete\n");
 				break;
 			}
 			case 2:
@@ -307,9 +299,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 				break;
 			}
 		}
-
-   
-    
     
     
 #ifdef PEX_USE_RTOS   
@@ -361,6 +350,7 @@ void turn_off_flag(_timer_id t, void* dataptr, unsigned int seconds, unsigned in
 */
 void user_task(os_task_param_t task_init_data)
 {
+	printf("*");
   unsigned int runtime = task_init_data;
 
   // Busy loop
@@ -368,8 +358,7 @@ void user_task(os_task_param_t task_init_data)
   _timer_start_oneshot_after(turn_off_flag, &flag, TIMER_ELAPSED_TIME_MODE, runtime);
   while(flag);
   dd_delete(_task_get_id());
-  _task_block();
-
+  //_task_block();
 }
 
 /*
@@ -386,7 +375,6 @@ void idle_task(os_task_param_t task_init_data)
   /* Write your local variable definition here */
 
 	// TODO: Run busy loop that records its runtime
-	printf("IDLE TASK!\n");
 	while(1);
 }
 
