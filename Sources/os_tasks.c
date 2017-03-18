@@ -50,7 +50,70 @@ _pool_id message_pool;
 _queue_id scheduler_qid;
 struct task_list *taskList = NULL;
 struct overdue_tasks *overdueTasks = NULL;
-unsigned int idle_counter = 0;
+volatile uint32_t ms_loop;
+unsigned int idle_time = 0;
+unsigned int total_tasks = 0;
+unsigned int reporting_period_ms = 5000;
+
+typedef struct periodic_data {
+    unsigned int deadline;
+    unsigned int runtime;
+} periodic_data;
+
+
+
+void create_periodic_task(_timer_id t, void* dataptr, unsigned int seconds, unsigned int miliseconds){
+	periodic_data * data = dataptr;
+    dd_tcreate(USERTASK_TASK, data->deadline, data->runtime);
+    total_tasks++;
+};
+
+
+void report_statistics(_timer_id t, void* dataptr, unsigned int seconds, unsigned int miliseconds){
+	// OBTAIN STATUS FROM SCHEDULER
+	struct task_list * active_tasks_head_ptr = NULL;
+	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
+
+	printf("\x1B[H\x1B[J");
+	if(!dd_return_active_list(&active_tasks_head_ptr) || !dd_return_overdue_list(&overdue_tasks_head_ptr)){
+		printf("error: failed to obtain the tasks list!\n\r");
+		return;
+	}
+
+	int n_completed_tasks = 0;
+	int n_failed_tasks = 0;
+	int n_running_tasks = 0;
+
+	struct task_list *temp_at_ptr = active_tasks_head_ptr;
+	while(temp_at_ptr){
+		n_running_tasks++;
+		temp_at_ptr = temp_at_ptr->next_cell;
+	}
+
+
+	struct overdue_tasks *temp_ot_ptr = overdue_tasks_head_ptr;
+	while(temp_ot_ptr){
+		n_failed_tasks++;
+		temp_ot_ptr = temp_ot_ptr->next_cell;
+	}
+
+	n_completed_tasks = total_tasks-(n_failed_tasks+n_running_tasks);
+	printf("TASK GENERATOR: %d failed, %d completed, %d still running.\n\r", n_failed_tasks, n_completed_tasks, n_running_tasks);
+
+	int total_execution_time = reporting_period_ms - idle_time;
+	float total_time = reporting_period_ms;
+	if (total_execution_time <= 0) {
+		printf("Utilization = 0%%\n");
+	} else if (total_execution_time >= reporting_period_ms) {
+		printf("Utilization = 100%%\n");
+	} else {
+		printf("Utilization = %d%%\n", (int)((float)total_execution_time / total_time * 100));
+	}
+
+	idle_time = 0;
+}
+
+
 
 
 /*
@@ -64,8 +127,6 @@ unsigned int idle_counter = 0;
 */
 void task_generator(os_task_param_t task_init_data)
 {
-	struct task_list * active_tasks_head_ptr = NULL;
-	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
 
 
 	_mqx_uint priority;
@@ -85,60 +146,32 @@ void task_generator(os_task_param_t task_init_data)
 	_task_get_priority(idle_task_id, &priority);
 	printf("Idle task priority = %d\n", priority);
 
-	int n_total_tasks = 2;
 
-	// TODO: ADD PERIODIC TASKS/TESTS
+	// Aperiodic tasks
+	// First parameter is deadline, second is runtime
 
-	// Create simple task 1
-	_task_id t1 = dd_tcreate(USERTASK_TASK, 400, 500);
+//	dd_tcreate(USERTASK_TASK, 400, 500);
+//	total_tasks++;
 
-//	// Create simple task 2
-//	_task_id t2 = dd_tcreate(USERTASK_TASK, 1000, 300);
-
-
-	// Create simple task 3
-	_task_id t3 = dd_tcreate(USERTASK_TASK, 690, 300);
-
-//	// Create simple task 4
-//	_task_id t4 = dd_tcreate(USERTASK_TASK, 600, 300);
-
-	printf("TASK GENERATOR: %d tasks created.\n\r", n_total_tasks);
-
-
-	// WAIT A BIT
-	_time_delay(5000);
-
-
-	// OBTAIN STATUS FROM SCHEDULER
-	printf("TASK GENERATOR: collecting statistics\n\r");
-	if(!dd_return_active_list(&active_tasks_head_ptr) || !dd_return_overdue_list(&overdue_tasks_head_ptr)){
-		printf("error: failed to obtain the tasks list!\n\r");
-		return 1;
-	}
-
-
-	int n_completed_tasks = 0;
-	int n_failed_tasks = 0;
-	int n_running_tasks = 0;
-
-	struct task_list *temp_at_ptr = active_tasks_head_ptr;
-	while(temp_at_ptr){
-		n_running_tasks++;
-		temp_at_ptr = temp_at_ptr->next_cell;
-	}
+//	dd_tcreate(USERTASK_TASK, 690, 300);
+//	total_tasks++;
+	printf("TASK GENERATOR: %d aperiodic tasks created.\n\r", total_tasks);
 
 
 
-	struct task_list *temp_ot_ptr = overdue_tasks_head_ptr;
-	while(temp_ot_ptr){
-		n_failed_tasks++;
-		temp_ot_ptr = temp_ot_ptr->next_cell;
-	}
+	// Periodic tasks - comma separated string - first is deadline, second is runtime
 
-	n_completed_tasks = n_total_tasks-(n_failed_tasks+n_running_tasks);
-	printf("TASK GENERATOR: %d failed, %d completed, %d still running.\n\r", n_failed_tasks, n_completed_tasks, n_running_tasks);
+	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
+	task_data->deadline = 5000;
+	task_data->runtime = 2500;
+	int period_ms = 5000;
+	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
 
-	return 0;
+
+
+	// Report statistics periodically
+	_timer_start_periodic_every(report_statistics, NULL, TIMER_KERNEL_TIME_MODE, reporting_period_ms);
+	_task_block();
 }
 
 // Call this whenever making a new task active that might already be past its deadline
@@ -188,10 +221,6 @@ void remove_already_overdue_tasks() {
 	}
 
 
-
-
-
-
 }
 
 /*
@@ -239,8 +268,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 	  	SCHEDULER_MESSAGE_PTR msg_ptr = _msgq_receive(scheduler_qid, timeout);
 
 		if (msg_ptr == NULL) {
-			printf("\nTIMEOUT\n");
-
 			struct task_list * timeout_task_ptr = taskList;
 			struct task_list * next_task_ptr = taskList->next_cell;
 
@@ -259,7 +286,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				// Make next task active
 				_task_set_priority(taskList->tid, 15, &priority);
-
 
 				TIME_STRUCT curr_time;
 				_time_get(&curr_time);
@@ -290,8 +316,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		bool timeoutCreated = false;
 
-		printf("Message received:\n");
-		printf("%d \n", msg_ptr->TYPE);
 		switch(msg_ptr->TYPE) {
 			case 0:
 			{
@@ -354,7 +378,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 							newTask_ptr->next_cell = NULL;
 							newTask_ptr->previous_cell = temp_task_list_ptr;
 							temp_task_list_ptr->next_cell = newTask_ptr;
-							printf("Item added to back of list\n");
 						} else {
 							// Put it in between cells
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
@@ -374,7 +397,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 			}
 			case 1:
 			{
-				printf("Task completed\n");
 				struct task_list * complete_task_ptr = taskList;
 				struct task_list * next_task_ptr = taskList->next_cell;
 
@@ -558,12 +580,21 @@ void idle_task(os_task_param_t task_init_data)
 	//	  printf("Counter = %d\n", counter);
 	//	  printf("****\n");
 
-	// Calibration = 11955 per millisecond
+	// Calibration = 10862 per millisecond
+
+//	while(1) {
+//		idle_counter++;
+//	}
 
 	while(1) {
-		idle_counter++;
-	}
+		int ms_loop = 1;
 
+		while(ms_loop < 10862){
+			ms_loop += 1;
+		}
+
+		idle_time += 1;
+	}
 }
 
 /* END os_tasks */

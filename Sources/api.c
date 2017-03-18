@@ -14,7 +14,6 @@ _task_id dd_tcreate(int template_index, int deadline, int runtime) {
 	_mqx_uint priority;
 	_task_set_priority(task_id, 25, &priority);
 	_task_get_priority(task_id, &priority);
-	printf("User task priority = %d\n", priority);
 
 
 	if (task_id == 0) {
