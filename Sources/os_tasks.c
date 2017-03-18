@@ -50,6 +50,7 @@ _pool_id message_pool;
 _queue_id scheduler_qid;
 struct task_list *taskList = NULL;
 struct overdue_tasks *overdueTasks = NULL;
+unsigned int idle_counter = 0;
 
 
 /*
@@ -94,6 +95,7 @@ void task_generator(os_task_param_t task_init_data)
 //	// Create simple task 2
 //	_task_id t2 = dd_tcreate(USERTASK_TASK, 1000, 300);
 
+
 	// Create simple task 3
 	_task_id t3 = dd_tcreate(USERTASK_TASK, 690, 300);
 
@@ -137,6 +139,59 @@ void task_generator(os_task_param_t task_init_data)
 	printf("TASK GENERATOR: %d failed, %d completed, %d still running.\n\r", n_failed_tasks, n_completed_tasks, n_running_tasks);
 
 	return 0;
+}
+
+// Call this whenever making a new task active that might already be past its deadline
+void remove_already_overdue_tasks() {
+	struct task_list * next_task_to_run_ptr = taskList;
+
+	TIME_STRUCT curr_time;
+	_time_get(&curr_time);
+	curr_time.MILLISECONDS;
+
+	int timeout = (next_task_to_run_ptr->creation_time + next_task_to_run_ptr->deadline) - curr_time.MILLISECONDS;
+
+	while (timeout < 0) {
+		// These tasks have already gone past their deadline
+
+		// Set complete task to 25 so it doesn't run anymore
+		_mqx_uint priority;
+		_task_set_priority(next_task_to_run_ptr->tid, 25, &priority);
+
+		struct overdue_tasks * overdue_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
+		overdue_ptr->tid = next_task_to_run_ptr->tid;
+		overdue_ptr->deadline = next_task_to_run_ptr->deadline;
+		overdue_ptr->creation_time = next_task_to_run_ptr->creation_time;
+		overdue_ptr->next_cell = NULL;
+		overdue_ptr->previous_cell = NULL;
+
+		if (overdueTasks == NULL) {
+			overdueTasks = overdue_ptr;
+		} else {
+			overdue_ptr->next_cell = overdueTasks;
+			overdueTasks->previous_cell = overdue_ptr;
+			overdueTasks = overdue_ptr;
+		}
+
+		_mem_free(next_task_to_run_ptr);
+
+		TIME_STRUCT curr_time;
+		_time_get(&curr_time);
+		curr_time.MILLISECONDS;
+
+		next_task_to_run_ptr = next_task_to_run_ptr->next_cell;
+		if (next_task_to_run_ptr == NULL) {
+			return;
+		}
+
+		timeout = (next_task_to_run_ptr->creation_time + next_task_to_run_ptr->deadline) - curr_time.MILLISECONDS;
+	}
+
+
+
+
+
+
 }
 
 /*
@@ -200,9 +255,10 @@ void dd_scheduler(os_task_param_t task_init_data)
 				next_task_ptr->previous_cell = NULL;
 
 				taskList = next_task_ptr;
+				remove_already_overdue_tasks();
 
 				// Make next task active
-				_task_set_priority(next_task_ptr->tid, 15, &priority);
+				_task_set_priority(taskList->tid, 15, &priority);
 
 
 				TIME_STRUCT curr_time;
@@ -332,9 +388,10 @@ void dd_scheduler(os_task_param_t task_init_data)
 					next_task_ptr->previous_cell = NULL;
 
 					taskList = next_task_ptr;
+					remove_already_overdue_tasks();
 
 					// Make next task active
-					_task_set_priority(next_task_ptr->tid, 15, &priority);
+					_task_set_priority(taskList->tid, 15, &priority);
 
 					timeoutCreated = true;
 
@@ -489,9 +546,24 @@ void user_task(os_task_param_t task_init_data)
 void idle_task(os_task_param_t task_init_data)
 {
   /* Write your local variable definition here */
+	// This was our calibration
+	//	  bool flag = true;
+	//	  _timer_start_oneshot_after(turn_off_flag, &flag, TIMER_ELAPSED_TIME_MODE, 10000);
+	//	  int counter = 0;
+	//	  while(flag) {
+	//		  counter++;
+	//	  }
+	//
+	//	  printf("****\n");
+	//	  printf("Counter = %d\n", counter);
+	//	  printf("****\n");
 
-	// TODO: Run busy loop that records its runtime
-	while(1);
+	// Calibration = 11955 per millisecond
+
+	while(1) {
+		idle_counter++;
+	}
+
 }
 
 /* END os_tasks */
