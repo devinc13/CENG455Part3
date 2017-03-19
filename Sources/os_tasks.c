@@ -74,7 +74,7 @@ void report_statistics(_timer_id t, void* dataptr, unsigned int seconds, unsigne
 	struct task_list * active_tasks_head_ptr = NULL;
 	struct overdue_tasks * overdue_tasks_head_ptr = NULL;
 
-	printf("\x1B[H\x1B[J");
+	//printf("\x1B[H\x1B[J");
 
 	if(!dd_return_active_list(&active_tasks_head_ptr) || !dd_return_overdue_list(&overdue_tasks_head_ptr)){
 		printf("error: failed to obtain the tasks list!\n\r");
@@ -133,7 +133,6 @@ void task_generator(os_task_param_t task_init_data)
 	_mqx_uint priority;
 	_task_set_priority(_task_get_id(), 11, &priority);
 	_task_get_priority(_task_get_id(), &priority);
-	printf("Generator priority = %d\n", priority);
 
 	// Create Idle task
 	_task_id idle_task_id = _task_create(0, IDLETASK_TASK, 0);
@@ -145,22 +144,21 @@ void task_generator(os_task_param_t task_init_data)
 
 	_task_set_priority(idle_task_id, 20, &priority);
 	_task_get_priority(idle_task_id, &priority);
-	printf("Idle task priority = %d\n", priority);
 
 
 	// Aperiodic tasks
 	// First parameter is deadline, second is runtime
 
-	dd_tcreate(USERTASK_TASK, 500, 200);
+	dd_tcreate(USERTASK_TASK, 2100, 2000);
 	total_tasks++;
 
-	dd_tcreate(USERTASK_TASK, 560, 200);
+	dd_tcreate(USERTASK_TASK, 2500, 1000);
 	total_tasks++;
 
-	dd_tcreate(USERTASK_TASK, 400, 200);
-	total_tasks++;
-
-//	dd_tcreate(USERTASK_TASK, 690, 300);
+//	dd_tcreate(USERTASK_TASK, 200, 100);
+//	total_tasks++;
+//
+//	dd_tcreate(USERTASK_TASK, 200, 500);
 //	total_tasks++;
 	printf("TASK GENERATOR: %d aperiodic tasks created.\n\r", total_tasks);
 
@@ -169,16 +167,16 @@ void task_generator(os_task_param_t task_init_data)
 	// Periodic tasks - comma separated string - first is deadline, second is runtime
 
 	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
-	task_data->deadline = 2000;
-	task_data->runtime = 700;
-	int period_ms = 2000;
+	task_data->deadline = 2100;
+	task_data->runtime = 2000;
+	int period_ms = 5000;
 	_timer_start_periodic_every(create_periodic_task, task_data, TIMER_KERNEL_TIME_MODE, period_ms);
 
 
 	periodic_data * task_data2 = _mem_alloc(sizeof(unsigned int) * 2);
-	task_data2->deadline = 5000;
-	task_data2->runtime = 900;
-	int period2_ms = 5000;
+	task_data2->deadline = 2500;
+	task_data2->runtime = 1000;
+	int period2_ms = 2500;
 	_timer_start_periodic_every(create_periodic_task, task_data2, TIMER_KERNEL_TIME_MODE, period2_ms);
 
 
@@ -193,9 +191,9 @@ void remove_already_overdue_tasks() {
 	struct task_list * next_task_to_run_ptr = taskList;
 
 	TIME_STRUCT curr_time;
-	_time_get(&curr_time);
+	_time_get_elapsed(&curr_time);
 
-	int timeout = (next_task_to_run_ptr->creation_time + next_task_to_run_ptr->deadline) - curr_time.MILLISECONDS;
+	int timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
 
 	while (timeout < 0) {
 		// These tasks have already gone past their deadline
@@ -222,14 +220,14 @@ void remove_already_overdue_tasks() {
 		_mem_free(next_task_to_run_ptr);
 
 		TIME_STRUCT curr_time;
-		_time_get(&curr_time);
+		_time_get_elapsed(&curr_time);
 
 		next_task_to_run_ptr = next_task_to_run_ptr->next_cell;
 		if (next_task_to_run_ptr == NULL) {
 			return;
 		}
 
-		timeout = (next_task_to_run_ptr->creation_time + next_task_to_run_ptr->deadline) - curr_time.MILLISECONDS;
+		timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
 	}
 
 
@@ -265,7 +263,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 	/* create a message pool */
 	message_pool = _msgpool_create(sizeof(SCHEDULER_MESSAGE),
-	  10, 0, 0);
+	  30, 0, 0);
 
 	if (message_pool == MSGPOOL_NULL_POOL_ID) {
 	  printf("\nCould not create scheduler message pool\n");
@@ -279,6 +277,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 	  	SCHEDULER_MESSAGE_PTR msg_ptr = _msgq_receive(scheduler_qid, timeout);
 
 		if (msg_ptr == NULL) {
+			// Task overdue!
 			struct task_list * timeout_task_ptr = taskList;
 			struct task_list * next_task_ptr = taskList->next_cell;
 
@@ -299,9 +298,9 @@ void dd_scheduler(os_task_param_t task_init_data)
 				_task_set_priority(taskList->tid, 15, &priority);
 
 				TIME_STRUCT curr_time;
-				_time_get(&curr_time);
+				_time_get_elapsed(&curr_time);
 
-				timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
+				timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
 			}
 
 			struct overdue_tasks * overdue_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
@@ -326,7 +325,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		bool timeoutCreated = false;
 
-		//printf("MSG RECIEVED OF TYPE: %d\n", msg_ptr->TYPE);
 		switch(msg_ptr->TYPE) {
 			case 0:
 			{
@@ -335,8 +333,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 					newTask_ptr->tid = msg_ptr->TASKID;
 					newTask_ptr->deadline = msg_ptr->DEADLINE;
 					TIME_STRUCT start_time;
-					_time_get(&start_time);
-					newTask_ptr->creation_time = start_time.MILLISECONDS;
+					_time_get_elapsed(&start_time);
+					newTask_ptr->creation_time = start_time.SECONDS * 1000 + start_time.MILLISECONDS;
 					newTask_ptr->next_cell = NULL;
 					newTask_ptr->previous_cell = NULL;
 					taskList = newTask_ptr;
@@ -356,8 +354,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 						newTask_ptr->tid = msg_ptr->TASKID;
 						newTask_ptr->deadline = msg_ptr->DEADLINE;
 						TIME_STRUCT start_time;
-						_time_get(&start_time);
-						newTask_ptr->creation_time = start_time.MILLISECONDS;
+						_time_get_elapsed(&start_time);
+						newTask_ptr->creation_time = start_time.SECONDS * 1000 + start_time.MILLISECONDS;
 						newTask_ptr->next_cell = taskList;
 						newTask_ptr->previous_cell = NULL;
 						// set previous of old highest priority
@@ -387,8 +385,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
 							TIME_STRUCT start_time;
-							_time_get(&start_time);
-							newTask_ptr->creation_time = start_time.MILLISECONDS;
+							_time_get_elapsed(&start_time);
+							newTask_ptr->creation_time = start_time.SECONDS * 1000 + start_time.MILLISECONDS;
 							newTask_ptr->next_cell = NULL;
 							newTask_ptr->previous_cell = temp_task_list_ptr;
 							temp_task_list_ptr->next_cell = newTask_ptr;
@@ -398,8 +396,8 @@ void dd_scheduler(os_task_param_t task_init_data)
 							newTask_ptr->tid = msg_ptr->TASKID;
 							newTask_ptr->deadline = msg_ptr->DEADLINE;
 							TIME_STRUCT start_time;
-							_time_get(&start_time);
-							newTask_ptr->creation_time = start_time.MILLISECONDS;
+							_time_get_elapsed(&start_time);
+							newTask_ptr->creation_time = start_time.SECONDS * 1000 + start_time.MILLISECONDS;
 							newTask_ptr->next_cell = temp_task_list_ptr;
 							newTask_ptr->previous_cell = temp_task_list_ptr->previous_cell;
 
@@ -434,9 +432,9 @@ void dd_scheduler(os_task_param_t task_init_data)
 					timeoutCreated = true;
 
 					TIME_STRUCT curr_time;
-					_time_get(&curr_time);
+					_time_get_elapsed(&curr_time);
 
-					timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
+					timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
 				}
 
 				_mem_free(complete_task_ptr);
@@ -455,7 +453,6 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				new_msg_ptr->HEADER.TARGET_QID = msg_ptr->HEADER.SOURCE_QID;
 				new_msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
-				// TODO: COPY LIST
 				new_msg_ptr->task_list_head_ptr = taskList;
 
 				int result = _msgq_send(new_msg_ptr);
@@ -479,9 +476,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				new_msg_ptr->HEADER.TARGET_QID = msg_ptr->HEADER.SOURCE_QID;
 				new_msg_ptr->HEADER.SIZE = sizeof(MESSAGE_HEADER_STRUCT) + sizeof(int) * 4;
-				// TODO: COPY LIST
 				new_msg_ptr->overdue_tasks_head_ptr = overdueTasks;
-
 
 				int result = _msgq_send(new_msg_ptr);
 
@@ -503,15 +498,12 @@ void dd_scheduler(os_task_param_t task_init_data)
 			}
 
 			TIME_STRUCT curr_time;
-			_time_get(&curr_time);
+			_time_get_elapsed(&curr_time);
 
-//			printf("%d\n", taskList->creation_time);
-//			printf("%d\n", taskList->deadline);
-//			printf("%d\n", curr_time.MILLISECONDS);
-
-			timeout = (taskList->creation_time + taskList->deadline) - curr_time.MILLISECONDS;
-			if (timeout < 0) {
-				printf("SOMETHING WENT VERY WRONG\n");
+			timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
+			if (timeout <= 0) {
+				// This means the timeout occurred while processing the message from a new task or reading lists
+				timeout = 1;
 			}
 		}
     
@@ -532,7 +524,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 */
 void master_task(os_task_param_t task_init_data)
 {
-	printf("\x1B[H\x1B[J");
+	//printf("\x1B[H\x1B[J");
 	printf("Creating Scheduler and Task Generator\n");
 
 	_task_id task_id = _task_create(0, DDSCHEDULER_TASK, 0);
