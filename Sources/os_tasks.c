@@ -164,7 +164,7 @@ void task_generator(os_task_param_t task_init_data)
 
 
 
-	// Periodic tasks - comma separated string - first is deadline, second is runtime
+	// Periodic tasks
 
 	periodic_data * task_data = _mem_alloc(sizeof(unsigned int) * 2);
 	task_data->deadline = 2100;
@@ -303,6 +303,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 				timeout = (taskList->creation_time + taskList->deadline) - (curr_time.SECONDS * 1000 + curr_time.MILLISECONDS);
 			}
 
+			// Create overdue version of task
 			struct overdue_tasks * overdue_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 			overdue_ptr->tid = timeout_task_ptr->tid;
 			overdue_ptr->deadline = timeout_task_ptr->deadline;
@@ -325,9 +326,11 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		bool timeoutCreated = false;
 
+		// Check what kind of message it is - 0 = create, 1 = delete, 3 = get active, 4 = get overdue
 		switch(msg_ptr->TYPE) {
 			case 0:
 			{
+				// Empty list, put at the start
 				if (taskList == NULL) {
 					struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
 					newTask_ptr->tid = msg_ptr->TASKID;
@@ -379,6 +382,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 							temp_task_list_ptr = taskList->next_cell;
 						}
 
+						// Put it at the end
 						if (temp_task_list_ptr->next_cell == NULL) {
 							// Put it at the end of the list
 							struct task_list * newTask_ptr = _mem_alloc(sizeof(unsigned int) * 4 + sizeof(void*) * 2);
@@ -409,6 +413,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 				}
 				break;
 			}
+			// Delete task
 			case 1:
 			{
 				struct task_list * complete_task_ptr = taskList;
@@ -441,6 +446,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				break;
 			}
+			// get active list
 			case 2:
 			{
 				/*allocate a message*/
@@ -464,6 +470,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 				break;
 			}
+			// get overdue list
 			case 3:
 			{
 				/*allocate a message*/
@@ -491,6 +498,7 @@ void dd_scheduler(os_task_param_t task_init_data)
 
 		_msg_free(msg_ptr);
 
+		// If we didn't create a timeout as part of the previous things, make an up to date timeout
 		if (timeoutCreated == false) {
 			if (taskList == NULL) {
 				timeout = 0;
@@ -603,6 +611,7 @@ void idle_task(os_task_param_t task_init_data)
 			ms_loop += 1;
 		}
 
+		// add one milisecond to the idle time
 		idle_time += 1;
 	}
 }
